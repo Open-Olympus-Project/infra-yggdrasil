@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: guestbook
+spec:
+  destination:
+    name: ''
+    namespace: app-one
+    server: 'https://10.0.1.4:6443'
+  source:
+    path: chart
+    repoURL: 'https://github.com/distributed-technologies/test-deployment-repo.git'
+    targetRevision: HEAD
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: false
