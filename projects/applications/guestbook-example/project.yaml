@@ -4,6 +4,11 @@ metadata:
   name: guestbook-example-projects
   namespace: argocd
 spec:
+  destinations:
+    - namespace: 'guestbook-example'
+      server: https://kubernetes.default.svc
+  sourceRepos:
+    - https://github.com/distributed-technologies/test-deployment-repo.git
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
