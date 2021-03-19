@@ -2,7 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   name: guestbook-example-projects
-  namespace: guestbook-example
+  namespace: argocd
 spec:
   roles:
   # A role which provides read-only access to all applications in the project
