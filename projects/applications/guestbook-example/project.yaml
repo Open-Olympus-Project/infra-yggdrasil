@@ -1,0 +1,14 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: guestbook-example-projects
+  namespace: guestbook-example
+spec:
+  roles:
+  # A role which provides read-only access to all applications in the project
+  - name: read-only
+    description: Read-only privileges to guestbook-example
+    policies:
+    - p, proj:guestbook-example:read-only, applications, get, guestbook-example/*, allow
+    groups:
+    - my-oidc-group

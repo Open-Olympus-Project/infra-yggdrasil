@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: app-one
-  namespace: app-one
+  name: ingress
+  namespace: ingress
 spec:
   roles:
   # A role which provides read-only access to all applications in the project
   - name: read-only
-    description: Read-only privileges to my-project
+    description: Read-only privileges to ingress
     policies:
-    - p, proj:app-one:read-only, applications, get, my-project/*, allow
+    - p, proj:ingress:read-only, applications, get, mukube-ingress/*, allow
     groups:
     - my-oidc-group

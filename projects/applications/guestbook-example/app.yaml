@@ -1,12 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: guestbook
+  name: guestbook-example
 spec:
   destination:
     name: ''
-    namespace: app-one
-    server: 'https://10.0.1.4:6443'
+    namespace: guestbook-example
+    server: 'https://kubernetes.default.svc'
   source:
     path: chart
     repoURL: 'https://github.com/distributed-technologies/test-deployment-repo.git'
