@@ -11,6 +11,7 @@ spec:
     namespace: argocd
     server: 'https://kubernetes.default.svc'
   source:
+    helm: {}
     path: chart
     repoURL: 'https://github.com/distributed-technologies/argo-cd.git'
     targetRevision: move-to-helm-dependencies
