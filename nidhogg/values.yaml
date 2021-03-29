@@ -1,0 +1,23 @@
+# A reference to this repo itself.
+yggdrasil:
+  repoURL: "https://github.com/distributed-technologies/cluster-env-repo.git"
+  targetRevision: "mcs-example-helm"
+
+installCNI: true
+
+argo-cd: 
+  controller: 
+    enableStatefulSet: true
+  redis-ha: 
+    enabled: true
+  server: 
+    config:
+      repositories: |
+        - type: helm
+          url: https://argoproj.github.io/argo-helm
+          name: argoproj
+        - type: helm
+          url: https://distributed-technologies.github.io/helm-repository/
+          name: dt-helmrepo
+    service: 
+      type: NodePort

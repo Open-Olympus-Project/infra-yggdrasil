@@ -1,0 +1,5 @@
+apiVersion: v2
+type: application
+name: yggdrasil
+description: A Helm chart for for deploying an entire repo.
+version: 0.1
