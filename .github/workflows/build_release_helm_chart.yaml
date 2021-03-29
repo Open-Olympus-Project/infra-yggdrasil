@@ -17,6 +17,9 @@ jobs:
       - name: Helm lint
         run: helm lint nidhogg
 
+      - name: helm dependency update
+        run: helm dependency update
+
       # Build the archive to release
       - name: Build
         run: helm package nidhogg
