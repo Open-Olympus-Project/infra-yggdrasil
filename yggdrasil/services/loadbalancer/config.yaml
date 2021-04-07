@@ -1,0 +1,12 @@
+name: loadbalancer
+clusterService: true
+namespace: loadbalancer
+description: MetalLB loadbalancer.
+apps:
+  - name: loadbalancer
+    source:
+      repoURL: "https://github.com/distributed-technologies/services-loadbalancer.git"
+      targetRevision: HEAD
+      path: chart
+      valuesFile: "loadbalancer.yaml"
+      skipDryRun: false

@@ -1,11 +1,9 @@
 
 {{- $root := . -}}
-{{- range .Values.projects }}
-
-{{- $project := . -}}
-{{- range .apps }}
+{{- range $path, $_ := .Files.Glob "services/**/config.yaml" }}
+    {{ $project := $root.Files.Get $path | fromYaml }}
+    {{- range $project.apps }}
 ---
-
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
@@ -15,6 +13,10 @@ metadata:
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
+  {{- if .source.skipDryRun }}
+  annotations:
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
+  {{- end }}
 spec:
   # The project the application belongs to.
   project: {{ $project.name }}
@@ -26,6 +28,10 @@ spec:
     path: {{ .source.path }}
     helm:
       version: v3
+      values: |
+        {{- $valuesFile := printf "%s/%s" ($path | dir) .source.valuesFile }}
+        {{- range $root.Files.Lines $valuesFile }}
+        {{ . }} {{ end }}         
 
   # Destination cluster and namespace to deploy the application
   destination:
@@ -38,6 +44,5 @@ spec:
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
       selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
 
+    {{- end }}
 {{- end }}
-{{- end }}
-

@@ -1,0 +1,12 @@
+name: grafana
+clusterService: true
+namespace: grafana
+description: Grafana.
+apps:
+  - name: grafana
+    source:
+      repoURL: "https://github.com/grafana/helm-charts.git"
+      targetRevision: HEAD
+      path: charts/grafana
+      valuesFile: "grafana.yaml"
+      skipDryRun: false

@@ -1,0 +1,19 @@
+name: rook-ceph
+clusterService: true
+namespace: rook-ceph
+description: Rook.
+apps:
+  - name: rook
+    source:
+      repoURL: "https://github.com/distributed-technologies/services-rook.git"
+      targetRevision: rook-dependency
+      path: chart
+      valuesFile: "rook.yaml"
+      skipDryRun: false
+  - name: ceph
+    source:
+      repoURL: "https://github.com/distributed-technologies/services-ceph.git"
+      targetRevision: fileTest
+      path: chart
+      valuesFile: "ceph.yaml"
+      skipDryRun: true

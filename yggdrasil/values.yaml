@@ -1,21 +1,2 @@
-projects:
-  - name: ingress
-    clusterService: true
-    namespace: ingress
-    description: Ingress controller.
-    apps:
-      - name: ingress
-        source:
-          repoURL: "https://github.com/distributed-technologies/mukube-ingress.git"
-          targetRevision: HEAD
-          path: chart
+fqdn: example.com
 
-  - name: guestbook-example-projects
-    namespace: guestbook-example
-    description: An example application hosting the GuestBook
-    apps:
-      - name: guestbook-example
-        source:
-          repoURL: "https://github.com/distributed-technologies/test-deployment-repo.git"
-          targetRevision: HEAD
-          path: chart

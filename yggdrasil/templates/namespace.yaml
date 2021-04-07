@@ -1,8 +1,10 @@
 
-{{- range .Values.projects }}
+{{- $root := . -}}
+{{- range $path, $_ := .Files.Glob "services/**/config.yaml" }}
+    {{ $project := $root.Files.Get $path | fromYaml }}
 ---
 apiVersion: v1
 kind: Namespace
 metadata:
-  name: {{ .namespace }}
+  name: {{ $project.namespace }}
 {{- end }}

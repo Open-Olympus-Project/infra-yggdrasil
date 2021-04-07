@@ -1,0 +1,42 @@
+# serviceDomain: {{ .Values.fqdn }}
+# Cluster configuration
+cluster: 
+  # The image of Ceph
+  image: ceph/ceph:v15.2.8
+  # The data directory host path rook will mount
+  dataDirHostPath: /var/lib/rook
+  # How long to wait for OSDs that are not responding
+  waitTimeoutForHealthyOSDInMinutes: 5
+  # Number of monitor pods
+  monCount: 3
+  # Whether to enable the Ceph dashboard
+  dashboardEnabled: false
+  # Whether to enable Prometheus
+  prometheusEnabled: false
+
+# Filesystem configuration
+filesystem: 
+  # CephFS filesystem name into which the volume shall be created
+  name: myfs
+  # The failureDomain to decide where replicas are stored
+  failureDomain: host
+  # The number of replicas that are made 
+  replicationFactor: 3
+  # Whether to preserve the filesystem if it is ever deleted
+  preserveFilesystemOnDelete: true
+  # How many Meta Data Server instances that are needed
+  mdsInstances: 1
+  # Whether or not you want to enable mirroring between different clusters
+  mirroringEnabled: false
+
+# Block storage configuration
+blockStorage: 
+  replicapool: 
+    # The failureDomain to decide where replicas are stored
+    failureDomain: host
+    # The number of replicas that are made 
+    size: 3
+  # Whether to allow volume expansion after a volume is already created
+  allowVolumeExpansion: true 
+  # What happens to data when a pod is deleted or crashes
+  reclaimPolicy: Delete

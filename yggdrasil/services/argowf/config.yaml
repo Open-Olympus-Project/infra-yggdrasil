@@ -1,0 +1,12 @@
+name: argowf
+clusterService: true
+namespace: argowf
+description: Argo workflow.
+apps:
+  - name: argowf
+    source:
+      repoURL: "https://github.com/distributed-technologies/services-argowf.git"
+      targetRevision: argowf-dependency
+      path: chart
+      valuesFile: "argowf.yaml"
+      skipDryRun: false

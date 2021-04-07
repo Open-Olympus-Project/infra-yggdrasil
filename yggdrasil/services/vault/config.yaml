@@ -1,0 +1,12 @@
+name: vault
+clusterService: true
+namespace: vault
+description: Hashicorp Vault.
+apps:
+  - name: vault
+    source:
+      repoURL: "https://github.com/hashicorp/vault-helm.git"
+      targetRevision: HEAD
+      path: .
+      valuesFile: "vault.yaml"
+      skipDryRun: false

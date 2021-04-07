@@ -1,25 +1,28 @@
 
 {{- $root := . -}}
-{{- range .Values.projects }}
+{{- range $path, $_ := .Files.Glob "services/**/config.yaml" }}
+    {{- with $root }}
+        {{ $project := .Files.Get $path | fromYaml }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: {{ .name }}
+  name: {{ $project.name }}
   namespace: {{ $root.Release.Namespace }}
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   # Project description
-  description: {{ .description }}
+  description: {{ $project.description }}
 
   # Allow manifests to deploy from any Git repos
   sourceRepos:
     - '*'
 
   destinations:
-    - namespace:  {{ .namespace | quote }}
+    - namespace:  {{ $project.namespace | quote }}
       server: https://kubernetes.default.svc
 
+    {{- end }}
 {{- end }}
