@@ -1,0 +1,11 @@
+name: prometheus
+clusterService: true
+namespace: prometheus
+description: Prometheus.
+apps:
+  - name: prometheus
+    source:
+      repoURL: "https://github.com/distributed-technologies/services-prometheus.git"
+      targetRevision: helm-dependencies
+      path: chart
+      valuesFile: "prometheus.yaml"

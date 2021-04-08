@@ -9,4 +9,3 @@ apps:
       targetRevision: HEAD
       path: charts/grafana
       valuesFile: "grafana.yaml"
-      skipDryRun: false

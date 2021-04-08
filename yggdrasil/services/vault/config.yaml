@@ -9,4 +9,3 @@ apps:
       targetRevision: HEAD
       path: .
       valuesFile: "vault.yaml"
-      skipDryRun: false

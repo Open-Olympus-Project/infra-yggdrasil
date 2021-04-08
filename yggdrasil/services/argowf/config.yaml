@@ -9,4 +9,3 @@ apps:
       targetRevision: argowf-dependency
       path: chart
       valuesFile: "argowf.yaml"
-      skipDryRun: false

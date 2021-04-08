@@ -9,4 +9,3 @@ apps:
       targetRevision: HEAD
       path: chart
       valuesFile: "ingress.yaml"
-      skipDryRun: false

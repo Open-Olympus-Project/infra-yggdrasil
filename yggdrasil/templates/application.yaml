@@ -13,10 +13,6 @@ metadata:
   # Add a this finalizer ONLY if you want these to cascade delete.
   finalizers:
     - resources-finalizer.argocd.argoproj.io
-  {{- if .source.skipDryRun }}
-  annotations:
-    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
-  {{- end }}
 spec:
   # The project the application belongs to.
   project: {{ $project.name }}

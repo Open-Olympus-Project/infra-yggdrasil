@@ -9,11 +9,9 @@ apps:
       targetRevision: rook-dependency
       path: chart
       valuesFile: "rook.yaml"
-      skipDryRun: false
   - name: ceph
     source:
       repoURL: "https://github.com/distributed-technologies/services-ceph.git"
       targetRevision: fileTest
       path: chart
       valuesFile: "ceph.yaml"
-      skipDryRun: true
