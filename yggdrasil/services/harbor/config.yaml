@@ -1,0 +1,11 @@
+name: harbor
+clusterService: true
+namespace: harbor
+description: Harbor.
+apps:
+  - name: harbor
+    source:
+      repoURL: "https://github.com/goharbor/harbor-helm.git"
+      targetRevision: HEAD
+      path: .
+      valuesFile: "harbor.yaml"
