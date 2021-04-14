@@ -2,10 +2,26 @@ name: prometheus
 clusterService: true
 namespace: prometheus
 description: Prometheus.
+allowedNamespaces:
+  - kube-system
+  - rook-ceph    
 apps:
   - name: prometheus
+    ingressAnnotation:
+      traefik.ingress.kubernetes.io/router.entrypoints: web
+    ingress:
+      grafana:  
+        host: grafana.ingress.lynderup.net
+        path: /
+        servicePort: 80
+        serviceName: prometheus-grafana 
+      prometheus: 
+        host: prometheus.ingress.lynderup.net
+        path: /
+        servicePort: 9090
+        serviceName: prometheus-kube-prometheus-prometheus
     source:
-      repoURL: "https://github.com/prometheus-community/helm-charts.git"
+      repoURL: 'https://github.com/prometheus-community/helm-charts.git'
       targetRevision: HEAD
       path: charts/kube-prometheus-stack
       valuesFile: "prometheus.yaml"

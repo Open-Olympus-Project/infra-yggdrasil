@@ -23,6 +23,12 @@ spec:
   destinations:
     - namespace:  {{ $project.namespace | quote }}
       server: https://kubernetes.default.svc
+  {{- if $project.allowedNamespaces }}
+    {{- range $project.allowedNamespaces }}
+    - namespace: {{ . | quote }}
+      server: https://kubernetes.default.svc
+    {{- end }}
+  {{- end }}
 
     {{- end }}
 {{- end }}

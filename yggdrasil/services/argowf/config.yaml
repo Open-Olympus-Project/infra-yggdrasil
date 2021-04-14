@@ -4,6 +4,14 @@ namespace: argowf
 description: Argo workflow.
 apps:
   - name: argowf
+    ingressAnnotation: 
+      traefik.ingress.kubernetes.io/router.entrypoints: web
+    ingress:
+      argowf: 
+        host: argowf.lynderup.net
+        path: /
+        servicePort: 2746
+        serviceName: argowf-server 
     source:
       repoURL: "https://github.com/distributed-technologies/services-argowf.git"
       targetRevision: argowf-dependency

@@ -12,7 +12,7 @@ cluster:
   # Whether to enable the Ceph dashboard
   dashboardEnabled: false
   # Whether to enable Prometheus
-  prometheusEnabled: false
+  prometheusEnabled: true
 
 # Filesystem configuration
 filesystem: 

@@ -1,4 +1,3 @@
-
 {{- $root := . -}}
 {{- range $path, $_ := .Files.Glob "services/**/config.yaml" }}
     {{ $project := $root.Files.Get $path | fromYaml }}
