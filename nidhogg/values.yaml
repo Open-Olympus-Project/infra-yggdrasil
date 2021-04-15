@@ -30,4 +30,5 @@ argo-cd:
           name: grafana
     service: 
       type: NodePort
-      nodePortHttp: 30081
+      nodePortHttp: 31080
+      nodePortHttps: 31443
