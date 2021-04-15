@@ -1,2 +1,5 @@
 # serviceDomain: {{ .Values.fqdn }}
 
+prometheus:
+  prometheusSpec:
+    serviceMonitorSelectorNilUsesHelmValues: false
