@@ -28,11 +28,5 @@ argo-cd:
         - type: helm
           url: https://grafana.github.io/helm-charts
           name: grafana
-      resource.customizations: |
-        extensions/Ingress:
-          health.lua: |
-            hs = {}
-            hs.status = "Healthy"
-            return hs
     service: 
       type: NodePort
