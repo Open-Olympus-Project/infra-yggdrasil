@@ -26,6 +26,7 @@ filesystem:
   preserveFilesystemOnDelete: true
   # How many Meta Data Server instances that are needed
   mdsInstances: 1
+  mirroringEnabled: false
 
 # Block storage configuration
 blockStorage: 
