@@ -10,7 +10,7 @@ cluster:
   # Number of monitor pods
   monCount: 3
   # Whether to enable the Ceph dashboard
-  dashboardEnabled: false
+  dashboardEnabled: true
   # Whether to enable Prometheus
   prometheusEnabled: true
 
@@ -26,8 +26,6 @@ filesystem:
   preserveFilesystemOnDelete: true
   # How many Meta Data Server instances that are needed
   mdsInstances: 1
-  # Whether or not you want to enable mirroring between different clusters
-  mirroringEnabled: false
 
 # Block storage configuration
 blockStorage: 
