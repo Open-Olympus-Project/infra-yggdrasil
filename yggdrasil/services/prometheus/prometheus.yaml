@@ -3,6 +3,6 @@
 prometheus:
   prometheusSpec:
     serviceMonitorSelectorNilUsesHelmValues: false
-    serviceMonitorSelector:
-      matchLabels:
-        team: platform
+#    serviceMonitorSelector:
+#      matchLabels:
+#        team: platform
