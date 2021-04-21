@@ -1,4 +1,4 @@
-# serviceDomain: {{ .Values.fqdn }}
+serviceDomain: {{ .Values.fqdn }}
 image:
   prefix: rook
   repository: rook/ceph
