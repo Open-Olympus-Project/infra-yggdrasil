@@ -24,10 +24,9 @@ spec:
     helm:
       version: v3
       values: |
-        {{- $valuesFile := printf "%s/%s" ($path | dir) .source.valuesFile }}
-        {{- range $root.Files.Lines $valuesFile }}
-        {{ tpl . $root }} {{ end }}         
-
+        {{- $valuesFilePath := printf "%s/%s" ($path | dir) .source.valuesFile }}
+        {{- $valuesFile := $root.Files.Get $valuesFilePath }}
+{{ tpl $valuesFile $root | indent 8 }}
   # Destination cluster and namespace to deploy the application
   destination:
     server: https://kubernetes.default.svc
