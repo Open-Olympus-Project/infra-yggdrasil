@@ -11,12 +11,12 @@ apps:
       traefik.ingress.kubernetes.io/router.entrypoints: web
     ingress:
       grafana:  
-        host: grafana.ingress.lynderup.net
+        host: grafana
         path: /
         servicePort: 80
         serviceName: prometheus-grafana 
       prometheus: 
-        host: prometheus.ingress.lynderup.net
+        host: prometheus
         path: /
         servicePort: 9090
         serviceName: prometheus-kube-prometheus-prometheus

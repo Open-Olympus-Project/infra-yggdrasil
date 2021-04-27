@@ -17,7 +17,7 @@ spec:
   ingressClassName: "mukube-ingress"
   rules:
     {{- range $name, $config := .ingress }}
-    - host: {{ $config.host | quote }}
+    - host: {{ printf "%s%s" $config.host ".ingress.lynderup.net" }}
       http:
         paths:
           - path: {{ $config.path }}
