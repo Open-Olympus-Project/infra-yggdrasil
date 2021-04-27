@@ -8,7 +8,7 @@ apps:
       traefik.ingress.kubernetes.io/router.entrypoints: web
     ingress:
       argowf: 
-        host: argowf.ingress.lynderup.net
+        host: argowf
         path: /
         servicePort: 2746
         serviceName: argowf-server 
