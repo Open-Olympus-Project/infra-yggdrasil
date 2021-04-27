@@ -10,7 +10,7 @@ cluster:
   # Number of monitor pods
   monCount: 3
   # Whether to enable the Ceph dashboard
-  dashboardEnabled: true
+  dashboardEnabled: false
   # Whether to enable Prometheus
   prometheusEnabled: true
 
