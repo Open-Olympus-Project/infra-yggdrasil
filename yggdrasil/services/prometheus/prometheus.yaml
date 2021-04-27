@@ -1,5 +1,8 @@
 # serviceDomain: {{ .Values.fqdn }}
 
-prometheus:
-  prometheusSpec:
-    serviceMonitorSelectorNilUsesHelmValues: false
+#prometheus:
+#  prometheusSpec:
+#    serviceMonitorSelectorNilUsesHelmValues: false
+#    serviceMonitorSelector:
+#      matchLabels:
+#        team: platform
