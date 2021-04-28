@@ -2,9 +2,15 @@ name: prometheus
 clusterService: true
 namespace: prometheus
 description: Prometheus.
-allowedNamespaces:
-  - kube-system
-  - rook-ceph    
+
+project:
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+  destinations: 
+    - kube-system
+    - rook-ceph
+    
 apps:
   - name: prometheus
     ingressAnnotation:

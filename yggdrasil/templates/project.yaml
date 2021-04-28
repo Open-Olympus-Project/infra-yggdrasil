@@ -1,4 +1,3 @@
-
 {{- $root := . -}}
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
     {{- with $root }}
@@ -18,15 +17,21 @@ spec:
 
   # Allow manifests to deploy from any Git repos
   sourceRepos:
+  {{- if $project.project.sourceRepos }}
+    {{- range $project.project.sourceRepos }}
+    - {{ . | quote }}
+    {{- end }}
+  {{- else }}
     - '*'
+  {{- end }}
 
   destinations:
     - namespace:  {{ $project.namespace | quote }}
-      server: https://kubernetes.default.svc
-  {{- if $project.allowedNamespaces }}
-    {{- range $project.allowedNamespaces }}
+      server: {{ $project.project.server }}
+  {{- if $project.project.destinations }}
+    {{- range $project.project.destinations }}
     - namespace: {{ . | quote }}
-      server: https://kubernetes.default.svc
+      server: {{ $project.project.server }}
     {{- end }}
   {{- end }}
 

@@ -2,6 +2,12 @@ name: argowf
 clusterService: true
 namespace: argowf
 description: Argo workflow.
+
+project:
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+
 apps:
   - name: argowf
     ingressAnnotation: 
