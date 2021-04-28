@@ -8,6 +8,9 @@ project:
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
+  destination: 
+    - namespace: argowf
+      server: https://kubernetes.default.svc
 
 apps:
   - name: example-guestbook
