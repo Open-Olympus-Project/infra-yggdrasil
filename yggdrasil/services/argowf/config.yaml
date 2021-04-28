@@ -2,6 +2,7 @@ name: argowf
 clusterService: true
 namespace: argowf
 description: Argo workflow.
+projectName: argowf
 
 project:
   server: https://kubernetes.default.svc

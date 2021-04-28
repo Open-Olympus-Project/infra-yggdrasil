@@ -14,7 +14,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   # The project the application belongs to.
-  project: {{ $project.name }}
+  project: {{ $project.projectName }}
 
   # Source of the application manifests
   source:

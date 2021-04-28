@@ -2,6 +2,7 @@ name: prometheus
 clusterService: true
 namespace: prometheus
 description: Prometheus.
+projectName: prometheus
 
 project:
   server: https://kubernetes.default.svc

@@ -2,6 +2,7 @@ name: rook-ceph
 clusterService: true
 namespace: rook-ceph
 description: Rook.
+projectName: rook-ceph
 
 project:
   server: https://kubernetes.default.svc
