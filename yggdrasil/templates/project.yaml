@@ -2,6 +2,7 @@
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
     {{- with $root }}
         {{ $project := .Files.Get $path | fromYaml }}
+{{- if not (lookup "argoproj.io/v1alpha1" "appproject" "yggdrasil" $project.projectName) }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -16,6 +17,7 @@ spec:
   description: {{ $project.description }}
 
   # Allow manifests to deploy from any Git repos
+{{- if $project.project }}
   sourceRepos:
   {{- if $project.project.sourceRepos }}
     {{- range $project.project.sourceRepos }}
@@ -36,4 +38,6 @@ spec:
   {{- end }}
 
     {{- end }}
+{{- end }}
+{{- end }}
 {{- end }}
