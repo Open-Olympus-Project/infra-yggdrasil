@@ -3,4 +3,4 @@ host: ingress.lynderup.net
 
 
 argowf:
-	enabled: false
+  enabled: false
