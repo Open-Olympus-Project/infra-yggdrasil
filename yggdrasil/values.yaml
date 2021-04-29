@@ -1,2 +1,6 @@
 fqdn: example.com
 host: ingress.lynderup.net
+
+
+argowf:
+	enabled: false
