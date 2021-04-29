@@ -2,6 +2,7 @@
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
     {{- with $root }}
         {{ $project := .Files.Get $path | fromYaml }}
+        {{ if (index $root.Values $project.name).enabled }}
 {{- if $project.projectName }}
 ---
 apiVersion: argoproj.io/v1alpha1
@@ -37,6 +38,7 @@ spec:
     {{- end }}
   {{- end }}
 
+    {{- end }}
     {{- end }}
 {{- end }}
 {{- end }}

@@ -1,6 +1,8 @@
 {{- $root := . -}}
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
   {{ $project := $root.Files.Get $path | fromYaml }}
+  {{ if (index $root.Values $project.name).enabled }}
+
   {{- range $project.apps }}
     {{- if .ingress }}
 ---
@@ -29,5 +31,6 @@ spec:
                   number: {{ $config.servicePort }}
       {{ end }}
     {{ end }} 
+  {{ end }}
   {{ end }}
 {{ end }}

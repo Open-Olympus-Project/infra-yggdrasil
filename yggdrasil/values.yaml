@@ -4,3 +4,15 @@ host: ingress.lynderup.net
 
 argowf:
   enabled: false
+
+ingress:
+  enabled: false
+
+loadbalancer:
+  enabled: false
+
+prometheus:
+  enabled: false
+
+rook:
+  enabled: false
