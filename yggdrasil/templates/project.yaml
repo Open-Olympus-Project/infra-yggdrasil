@@ -2,7 +2,7 @@
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
     {{- with $root }}
         {{ $project := .Files.Get $path | fromYaml }}
-{{- if not (lookup "argoproj.io/v1alpha1" "appproject" "yggdrasil" $project.projectName) }}
+{{- if $project.projectName }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -38,6 +38,7 @@ spec:
   {{- end }}
 
     {{- end }}
+{{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
