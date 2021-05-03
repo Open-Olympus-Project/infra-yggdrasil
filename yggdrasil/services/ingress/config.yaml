@@ -2,9 +2,10 @@ name: ingress
 clusterService: true
 namespace: ingress
 description: Ingress controller.
-projectName: ingress
+
 
 project:
+  name: ingress
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'

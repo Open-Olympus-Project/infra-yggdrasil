@@ -1,6 +1,5 @@
 fqdn: example.com
-host: ingress.lynderup.net
-
+ingressDomain: ingress.lynderup.net
 
 argowf:
   enabled: false
@@ -16,3 +15,4 @@ prometheus:
 
 rook:
   enabled: false
+

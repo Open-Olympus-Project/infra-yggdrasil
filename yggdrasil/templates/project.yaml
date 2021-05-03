@@ -8,7 +8,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: {{ $project.projectName }}
+  name: {{ $project.project.name }}
   namespace: {{ $root.Release.Namespace }}
   # Finalizer that ensures that project is not deleted until it is not referenced by any application
   finalizers:
@@ -18,7 +18,6 @@ spec:
   description: {{ $project.description }}
 
   # Allow manifests to deploy from any Git repos
-{{- if $project.project }}
   sourceRepos:
   {{- if $project.project.sourceRepos }}
     {{- range $project.project.sourceRepos }}
@@ -40,6 +39,5 @@ spec:
 
     {{- end }}
     {{- end }}
-{{- end }}
 {{- end }}
 {{- end }}

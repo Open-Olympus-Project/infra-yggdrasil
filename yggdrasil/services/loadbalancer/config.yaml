@@ -2,9 +2,9 @@ name: loadbalancer
 clusterService: true
 namespace: loadbalancer
 description: MetalLB loadbalancer.
-projectName: loadbalancer
 
 project:
+  name: loadbalancer
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'

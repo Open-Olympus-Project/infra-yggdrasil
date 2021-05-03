@@ -2,15 +2,12 @@ name: argowf
 clusterService: true
 namespace: argowf
 description: Argo workflow.
-projectName: argowf
 
 project:
+  name: argowf
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
-  destinations: 
-    - namespace: example-guestbook
-      server: https://kubernetes.default.svc
 
 apps:
   - name: argowf
@@ -18,7 +15,7 @@ apps:
       traefik.ingress.kubernetes.io/router.entrypoints: web
     ingress:
       argowf: 
-        host: argowf
+        subDomain: argowf
         path: /
         servicePort: 2746
         serviceName: argowf-server 
