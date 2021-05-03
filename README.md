@@ -38,7 +38,7 @@ In the next section, it will be described how to create the config and values fi
 
 # How to add an application
 The workflow for deploying applications on the cluster is shown in the image below. 
-<img src="docs/images/workflow.png">
+<img src="docs/images/newWorkflow.png">
 
 ### Step one
 The developers of either a 3rd party application or the maintainers of the cluster should create a new application reposity that contains the code for their app. When this code is committed, it should trigger a build pipeline that will update the artifact repository. After this, the environment repository will need to be either manually or automatically updates to reflect the new artifacts. 
