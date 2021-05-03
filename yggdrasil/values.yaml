@@ -2,12 +2,12 @@
 #ingressDomain:  
 
 argowf:
-  enabled: false
+  enabled: true
 
 ingress:
-  enabled: false
+  enabled: true
 
 prometheus:
-  enabled: false 
+  enabled: true 
 
 
