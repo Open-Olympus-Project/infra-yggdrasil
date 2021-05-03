@@ -1,13 +1,13 @@
 #fqdn: 
-ingressDomain: ingress.lynderup.net 
+#ingressDomain:  
 
 argowf:
-  enabled: true
+  enabled: false
 
 ingress:
-  enabled: true
+  enabled: false
 
 prometheus:
-  enabled: true
+  enabled: false 
 
 
