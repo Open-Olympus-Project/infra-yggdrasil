@@ -10,6 +10,4 @@ ingress:
 prometheus:
   enabled: true
 
-grafana: 
-  enabled: true
 
