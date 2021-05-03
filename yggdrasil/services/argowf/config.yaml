@@ -2,15 +2,12 @@ name: argowf
 clusterService: true
 namespace: argowf
 description: Argo workflow.
-projectName: argowf
 
 project:
+  name: argowf
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
-  destinations: 
-    - namespace: example-guestbook
-      server: https://kubernetes.default.svc
 
 apps:
   - name: argowf
