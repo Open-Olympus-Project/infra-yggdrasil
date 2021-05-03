@@ -1,0 +1,5 @@
+{{- if .Values.additionalApps }}
+{{- range .Values.additionalApps }}
+{{- include "configs.{{ . }}" (list . "configs.{{ . }}") }}  
+{{- end }}
+{{- end }}
