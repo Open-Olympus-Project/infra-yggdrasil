@@ -19,8 +19,8 @@ The cluster environment repository contains the configurations for each applicat
 This section describes the two charts found in Yggdrasil, Nidhogg and Yggdrasil. 
 
 ### Nidhogg
-Nidhogg is the first Helm chart to be installed and it bootstraps all the applications in our cluster. Contained in Nidhogg is two dependencies: ArgoCD and Mukube-vnet (which is a CNI(Container Network Interface)). These are the two applications that need to run before anything else is deployed. The chart also contains a template for Yggdrasil. This will deploy everything within the Yggdrasil chart.
-When Nidhogg is deployed onto the cluster, it will create both the argoCD deployment as well as the CNI needed for Kubernetes. This can seen in the following image.
+Nidhogg is the first Helm chart to be installed and it bootstraps all the applications in our cluster. Contained in Nidhogg is two dependencies: ArgoCD and a CNI(container network interface). The CNI can be disabled by default in case your cluster already has a CNI. The chart also contains a manifest for Yggdrasil. This will deploy everything within the Yggdrasil chart.
+When Nidhogg is deployed onto the cluster, it will create both the argoCD deployment as well as possibly the CNI. This can seen in the following image.
 <img src="docs/images/cluster.png">
 
 Nidhogg also contains a reference to Yggdrasil, which will be deployed onto the cluster as well. Since Yggdrasil is the chart that holds all the applications and services that will be deployed onto the cluster, this is done automatically when Yggrasil is deployed.
