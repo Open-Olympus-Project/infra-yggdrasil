@@ -89,7 +89,7 @@ apps:
       valuesFile: "<valuesFile>"
 ```
 
-# It is also possible to define a custom values file and place it in the same directory as the config.yaml. This values file should be named the same as the application it is providing the values for and then referenced in the config.yaml as you can see above. An example is given here: 
+It is also possible to define a custom values file and place it in the same directory as the config.yaml. This values file should be named the same as the application it is providing the values for and then referenced in the config.yaml as you can see above. An example is given here: 
 
 ```
 name: <appName>
