@@ -1,2 +1,2 @@
 fqdn: example.com
-host: ingress.lynderup.net
+ingressDomain: ingress.lynderup.net

@@ -15,7 +15,7 @@ apps:
       traefik.ingress.kubernetes.io/router.entrypoints: web
     ingress:
       argowf: 
-        host: argowf
+        subDomain: argowf
         path: /
         servicePort: 2746
         serviceName: argowf-server 
