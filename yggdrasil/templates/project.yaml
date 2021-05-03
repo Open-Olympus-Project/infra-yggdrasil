@@ -36,8 +36,6 @@ spec:
       server: {{ .server }}
     {{- end }}
   {{- end }}
-
-    {{- end }}
 {{- end }}
 {{- end }}
 {{- end }}
