@@ -103,6 +103,10 @@ project:
 This PR will then need to be approved by the cluster development team, before it is merged into Yggdrasil. When this is merged, ArgoCD will automatically deploy the application onto the cluster. 
 When the deployment is done, ArgoCD will poll the environment repository every 3 minutes, to check for changes to the application. 
 
+## Installing chart
+To install Yggdrasil, you first need to navigate to the nidhogg directory and run a helm dependency update.
+Then, from the root directory of Yggdrasil, run the command `helm install --create-namespace -n yggdrasil nidhogg ./nidhogg`. 
+
 ## Testing using kind
 
 Create a kubernetes cluster using kind.
