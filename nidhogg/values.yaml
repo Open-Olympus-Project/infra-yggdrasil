@@ -2,6 +2,8 @@
 yggdrasil:
   repoURL: "https://github.com/Open-Olympus-Project/yggdrasil.git"
   targetRevision: "jesperdev"
+  additionalApps: 
+    - rook  
 
 installCNI: true
 
