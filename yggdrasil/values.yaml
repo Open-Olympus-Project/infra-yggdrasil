@@ -1,5 +1,5 @@
 #fqdn: 
-#ingressDomain: 
+ingressDomain: ingress.lynderup.net 
 
 argowf:
   enabled: true
