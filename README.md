@@ -46,6 +46,58 @@ The developers of either a 3rd party application or the maintainers of the clust
 ### Step two
 Now that the application is created, the developers needs to create a pull request to Yggdrasil. Depending on if it is a service or an application, it should be in the correct folder. This pull request should add two files to a new folder in either the services or applications subdirectories. These files should be called config.yaml and <nameofapp>.yaml:
 
+An example of the config.yaml is seen here: 
+
+```
+name: <appname>
+# whether it is a cluster service
+clusterService: <bool>
+namespace: <namespace>
+description: <description>
+
+project:
+  # name of argocd project
+  name: <projectName>
+  # default cluster is https://kubernetes.default.svc
+  server: <server>
+  # default source repo should be '*'
+  sourceRepos:
+    - '<sourceRepo>'
+  # if the project needs access to any namespace
+  destinations: 
+    - namespace: <namespace>
+      server: <server>
+    
+# This defines the applications that will be deployed. It is a list in cause you would like to deploy multiple applications to the same argocd project and namespace
+apps:
+  - name: <applicationName>
+    ingressAnnotation:
+      traefik.ingress.kubernetes.io/router.entrypoints: <entrypoint>
+    ingress:
+      <applicationName>:  
+        subDomain: <subdomain>
+        path: <path>
+        servicePort: <port>
+        serviceName: <ServiceNameOfPrometheusService> 
+    source:
+      repoURL: '<repoURL'
+      # standard targetRevision is HEAD
+      targetRevision: <branch>
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: <path>
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "<valuesFile>"
+```
+
+# It is also possible to define a custom values file and place it in the same directory as the config.yaml. This values file should be named the same as the application it is providing the values for and then referenced in the config.yaml as you can see above. An example is given here: 
+
+```
+name: <appName>
+otherValue: <myValue>
+project: 
+  indentedValue: <indentedValue>
+```
+
 This PR will then need to be approved by the cluster development team, before it is merged into Yggdrasil. When this is merged, ArgoCD will automatically deploy the application onto the cluster. 
 When the deployment is done, ArgoCD will poll the environment repository every 3 minutes, to check for changes to the application. 
 
