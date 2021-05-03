@@ -15,6 +15,9 @@ The environment repository contains all deployment manifests of the currently de
 ### Yggdrasil
 The cluster environment repository contains the configurations for each application on the cluster. It describes the names, namespaces, sources and destinations of any application that is running on the cluster. 
 
+### Application and service
+Services that run on the cluster are the applications that are needed for cluster maintenance. This is for example Prometheus and Ceph. Applications refer to 3rd party applications or applications developed by distributed technologies and could refer to data science projects. 
+
 ## Charts in Yggdrasil
 This section describes the two charts found in Yggdrasil, Nidhogg and Yggdrasil. 
 
