@@ -34,7 +34,7 @@ Yggdrasil is the chart in which both developers and 3rd party developers will ne
 
 These files will automatically generate new manifests when another application is created in Yggdrasil. This will be further elaborated in [How to add an application](#how-to-add-an-application).
 
-In the next section, it will be described how to push the information needed in these three files to the cluster env repositori. 
+In the next section, it will be described how to create the config and values file needed to deploy your application to the cluster. 
 
 # How to add an application
 The workflow for deploying applications on the cluster is shown in the image below. 
