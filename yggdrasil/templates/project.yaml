@@ -3,7 +3,6 @@
     {{- with $root }}
         {{ $project := .Files.Get $path | fromYaml }}
         {{ if (index $root.Values $project.name).enabled }}
-{{- if $project.projectName }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
@@ -39,5 +38,4 @@ spec:
 
     {{- end }}
     {{- end }}
-{{- end }}
 {{- end }}
