@@ -1,3 +1,0 @@
-serviceDomain: {{ .Values.fqdn }}
-
-enableDiscoveryDaemon: true

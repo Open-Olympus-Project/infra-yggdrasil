@@ -1,5 +1,5 @@
-fqdn: example.com
-ingressDomain: ingress.lynderup.net
+#fqdn: 
+#ingressDomain: 
 
 argowf:
   enabled: false
@@ -7,12 +7,7 @@ argowf:
 ingress:
   enabled: false
 
-loadbalancer:
+monitoring:
   enabled: false
 
-prometheus:
-  enabled: false
-
-rook:
-  enabled: false
 
