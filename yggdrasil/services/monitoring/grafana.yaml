@@ -151,7 +151,7 @@ grafana:
     #     - "my.host.com"
 
   ingress:
-    enabled: true
+    enabled: false
     # Values can be templated
     annotations:
       kubernetes.io/ingress.class: nginx
