@@ -4,7 +4,7 @@
 # ingressDomain: test.domain.com 
 
 # This values is if you want to use paths instead of subdomains.
-# host: testHost.com
+host: testHost.com
 
 argowf:
   enabled: false
@@ -19,4 +19,4 @@ monitoring:
     enabled: false 
 
   thanos:
-    enabled: false
+    enabled: true

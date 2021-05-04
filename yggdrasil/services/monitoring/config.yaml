@@ -34,3 +34,12 @@ apps:
       targetRevision: HEAD
       path: charts/kube-prometheus-stack
       valuesFile: "prometheus.yaml"
+  - name: thanos
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-thanos.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: thanos
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "thanos.yaml"
