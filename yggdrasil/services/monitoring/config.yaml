@@ -1,10 +1,10 @@
-name: prometheus
+name: monitoring
 clusterService: true
-namespace: prometheus
-description: Prometheus.
+namespace: monitoring
+description: All the monitoring apps, including but not limited to prometheus, grafana, thanos, loki. 
 
 project:
-  name: prometheus
+  name: monitoring
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
