@@ -12,7 +12,11 @@ argowf:
 ingress:
   enabled: false
 
-prometheus:
-  enabled: false 
+monitoring:
+  enabled: true
 
+  prometheus:
+    enabled: false 
 
+  thanos:
+    enabled: false
