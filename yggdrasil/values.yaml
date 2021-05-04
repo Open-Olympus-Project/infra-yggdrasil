@@ -19,7 +19,7 @@ monitoring:
     enabled: false 
 
   thanos:
-    enabled: true
+    enabled: false
   
   grafana:
-    enabled: true
+    enabled: false
