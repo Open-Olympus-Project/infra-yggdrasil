@@ -16,10 +16,13 @@ monitoring:
   enabled: true
 
   prometheus:
-    enabled: true 
+    enabled: false 
 
   thanos:
     enabled: false
   
   grafana:
+    enabled: false
+  
+  loki:
     enabled: false

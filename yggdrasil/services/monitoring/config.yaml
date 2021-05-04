@@ -39,3 +39,12 @@ apps:
       path: grafana
       # filename of values file that is local right next to this config.yaml file
       valuesFile: "grafana.yaml"
+  - name: loki
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-loki.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: loki
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "loki.yaml"
