@@ -1,2 +1,13 @@
-fqdn: example.com
+#fqdn: 
+#ingressDomain:  
+
+argowf:
+  enabled: false
+
+ingress:
+  enabled: false
+
+prometheus:
+  enabled: false 
+
 

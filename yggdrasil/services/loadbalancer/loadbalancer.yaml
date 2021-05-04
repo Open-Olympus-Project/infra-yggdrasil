@@ -1,7 +1,0 @@
-# serviceDomain: {{ .Values.fqdn }}
-ipRangeStart: 10.0.0.10
-ipRangeStop: 10.0.0.100 
-speakerImageTag: main
-controllerImageTag: main
-imagePullPolicy: IfNotPresent
-env: prod

@@ -2,21 +2,30 @@ name: prometheus
 clusterService: true
 namespace: prometheus
 description: Prometheus.
-allowedNamespaces:
-  - kube-system
-  - rook-ceph    
+
+project:
+  name: prometheus
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+  destinations: 
+    - namespace: kube-system
+      server: https://kubernetes.default.svc
+    - namespace: rook-ceph
+      server: https://kubernetes.default.svc
+    
 apps:
   - name: prometheus
     ingressAnnotation:
       traefik.ingress.kubernetes.io/router.entrypoints: web
     ingress:
       grafana:  
-        host: grafana.ingress.lynderup.net
+        subDomain: grafana
         path: /
         servicePort: 80
         serviceName: prometheus-grafana 
       prometheus: 
-        host: prometheus.ingress.lynderup.net
+        subDomain: prometheus
         path: /
         servicePort: 9090
         serviceName: prometheus-kube-prometheus-prometheus
