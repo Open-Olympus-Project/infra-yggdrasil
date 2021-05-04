@@ -86,7 +86,7 @@ prometheus:
       #   secretName: alertmanager-secret-files
       #   readOnly: true
 
-    ## ConfigMap override where fullname is {{.Release.Name}}-{{.Values.alertmanager.configMapOverrideName}}
+    ## ConfigMap override where fullname is {{/* {{.Release.Name}}-{{.Values.alertmanager.configMapOverrideName}} */}}
     ## Defining configMapOverrideName will cause templates/alertmanager-configmap.yaml
     ## to NOT generate a ConfigMap resource
     ##
@@ -696,7 +696,7 @@ prometheus:
       #   secretName: prom-secret-files
       #   readOnly: true
 
-    ## ConfigMap override where fullname is {{.Release.Name}}-{{.Values.server.configMapOverrideName}}
+    ## ConfigMap override where fullname is {{/* {{.Release.Name}}-{{.Values.server.configMapOverrideName}} */}}
     ## Defining configMapOverrideName will cause templates/server-configmap.yaml
     ## to NOT generate a ConfigMap resource
     ##
