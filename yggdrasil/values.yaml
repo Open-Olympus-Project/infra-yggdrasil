@@ -20,3 +20,6 @@ monitoring:
 
   thanos:
     enabled: true
+  
+  grafana:
+    enabled: true
