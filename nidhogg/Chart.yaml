@@ -2,7 +2,7 @@ apiVersion: v2
 type: application
 name: Nidhogg
 description: A chart that deploys argo-cd and the Yggdrasil chart.
-version: v0.3.6
+version: v0.3.7
 
 dependencies:
   - name: argo-cd
