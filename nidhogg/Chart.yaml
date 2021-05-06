@@ -1,8 +1,8 @@
 apiVersion: v2
 type: application
-name: argo-chart
-description: A chart that deploys argo
-version: v0.3.6
+name: nidhogg
+description: A chart that deploys argo-cd and the Yggdrasil chart.
+version: v0.3.7
 
 dependencies:
   - name: argo-cd
