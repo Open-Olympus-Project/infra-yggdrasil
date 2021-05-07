@@ -24,6 +24,9 @@ tooling:
   harbor:
     enabled: false
 
+  vault:
+    enabled: false
+
 monitoring:
   enabled: true
 

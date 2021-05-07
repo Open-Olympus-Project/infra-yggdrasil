@@ -22,3 +22,9 @@ apps:
       targetRevision: dependency
       path: harbor
       valuesFile: "harbor.yaml"
+  - name: vault
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
+      targetRevision: dependency
+      path: vault
+      valuesFile: "vault.yaml"
