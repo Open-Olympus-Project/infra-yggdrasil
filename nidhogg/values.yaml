@@ -33,6 +33,10 @@ argo-cd:
           ignoreDifferences: |
             jsonPointers:
             - /webhooks/0/clientConfig/caBundle
-            - /webhooks/0/namespaceSelector/matchExpressions/2/
+        admissionregistration.k8s.io/ValidatingWebhookConfiguration:
+          ignoreDifferences: |
+            jsonPointers:
+            - /webhooks/0/clientConfig/caBundle
+            - /webhooks/0/namespaceSelector/matchExpressions/2
     service: 
       type: NodePort
