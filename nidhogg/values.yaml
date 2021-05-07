@@ -33,6 +33,6 @@ argo-cd:
           ignoreDifferences: |
             jsonPointers:
             - /webhooks/0/clientConfig/caBundle
-            - /webhooks/0/namespaceSelector
+            - /webhooks/0/namespaceSelector/matchExpressions
     service: 
       type: NodePort
