@@ -28,5 +28,10 @@ argo-cd:
         - type: helm
           url: https://grafana.github.io/helm-charts
           name: grafana
+      resource.customizations: |
+        admissionregistration.k8s.io/MutatingWebhookConfiguration:
+          ignoreDifferences: |
+            jsonPointers:
+            - /webhooks/0/clientConfig/caBundle
     service: 
       type: NodePort
