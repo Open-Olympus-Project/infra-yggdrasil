@@ -11,17 +11,9 @@ project:
 
 apps:
   - name: argowf
-    ingressAnnotation: 
-      traefik.ingress.kubernetes.io/router.entrypoints: web
-    ingress:
-      argowf: 
-        subDomain: argowf
-        path: /
-        servicePort: 2746
-        serviceName: argowf-server 
     source:
-      repoURL: "https://github.com/distributed-technologies/services-argowf.git"
-      targetRevision: argowf-dependency
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-wf.git"
+      targetRevision: dependency
       path: chart
       valuesFile: "argowf.yaml"
   - name: harbor
