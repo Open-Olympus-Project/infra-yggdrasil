@@ -9,6 +9,9 @@ project:
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
+  destinations: 
+    - namespace: kube-system
+      server: https://kubernetes.default.svc
 
 apps:
   - name: ingress
