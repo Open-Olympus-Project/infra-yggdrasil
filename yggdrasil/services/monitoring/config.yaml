@@ -48,3 +48,12 @@ apps:
       path: loki
       # filename of values file that is local right next to this config.yaml file
       valuesFile: "loki.yaml"
+  - name: jaeger-operator
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-jaeger-operator.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: jaeger-operator
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "jaeger-operator.yaml"
