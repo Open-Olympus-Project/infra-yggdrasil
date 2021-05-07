@@ -1,10 +1,10 @@
-name: argowf
+name: tooling
 clusterService: true
-namespace: argowf
-description: Argo workflow.
+namespace: tooling
+description: Tooling services Argo WF, Harbor.
 
 project:
-  name: argowf
+  name: tooling
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
@@ -24,3 +24,9 @@ apps:
       targetRevision: argowf-dependency
       path: chart
       valuesFile: "argowf.yaml"
+  - name: harbor
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-harbor.git"
+      targetRevision: dependency
+      path: harbor
+      valuesFile: "harbor.yaml"

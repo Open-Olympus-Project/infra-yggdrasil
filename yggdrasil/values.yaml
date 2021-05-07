@@ -6,11 +6,17 @@
 # This values is if you want to use paths instead of subdomains.
 host: testHost.com
 
-argowf:
-  enabled: false
-
 ingress:
   enabled: false
+
+tooling: 
+  enabled: true
+
+  argowf:
+    enabled: false
+
+  harbor:
+    enabled: false
 
 monitoring:
   enabled: true
