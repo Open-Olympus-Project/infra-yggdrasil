@@ -303,7 +303,7 @@ argowf:
       # useSDKCreds: true
     # gcs:
       # bucket: <project>-argo
-      # keyFormat: "{{workflow.namespace}}/{{workflow.name}}/"
+      # keyFormat: "{{/* {{workflow.namespace}}/{{workflow.name}}/ */}}"
       # serviceAccountKeySecret is a secret selector.
       # It references the k8s secret named 'my-gcs-credentials'.
       # This secret is expected to have have the key 'serviceAccountKey',
