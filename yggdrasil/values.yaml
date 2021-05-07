@@ -33,5 +33,5 @@ monitoring:
   loki:
     enabled: false
 
-  jaegeroperator:
+  jaeger-operator:
     enabled: false
