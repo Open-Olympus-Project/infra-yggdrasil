@@ -1,0 +1,25 @@
+name: networking
+clusterService: true
+namespace: networking
+description: networking services like ingress, cert-manager.
+
+
+project:
+  name: networking
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+
+apps:
+  - name: ingress
+    source:
+      repoURL: "https://github.com/distributed-technologies/mukube-ingress.git"
+      targetRevision: HEAD
+      path: chart
+      valuesFile: "ingress.yaml"
+  - name: cert-manager
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
+      targetRevision: dependency
+      path: cert-manager
+      valuesFile: cert-manager
