@@ -21,6 +21,7 @@ kind: Namespace
 metadata:
   annotations:
     helm.sh/hook: pre-install
+    helm.sh/hook: post-install
     helm.sh/hook-weight: "9"
   name: {{ $project.namespace }}
   {{- end }}
