@@ -10,40 +10,49 @@ networking:
   enabled: true
 
   ingress:
-    enabled: true
+    enabled: false
 
   cert-manager:
-    enabled: true
+    enabled: false
 
 tooling: 
   enabled: true
 
   argowf:
-    enabled: true
+    enabled: false
 
   argo-events:
-    enabled: true
+    enabled: false
 
   harbor:
-    enabled: true
+    enabled: false
 
   vault:
-    enabled: true
+    enabled: false
 
 monitoring:
   enabled: true
 
   prometheus:
-    enabled: true
+    enabled: false
 
   thanos:
-    enabled: true
+    enabled: false
   
   grafana:
-    enabled: true
+    enabled: false
   
   loki:
-    enabled: true
+    enabled: false
 
   jaeger-operator:
-    enabled: true
+    enabled: false
+
+
+# The same name as the project - This can be used to disable the whole project and namespace.
+example-guestbook:
+  enabled: false
+
+  # The same name as one of the apps listed under the project.
+  example-guestbook:
+    enabled: false
