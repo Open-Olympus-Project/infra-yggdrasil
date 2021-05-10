@@ -1,7 +1,7 @@
 # A reference to this repo itself.
 yggdrasil:
   repoURL: "https://github.com/Open-Olympus-Project/yggdrasil.git"
-  targetRevision: "mht-app-refactoring"
+  targetRevision: "HEAD"
 
 installCNI: false
 
