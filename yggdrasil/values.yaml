@@ -13,34 +13,37 @@ networking:
     enabled: false
 
   cert-manager:
-    enabled: true
+    enabled: false
 
 tooling: 
   enabled: true
 
   argowf:
+    enabled: false
+
+  argo-events:
     enabled: true
 
   harbor:
-    enabled: true
+    enabled: false
 
   vault:
-    enabled: true
+    enabled: false
 
 monitoring:
   enabled: true
 
   prometheus:
-    enabled: true 
+    enabled: false
 
   thanos:
-    enabled: true
+    enabled: false
   
   grafana:
-    enabled: true
+    enabled: false
   
   loki:
-    enabled: true
+    enabled: false
 
   jaeger-operator:
-    enabled: true
+    enabled: false

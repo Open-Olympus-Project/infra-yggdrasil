@@ -16,6 +16,12 @@ apps:
       targetRevision: dependency
       path: argo-wf
       valuesFile: "argowf.yaml"
+  - name: argo-events
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-events.git"
+      targetRevision: dependency
+      path: argo-events
+      valuesFile: "argo-events.yaml"
   - name: harbor
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-harbor.git"
