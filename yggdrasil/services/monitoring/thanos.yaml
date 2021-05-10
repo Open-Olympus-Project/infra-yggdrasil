@@ -1,0 +1,13 @@
+# Values for the querytls templates
+# image:
+#   repository: quay.io/thanos/thanos
+#   tag: v0.13.0
+#   pullPolicy: IfNotPresent
+
+# global:
+#   objectStoreConfigLocation: /etc/config/object-store.yaml
+
+# querytls:
+
+# Values for the subchart
+# thanos:

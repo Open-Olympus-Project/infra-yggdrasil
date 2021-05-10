@@ -1,10 +1,10 @@
-name: prometheus
+name: monitoring
 clusterService: true
-namespace: prometheus
-description: Prometheus.
+namespace: monitoring
+description: All the monitoring apps, including but not limited to prometheus, grafana, thanos, loki. 
 
 project:
-  name: prometheus
+  name: monitoring
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
@@ -16,21 +16,44 @@ project:
     
 apps:
   - name: prometheus
-    ingressAnnotation:
-      traefik.ingress.kubernetes.io/router.entrypoints: web
-    ingress:
-      grafana:  
-        subDomain: grafana
-        path: /
-        servicePort: 80
-        serviceName: prometheus-grafana 
-      prometheus: 
-        subDomain: prometheus
-        path: /
-        servicePort: 9090
-        serviceName: prometheus-kube-prometheus-prometheus
     source:
-      repoURL: 'https://github.com/prometheus-community/helm-charts.git'
-      targetRevision: HEAD
-      path: charts/kube-prometheus-stack
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-prometheus.git'
+      targetRevision: dependency
+      path: prometheus
       valuesFile: "prometheus.yaml"
+  - name: thanos
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-thanos.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: thanos
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "thanos.yaml"
+  - name: grafana
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-grafana.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: grafana
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "grafana.yaml"
+  - name: loki
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-loki.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: loki
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "loki.yaml"
+  - name: jaeger-operator
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/tooling-jaeger-operator.git'
+      # standard targetRevision is HEAD
+      targetRevision: dependency
+      # path to Helm chart in repo. Should be . if Helm chart is in root. 
+      path: jaeger-operator
+      # filename of values file that is local right next to this config.yaml file
+      valuesFile: "jaeger-operator.yaml"
