@@ -1,25 +1,21 @@
 # serviceDomain: {{ .Values.fqdn }}
 
-image:
-  name: traefik
-  tag: "v2.4.6"
-  pullPolicy: IfNotPresent
+dashboardRoute:
+  host: ingress.{{ .Values.ingressDomain }}
 
-# These will override the name that is used for all resources.
-# The name defaults to .Chart.Name and the fullname defaults to .Release.Name
-nameOverride: ""
-fullnameOverride: ""
+traefik:
+  ingressClass:
+    fallbackApiVersion: "v1"
 
-# Configure ports. A service is only created if the port config has a serviceType
-ports:
-  traefik:
-    port: 8080
-    protocol: TCP
-  web:
-    serviceType: NodePort
-    port: 80
-    nodePort: 32286
-    protocol: TCP
+  service:
+    enabled: true
+    type: LoadBalancer
+#    type: NodePort
+    spec: {}
+#      loadBalancerIP: 172.18.0.19
 
-serviceAccount:
-  name: ""
+#  ports:
+#    web:
+#      nodePort: 32080
+#    websecure:
+#      nodePort: 32443

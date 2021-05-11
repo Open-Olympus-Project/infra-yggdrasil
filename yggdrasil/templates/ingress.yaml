@@ -17,7 +17,7 @@ metadata:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  ingressClassName: "mukube-ingress"
+  ingressClassName: "ingress-traefik"
   rules:
     {{- range $name, $config := .ingress }}
     - host: {{if $root.Values.ingressDomain }} {{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }} {{ else }} {{ $root.Values.host }} {{ end }}
