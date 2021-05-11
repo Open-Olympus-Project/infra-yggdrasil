@@ -1,8 +1,10 @@
 {{- $root := . -}}
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
     {{ $project := $root.Files.Get $path | fromYaml }}
-    {{ if (index $root.Values $project.name).enabled }}
+    {{ $projectValues := index $root.Values $project.name }}
+    {{ if $projectValues.enabled }}
     {{- range $project.apps }}
+      {{ if (index $projectValues .name).enabled }}
 ---
 apiVersion: argoproj.io/v1alpha1
 kind: Application
@@ -38,7 +40,7 @@ spec:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
       prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
       selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
-
+      {{- end }}
     {{- end }}
     {{- end }}
 {{- end }}

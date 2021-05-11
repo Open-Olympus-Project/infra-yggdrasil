@@ -1,8 +1,10 @@
 {{- $root := . -}}
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
   {{ $project := $root.Files.Get $path | fromYaml }}
-  {{ if (index $root.Values $project.name).enabled }}
+  {{ $projectValues := index $root.Values $project.name }}
+  {{ if $projectValues.enabled }}
   {{- range $project.apps }}
+    {{ if (index $projectValues .name).enabled }}
     {{- if .ingress }}
 ---
 apiVersion: networking.k8s.io/v1
@@ -18,7 +20,7 @@ spec:
   ingressClassName: "ingress-traefik"
   rules:
     {{- range $name, $config := .ingress }}
-    - host: {{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}
+    - host: {{if $root.Values.ingressDomain }} {{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }} {{ else }} {{ $root.Values.host }} {{ end }}
       http:
         paths:
           - path: {{ $config.path }}
@@ -28,7 +30,8 @@ spec:
                 name: {{ $config.serviceName }}
                 port:
                   number: {{ $config.servicePort }}
-      {{ end }}
+    {{ end }}
+    {{ end }}
     {{ end }} 
   {{ end }}
   {{ end }}
