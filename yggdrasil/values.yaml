@@ -7,8 +7,7 @@
 ingress:
   host: service-poc.westeurope.cloudapp.azure.com
   loadBalancerIP: 20.82.41.255
-  LoadBalancerResoureGroup: aks-service-poc
-
+  LoadBalancerResoureGroup: service-aks-poc
 
 networking:
   enabled: true
