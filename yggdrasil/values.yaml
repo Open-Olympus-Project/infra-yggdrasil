@@ -4,16 +4,16 @@
 # ingressDomain: test.domain.com 
 
 # This values is if you want to use paths instead of subdomains.
-host: testHost.com
+host: service-poc.westeurope.cloudapp.azure.com
 
 networking:
   enabled: true
 
   ingress:
-    enabled: false
+    enabled: true
 
   cert-manager:
-    enabled: false
+    enabled: true
 
 tooling: 
   enabled: true
