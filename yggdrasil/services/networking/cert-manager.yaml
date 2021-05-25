@@ -1,6 +1,5 @@
-# issuer:
-
-#   email: <test_email>
+issuer:
+  email: dataplatform@energinet.dk
  
 #   vault: 
 #     enabled: false

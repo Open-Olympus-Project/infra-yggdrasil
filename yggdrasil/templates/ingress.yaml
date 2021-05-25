@@ -20,7 +20,7 @@ spec:
   ingressClassName: "ingress-traefik"
   rules:
     {{- range $name, $config := .ingress }}
-    - host: {{if $root.Values.ingressDomain }} {{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }} {{ else }} {{ $root.Values.host }} {{ end }}
+    - host: {{if $root.Values.ingressDomain }}{{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}{{ else }}{{ .Values.ingress.host }}{{ end }}
       http:
         paths:
           - path: {{ $config.path }}
