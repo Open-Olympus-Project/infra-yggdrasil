@@ -1,6 +1,6 @@
 # A reference to this repo itself.
 yggdrasil:
-  repoURL: "https://github.com/Open-Olympus-Project/yggdrasil.git"
+  repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
   targetRevision: "HEAD"
 
 installCNI: false
