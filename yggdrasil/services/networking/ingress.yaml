@@ -12,7 +12,9 @@ traefik:
     type: LoadBalancer
 #    type: NodePort
     spec:
-     loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
+      annotatoins:
+      "service.beta.kubernetes.io/azure-load-balancer-resource-group": {{ .Values.ingress.LoadBalancerResoureGroup | quote }}
+      loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
 
 #  ports:
 #    web:
