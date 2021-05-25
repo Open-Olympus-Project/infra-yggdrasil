@@ -1,8 +1,8 @@
 issuer:
+  enabled: false
+  
   email: dataplatform@energinet.dk
- 
-#   vault: 
-#     enabled: false
+
 
 cert-manager:
   installCRDs: true
