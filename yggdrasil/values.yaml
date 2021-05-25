@@ -17,6 +17,9 @@ networking:
 
   cert-manager:
     enabled: true
+  
+  cert-manager-issuer:
+    enabled: true
 
 tooling: 
   enabled: true
