@@ -30,7 +30,7 @@ apps:
       paths:
       - path: /argo(/|$)(.*)
         servicePort: 2746
-        serviceName: argo-workflows-server 
+        serviceName: argo-workflows-argo-workflows-server
         tlsSecretName: argo-workflows-ui-tls
   - name: argo-events
     source:
