@@ -19,7 +19,7 @@ apps:
     ingress:
       - path: /argo(/|$)(.*)
         servicePort: 2746
-        serviceName: argowf-server 
+        serviceName: argo-workflows-server 
         annotation:
           nginx.ingress.kubernetes.io/rewrite-target: /$2
           nginx.ingress.kubernetes.io/backend-protocol: HTTPS
