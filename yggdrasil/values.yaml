@@ -28,7 +28,7 @@ networking:
 tooling: 
   enabled: true
 
-  argowf:
+  argo-workflows:
     enabled: true
 
   argo-events:
