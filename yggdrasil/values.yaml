@@ -8,6 +8,13 @@ ingress:
   host: service-poc.westeurope.cloudapp.azure.com
   loadBalancerIP: 20.82.41.255
   LoadBalancerResoureGroup: service-aks-poc
+  className: traefik
+  clusterIssuer: letsencrypt-prod
+
+  
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    cert-manager.io/cluster-issuer: letsencrypt-prod
 
 networking:
   enabled: true
@@ -25,7 +32,7 @@ tooling:
   enabled: true
 
   argowf:
-    enabled: false
+    enabled: true
 
   argo-events:
     enabled: false
