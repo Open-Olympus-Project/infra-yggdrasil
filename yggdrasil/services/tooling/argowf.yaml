@@ -28,20 +28,11 @@ argo-workflows:
     ## ref: https://kubernetes.io/docs/user-guide/ingress/
     ##
     ingress:
-      enabled: true
+      enabled: false
 
       ## Annotations to be added to the web ingress.
       ##
       annotations:
-        nginx.ingress.kubernetes.io/rewrite-target: /$2
-        nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-        nginx.ingress.kubernetes.io/proxy-read-timeout: "21600"
-        nginx.ingress.kubernetes.io/eventsource: "true"
-        nginx.ingress.kubernetes.io/configuration-snippet: |
-          location ~ "^/.*/metrics(/|$)" {
-              deny all;
-            }
-{{ .Values.ingress.annotations | toYaml | indent 8 }}
 
       ## Hostnames.
       ## Must be provided if Ingress is enabled.

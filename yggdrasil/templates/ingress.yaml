@@ -14,13 +14,14 @@ metadata:
   namespace: {{ $project.namespace }}
   {{- with .ingressAnnotation }}
   annotations:
+{{ $root.Values.ingress.annotations | toYaml | indent 4 }}
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  ingressClassName: "ingress-traefik"
+  ingressClassName: "{{ $root.Values.ingress.className}}"
   rules:
     {{- range $name, $config := .ingress }}
-    - host: {{if $root.Values.ingressDomain }}{{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}{{ else }}{{ .Values.ingress.host }}{{ end }}
+    - host: {{if $root.Values.ingressDomain }}{{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}{{ else }}{{ $root.Values.ingress.host }}{{ end }}
       http:
         paths:
           - path: {{ $config.path }}
@@ -30,6 +31,10 @@ spec:
                 name: {{ $config.serviceName }}
                 port:
                   number: {{ $config.servicePort }}
+  tls:
+  - hosts:
+      - {{if $root.Values.ingressDomain }}{{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}{{ else }}{{ $root.Values.ingress.host }}{{ end }}
+    secretName: {{ $config.tlsSecretName }}
     {{ end }}
     {{ end }}
     {{ end }} 
