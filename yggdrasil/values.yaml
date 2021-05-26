@@ -8,7 +8,7 @@ ingress:
   host: service-poc.westeurope.cloudapp.azure.com
   loadBalancerIP: 20.82.41.255
   LoadBalancerResoureGroup: service-aks-poc
-  className: ingress-traefik
+  # className: ingress-traefik
 
   annotations:
     # kubernetes.io/ingress.class: traefik
