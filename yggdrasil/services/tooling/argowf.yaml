@@ -1,4 +1,4 @@
-argowf:
+argo-wf:
   executor:
     image:
       # Overrides .images.tag if defined.
