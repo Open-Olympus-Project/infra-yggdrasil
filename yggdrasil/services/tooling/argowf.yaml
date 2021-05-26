@@ -1,4 +1,4 @@
-argo-wf:
+argo-workflows:
   executor:
     image:
       # Overrides .images.tag if defined.
