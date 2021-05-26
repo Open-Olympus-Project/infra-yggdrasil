@@ -12,7 +12,6 @@ traefik:
     type: LoadBalancer
     annotations:
       service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.ingress.LoadBalancerResoureGroup | quote }}
-      cert-manager.io/cluster-issuer: letsencrypt-prod
     spec:
       loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
 
