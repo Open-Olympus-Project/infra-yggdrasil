@@ -16,7 +16,9 @@ metadata:
     {{- .ingress.annotations | toYaml | nindent 4 }}
     {{- $root.Values.ingress.annotations | toYaml | nindent 4 }}
 spec:
+  {{- if $root.Values.ingress.className }}
   ingressClassName: {{ $root.Values.ingress.className | quote }}
+  {{ end }}
   rules:
   {{- range $name, $config := .ingress.paths }}
   - host: {{if $root.Values.ingressDomain }}{{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}{{ else }}{{ $root.Values.ingress.host }}{{ end }}
