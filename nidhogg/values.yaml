@@ -12,6 +12,7 @@ argo-cd:
     enabled: true
   server: 
     config:
+      url: https://service-poc.westeurope.cloudapp.azure.com/argocd
       repositories: |
         - type: helm
           url: https://argoproj.github.io/argo-helm
@@ -43,5 +44,8 @@ argo-cd:
             hs = {}
             hs.status = "Healthy"
             return hs
-    service: 
-      type: NodePort
+        jaegertracing.io/Jaeger:
+          health.lua: |
+            hs = {}
+            hs.status = "Healthy"
+            return hs
