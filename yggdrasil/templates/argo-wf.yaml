@@ -4,8 +4,6 @@ metadata:
   name: argowf-server
   namespace: tooling
 spec:
-  entryPoints:
-    - websecure
   routes:
     - kind: Rule
       match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/`)
