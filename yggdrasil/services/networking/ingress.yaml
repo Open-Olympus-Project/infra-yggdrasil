@@ -15,6 +15,10 @@ traefik:
     spec:
       loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
 
+  additionalArguments:
+  - --entryPoints.web.http.redirections.entryPoint.to: websecure
+  - --entryPoints.web.http.redirections.entryPoint.scheme: https
+
 #  ports:
 #    web:
 #      nodePort: 32080
