@@ -8,7 +8,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`http://service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argo`)
+      match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argo`)
       priority: 10
       services:
         - name: argo-workflows-server
