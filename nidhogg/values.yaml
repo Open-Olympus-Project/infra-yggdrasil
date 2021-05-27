@@ -11,6 +11,9 @@ argo-cd:
   redis-ha: 
     enabled: true
   server: 
+    extraArgs:
+      - --rootpath
+      - /argocd
     config:
       url: https://service-poc.westeurope.cloudapp.azure.com/argocd
       repositories: |
