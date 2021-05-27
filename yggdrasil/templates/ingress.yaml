@@ -13,7 +13,7 @@ metadata:
   name: {{ .name }}
   namespace: {{ $project.namespace }}
   annotations:
-    {{- .ingress.annotations | toYaml | nindent 4 }}
+    {{ if .ingress.annotations }}{{- .ingress.annotations | toYaml | nindent 4 }}{{ end }}
     {{- $root.Values.ingress.annotations | toYaml | nindent 4 }}
 spec:
   {{- if $root.Values.ingress.className }}
