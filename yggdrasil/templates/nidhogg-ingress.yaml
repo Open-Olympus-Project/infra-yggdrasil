@@ -9,24 +9,12 @@ spec:
   routes:
     - kind: Rule
       match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argocd`)
-      middlewares:
-        - name: argocd-stripprefix
       services:
         - name: nidhogg-argocd-server
           namespace: nidhogg
           port: 80
   tls:
     secretName: argo-tls
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: argocd-stripprefix
-  namespace: tooling
-spec:
-  stripPrefix:
-    prefixes:
-      - /argocd
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
