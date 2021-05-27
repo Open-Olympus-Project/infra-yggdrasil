@@ -30,7 +30,7 @@ networking:
 tooling: 
   enabled: true
 
-  argo-workflows:
+  argo:
     enabled: true
 
   argo-events:
