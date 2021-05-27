@@ -10,7 +10,7 @@ project:
     - '*'
 
 apps:
-  - name: argo-workflows
+  - name: argo
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-wf.git"
       targetRevision: dependency
