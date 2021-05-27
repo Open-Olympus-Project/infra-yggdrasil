@@ -10,9 +10,11 @@ spec:
     - kind: Rule
       match: Host(`service-poc.westeurope.cloudapp.azure.com`) && (PathPrefix(`/argo`) || PathPrefix(`/api`))
       services:
-        - name: argo-argo-workflows-server
+        - kind: Service
+          name: argo-argo-workflows-server
+          namespace: tooling
           port: 2746
-    
+          scheme: https
   tls:
     secretName: default-tls
 
