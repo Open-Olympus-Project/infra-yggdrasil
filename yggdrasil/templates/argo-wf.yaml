@@ -9,10 +9,8 @@ spec:
   routes:
     - kind: Rule
       match: Host(`service-poc.westeurope.cloudapp.azure.com`) && (PathPrefix(`/argo`) || PathPrefix(`/api`))
-      priority: 10
       services:
         - name: argo-argo-workflows-server
-          port: 2746
     
   tls:
     secretName: default-tls
