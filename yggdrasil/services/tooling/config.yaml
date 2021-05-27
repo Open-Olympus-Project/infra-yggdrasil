@@ -22,7 +22,7 @@ apps:
         traefik.frontend.rule.type: PathPrefixStrip
         traefik.ingress.kubernetes.io/backend-protocol: HTTPS
       paths:
-      - path: /argo{path:(/|$)(.*)}
+      - path: /argo
         servicePort: 2746
         serviceName: argo-workflows-server
       tlsSecretName: argo-workflows-ui-tls
