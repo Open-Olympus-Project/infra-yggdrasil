@@ -1,8 +1,6 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  labels:
-    argocd.argoproj.io/instance: yggdrasil
   name: argocd-ingress-route
   namespace: tooling
 spec:
@@ -22,8 +20,6 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  labels:
-    argocd.argoproj.io/instance: yggdrasil
   name: argocd-stripprefix
   namespace: tooling
 spec:
@@ -34,8 +30,6 @@ spec:
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
-  labels:
-    argocd.argoproj.io/instance: yggdrasil
   name: argocd-tls
   namespace: tooling
 spec:
