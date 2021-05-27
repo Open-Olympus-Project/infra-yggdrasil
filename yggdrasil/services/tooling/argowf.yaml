@@ -1,9 +1,4 @@
 argo-workflows:
-  executor:
-    image:
-      # Overrides .images.tag if defined.
-      tag: "v2.12.11"
-
   controller:
     containerRuntimeExecutor: pns
     metricsConfig:
@@ -12,50 +7,10 @@ argo-workflows:
       enabled: true
 
   server:
-    enabled: true
     # only updates base url of resources on client side,
     # it's expected that a proxy server rewrites the request URL and gets rid of this prefix
     # https://github.com/argoproj/argo/issues/716#issuecomment-433213190
     baseHref: /argo/
-
-    # Run the argo server in "secure" mode. Configure this value instead of
-    # "--secure" in extraArgs. See the following documentation for more details
-    # on secure mode:
-    # https://argoproj.github.io/argo/tls/#encrypted
-    secure: false
-
-    ## Ingress configuration.
-    ## ref: https://kubernetes.io/docs/user-guide/ingress/
-    ##
-    ingress:
-      enabled: false
-
-      ## Annotations to be added to the web ingress.
-      ##
-      annotations:
-
-      ## Hostnames.
-      ## Must be provided if Ingress is enabled.
-      ##
-      hosts:
-        - {{ .Values.ingress.host }}
-
-      ## Additional Paths for each host
-      # backends:
-      #   - serviceName: "ssl-redirect"
-      #     servicePort: "use-annotation"
-
-      paths:
-        - path: /argo(/|$)(.*)
-
-      ## TLS configuration.
-      ## Secrets must be manually created in the namespace.
-      ##
-      tls:
-        - secretName: argo-ui-tls
-          hosts:
-            - {{ .Values.ingress.host }}
-
   minio:
     # If set to true then chart installs minio and generate according artifactRepository section in workflow controller config map
     install: true
