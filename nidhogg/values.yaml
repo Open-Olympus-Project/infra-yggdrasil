@@ -38,5 +38,10 @@ argo-cd:
             jsonPointers:
             - /webhooks/0/clientConfig/caBundle
             - /webhooks/0/namespaceSelector/matchExpressions/2
+        networking.k8s.io/Ingress:
+          health.lua: |
+            hs = {}
+            hs.status = "Healthy"
+            return hs
     service: 
       type: NodePort
