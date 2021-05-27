@@ -17,6 +17,8 @@ apps:
       path: argo-wf
       valuesFile: "argowf.yaml"
     ingressRoute:
+      entryPoints:
+        - websecure
       routes:
       - kind: Rule
         # Without host
@@ -26,8 +28,6 @@ apps:
             port: 2746
         middlewares:
           - name: argo-stripprefix
-      entryPoints:
-        - websecure
       certificate: true
       middlewares:
       - name: argo-stripprefix

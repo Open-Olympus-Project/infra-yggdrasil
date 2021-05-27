@@ -16,7 +16,7 @@ spec:
 {{ .ingressRoute.entryPoints | toYaml | indent 4 }}
   routes:
 {{- range .ingressRoute.routes}}
-  - kind: rule
+  - kind: {{ .kind }}
     match: Host(`{{ $root.Values.ingress.host }}`) && {{ .match }}
     services:
 {{ .services | toYaml | indent 6 }}
