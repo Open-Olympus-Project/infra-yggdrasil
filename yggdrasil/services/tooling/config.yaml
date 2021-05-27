@@ -18,9 +18,10 @@ apps:
       valuesFile: "argowf.yaml"
     ingress:
       annotations:
+        traefik.frontend.rule.type: PathPrefix
         traefik.ingress.kubernetes.io/backend-protocol: HTTPS
       paths:
-      - path: /{path:.*}
+      - path: /argo
         servicePort: 2746
         serviceName: argo-workflows-server
       tlsSecretName: argo-workflows-ui-tls
