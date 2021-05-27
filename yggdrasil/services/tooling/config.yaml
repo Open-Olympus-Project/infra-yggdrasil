@@ -16,15 +16,6 @@ apps:
       targetRevision: dependency
       path: argo-wf
       valuesFile: "argowf.yaml"
-    ingress:
-      annotations:
-        traefik.ingress.kubernetes.io/rewrite-target: /$2
-        traefik.ingress.kubernetes.io/backend-protocol: HTTPS
-      paths:
-      - path: /argo{path:(/|$)(.*)}
-        servicePort: 2746
-        serviceName: argo-workflows-server
-      tlsSecretName: argo-workflows-ui-tls
   - name: argo-events
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-events.git"
