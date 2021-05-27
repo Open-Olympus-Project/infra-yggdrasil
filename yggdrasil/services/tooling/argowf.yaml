@@ -22,7 +22,7 @@ argo-workflows:
     # "--secure" in extraArgs. See the following documentation for more details
     # on secure mode:
     # https://argoproj.github.io/argo/tls/#encrypted
-    secure: true
+    secure: false
 
     ## Ingress configuration.
     ## ref: https://kubernetes.io/docs/user-guide/ingress/
