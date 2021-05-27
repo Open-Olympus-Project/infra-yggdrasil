@@ -6,6 +6,7 @@
   {{- range $project.apps }}
     {{ if (index $projectValues .name).enabled }}
     {{- if .ingressRoute }}
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
@@ -25,6 +26,7 @@ spec:
 {{- end }}
   tls:
     secretName: {{ .name }}-tls
+
 {{ range .ingressRoute.middlewares }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
@@ -35,7 +37,8 @@ metadata:
 spec:
 {{ .spec | toYaml | indent 2 }}
 {{ end }}
-{{ if .ingressRoute.certificate }}
+
+{{ if .ingressRoute.certificate.enabled }}
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -46,9 +49,11 @@ spec:
   dnsNames:
     - {{ $root.Values.ingress.host }}
   secretName: {{ .name }}-tls
+  {{- with .ingressRoute.certificate.issuerRef }}
   issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
+    name: {{ .name }}
+    kind: {{ .kind }}
+  {{ end }}
 {{ end }}
 
     {{ end }}

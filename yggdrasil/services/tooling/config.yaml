@@ -28,13 +28,18 @@ apps:
             port: 2746
         middlewares:
           - name: argo-stripprefix
-      certificate: true
+      
       middlewares:
       - name: argo-stripprefix
         spec: 
           stripPrefix:
             prefixes:
               - /argo
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-prod
+          kind: ClusterIssuer
   - name: argo-events
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-events.git"
