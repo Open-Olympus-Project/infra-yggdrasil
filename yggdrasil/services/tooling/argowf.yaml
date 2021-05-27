@@ -1,18 +1,7 @@
 argo-workflows:
-  controller:
-    containerRuntimeExecutor: pns
-    metricsConfig:
-      annotations:
-        prometheus.io/scrape: 'true'
-      enabled: true
-
   server:
-    secure: true
+    enabled: true
+    # only updates base url of resources on client side,
+    # it's expected that a proxy server rewrites the request URL and gets rid of this prefix
+    # https://github.com/argoproj/argo-workflows/issues/716#issuecomment-433213190
     baseHref: /argo/
-
-  minio:
-    # If set to true then chart installs minio and generate according artifactRepository section in workflow controller config map
-    install: true
-    defaultBucket:
-      enabled: true
-      name: argo-artifacts
