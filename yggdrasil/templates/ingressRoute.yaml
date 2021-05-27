@@ -1,0 +1,51 @@
+{{- $root := . -}}
+{{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
+  {{ $project := $root.Files.Get $path | fromYaml }}
+  {{ $projectValues := index $root.Values $project.name }}
+  {{ if $projectValues.enabled }}
+  {{- range $project.apps }}
+    {{ if (index $projectValues .name).enabled }}
+    {{- if .ingressRoute }}
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: {{ .name }}-ingress-route
+  namespace: {{ $project.namespace }}
+spec:
+  entryPoints:
+{{ .ingressRoute.entryPoints | toYaml | indent 4 }}
+  routes:
+{{ .ingressRoute.routes | toYaml | indent 4 }}
+  tls:
+    secretName: {{ .name }}-tls
+{{ range .ingressRoute.middlewares }}
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: {{ .name }}
+  namespace: tooling
+spec:
+{{ .spec | toYaml | indent 2 }}
+{{ end }}
+{{ if .ingressRoute.certificate }}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: {{ .name }}-tls
+  namespace: tooling
+spec:
+  dnsNames:
+    - {{ $root.Values.ingress.host }}
+  secretName: {{ .name }}-tls
+  issuerRef:
+    name: letsencrypt-prod
+    kind: ClusterIssuer
+{{ end }}
+
+    {{ end }}
+    {{ end }}
+  {{ end }}
+  {{ end }}
+{{ end }}
