@@ -14,7 +14,6 @@ spec:
           name: argo-argo-workflows-server
           namespace: tooling
           port: 2746
-          scheme: https
   tls:
     secretName: default-tls
 
