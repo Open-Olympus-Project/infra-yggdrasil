@@ -1,0 +1,18 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: argowf-server
+  namespace: argo
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`http://service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argo`)
+      priority: 10
+      services:
+        - name: argo-workflows-server
+          port: 2746
+  tls:
+    certResolver: default
+    options: {}
