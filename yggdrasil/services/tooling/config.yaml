@@ -17,15 +17,7 @@ apps:
       path: argo-wf
       valuesFile: "argowf.yaml"
     ingress:
-      annotations:
-        # nginx.ingress.kubernetes.io/rewrite-target: /$2
-        # nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-        # nginx.ingress.kubernetes.io/proxy-read-timeout: "21600"
-        # nginx.ingress.kubernetes.io/eventsource: "true"
-        # nginx.ingress.kubernetes.io/configuration-snippet: |
-        #   location ~ "^/.*/metrics(/|$)" {
-        #       deny all;
-        #     }
+      annotations: {}
       paths:
       - path: /argo
         servicePort: 2746
