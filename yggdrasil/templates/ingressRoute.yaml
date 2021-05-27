@@ -15,7 +15,14 @@ spec:
   entryPoints:
 {{ .ingressRoute.entryPoints | toYaml | indent 4 }}
   routes:
-{{ .ingressRoute.routes | toYaml | indent 4 }}
+{{- range .ingressRoute.routes}}
+  - kind: rule
+    match: Host(`{{ $root.Values.ingress.host }}`) && {{ .match }}
+    services:
+{{ .services | toYaml | indent 6 }}
+    middlewares:
+{{ .middlewares | toYaml | indent 6 }}
+{{- end }}
   tls:
     secretName: {{ .name }}-tls
 {{ range .ingressRoute.middlewares }}

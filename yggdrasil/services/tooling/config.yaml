@@ -19,7 +19,8 @@ apps:
     ingressRoute:
       routes:
       - kind: Rule
-        match: Host(`{{ $root.Values.ingress.host }}`) && {{ .ingressRoute.match }}
+        # Without host
+        match: PathPrefix(`/argo`)
         services:
           - name: argo-argo-workflows-server
             port: 2746
