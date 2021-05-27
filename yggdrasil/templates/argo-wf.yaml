@@ -21,6 +21,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: argo-stripprefix
+  namespace: tooling
 spec:
   stripPrefix:
     prefixes:
