@@ -18,7 +18,6 @@ apps:
       valuesFile: "argowf.yaml"
     ingress:
       annotations:
-        traefik.ingress.kubernetes.io/rewrite-target: /$2
       paths:
       - path: /argo
         servicePort: 2746
