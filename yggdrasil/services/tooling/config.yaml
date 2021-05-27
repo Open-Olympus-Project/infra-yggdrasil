@@ -20,7 +20,7 @@ apps:
       annotations:
         traefik.ingress.kubernetes.io/backend-protocol: HTTPS
       paths:
-      - path: /{path:[a-z]+}
+      - path: /{path:.*}
         servicePort: 2746
         serviceName: argo-workflows-server
       tlsSecretName: argo-workflows-ui-tls
