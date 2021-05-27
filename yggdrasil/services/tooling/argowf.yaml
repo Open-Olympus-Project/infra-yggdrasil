@@ -5,4 +5,4 @@ argo-workflows:
     # it's expected that a proxy server rewrites the request URL and gets rid of this prefix
     # https://github.com/argoproj/argo-workflows/issues/716#issuecomment-433213190
     baseHref: /
-    secure: true
+    secure: false
