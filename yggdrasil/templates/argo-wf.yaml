@@ -11,6 +11,7 @@ spec:
       match: Host(`service-poc.westeurope.cloudapp.azure.com`) && (PathPrefix(`/argo`) || PathPrefix(`/api`))
       services:
         - name: argo-argo-workflows-server
+          port: 2746
     
   tls:
     secretName: default-tls
