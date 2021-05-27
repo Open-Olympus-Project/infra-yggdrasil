@@ -31,11 +31,19 @@ spec:
             name: {{ $config.serviceName }}
             port:
               number: {{ $config.servicePort }}
+  {{ end }}
+  {{ if .ingress.tlsSecretName }}
   tls:
   - hosts:
-    - {{if $root.Values.ingressDomain }}{{ printf "%s.%s" $config.subDomain $root.Values.ingressDomain | quote }}{{ else }}{{ $root.Values.ingress.host }}{{ end }}
-    secretName: {{ $config.tlsSecretName }}
+    {{- if $root.Values.ingressDomain }}
+    {{- range $name, $config := .ingress.paths }}
+    - {{ printf "%s.%s" .subDomain $root.Values.ingressDomain | quote }}    
     {{ end }}
+    {{ else }}
+    - {{ $root.Values.ingress.host }}
+    {{- end }}
+    secretName: {{ .ingress.tlsSecretName }}
+  {{ end }}
     {{ end }}
     {{ end }} 
   {{ end }}
