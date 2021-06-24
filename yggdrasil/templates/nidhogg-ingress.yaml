@@ -15,7 +15,6 @@ spec:
         - name: nidhogg-argocd-server
           port: 80 
   tls:
-    passthrough: true
     secretName: argocd-tls
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
@@ -40,3 +39,10 @@ spec:
     kind: ClusterIssuer
     name: {{ .Values.ingress.certmanagerissuer }}
   secretName: argocd-tls
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: argocd-tls
+type: kubernetes.io/tls
+data:
