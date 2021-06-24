@@ -8,24 +8,20 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argocd`)
-      # middlewares:
-      #   - name: argocd-stripprefix
+      match: Host(`{{ .Values.ingress.host }}`)
+      priority: 10
       services:
-        - name: nidhogg-argocd-server
-          port: 80 
+        - name: argocd-server
+          port: 80
+    - kind: Rule
+      match: Host(`{{ .Values.ingress.host }}`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: argocd-server
+          port: 80
+          scheme: h2c
   tls:
     secretName: argocd-tls
-# ---
-# apiVersion: traefik.containo.us/v1alpha1
-# kind: Middleware
-# metadata:
-#   name: argocd-stripprefix
-#   namespace: nidhogg
-# spec:
-#   stripPrefix:
-#     prefixes:
-#       - /argocd
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
@@ -34,7 +30,7 @@ metadata:
   namespace: nidhogg
 spec:
   dnsNames:
-    - service-poc.westeurope.cloudapp.azure.com
+    - {{ .Values.ingress.host }}
   issuerRef:
     kind: ClusterIssuer
     name: {{ .Values.ingress.certmanagerissuer }}
