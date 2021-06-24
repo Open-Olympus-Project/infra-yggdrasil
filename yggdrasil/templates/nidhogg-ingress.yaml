@@ -14,9 +14,9 @@ spec:
       services:
         - name: nidhogg-argocd-server
           port: 80 
-      tls:
-        passthrough: true
-        secretName: argocd-tls
+  tls:
+    passthrough: true
+    secretName: argocd-tls
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
 # kind: Middleware
