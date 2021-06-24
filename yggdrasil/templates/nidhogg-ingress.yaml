@@ -14,20 +14,19 @@ spec:
       services:
         - name: nidhogg-argocd-server
           port: 80 
-        - name: nidhogg-argocd-server
-          port: 443
-  tls:
-    secretName: argo-tls
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: argocd-stripprefix
-  namespace: nidhogg
-spec:
-  stripPrefix:
-    prefixes:
-      - /argocd
+      tls:
+        passthrough: true
+        secretName: argocd-tls
+# ---
+# apiVersion: traefik.containo.us/v1alpha1
+# kind: Middleware
+# metadata:
+#   name: argocd-stripprefix
+#   namespace: nidhogg
+# spec:
+#   stripPrefix:
+#     prefixes:
+#       - /argocd
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
