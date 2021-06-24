@@ -12,7 +12,6 @@ argo-cd:
     enabled: true
   server: 
     extraArgs:
-      - --insecure
       - --rootpath
       - /argocd
     config:

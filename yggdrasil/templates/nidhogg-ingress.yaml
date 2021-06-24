@@ -8,19 +8,14 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/argocd`)
-      priority: 10
+      match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argocd`)
+      # middlewares:
+      #   - name: argocd-stripprefix
       services:
         - name: nidhogg-argocd-server
-          port: 80
-    - kind: Rule
-      match: Host(`{{ .Values.ingress.host }}`) && Headers(`Content-Type`, `application/grpc`)
-      priority: 11
-      services:
-        - name: nidhogg-argocd-server
-          port: 80
-          scheme: h2c
+          port: 80 
   tls:
+    passthrough: true
     secretName: argocd-tls
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
