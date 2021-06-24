@@ -9,13 +9,18 @@ spec:
   routes:
     - kind: Rule
       match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argocd`)
-      # middlewares:
-      #   - name: argocd-stripprefix
+      priority: 10
       services:
         - name: nidhogg-argocd-server
-          port: 80 
+          port: 80
+    - kind: Rule
+      match: Host(`service-poc.westeurope.cloudapp.azure.com`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - name: nidhogg-argocd-server
+          port: 80
+          scheme: h2c
   tls:
-    passthrough: true
     secretName: argocd-tls
 # ---
 # apiVersion: traefik.containo.us/v1alpha1
