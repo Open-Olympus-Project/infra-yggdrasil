@@ -39,10 +39,3 @@ spec:
     kind: ClusterIssuer
     name: {{ .Values.ingress.certmanagerissuer }}
   secretName: argocd-tls
----
-apiVersion: v1
-kind: Secret
-metadata:
-  name: argocd-tls
-type: Opaque
-data:
