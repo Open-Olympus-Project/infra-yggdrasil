@@ -8,13 +8,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`service-poc.westeurope.cloudapp.azure.com`) && PathPrefix(`/argocd`)
+      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/argocd`)
       priority: 10
       services:
         - name: nidhogg-argocd-server
           port: 80
     - kind: Rule
-      match: Host(`service-poc.westeurope.cloudapp.azure.com`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`{{ .Values.ingress.host }}`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: nidhogg-argocd-server
@@ -43,5 +43,5 @@ spec:
     - service-poc.westeurope.cloudapp.azure.com
   issuerRef:
     kind: ClusterIssuer
-    name: letsencrypt-staging
+    name: {{ .Values.ingress.certmanagerissuer }}
   secretName: argocd-tls
