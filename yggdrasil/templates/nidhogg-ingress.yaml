@@ -2,7 +2,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
   name: argocd-ingress-route
-  namespace: tooling
+  namespace: nidhogg
 spec:
   entryPoints:
     - websecure
@@ -13,7 +13,6 @@ spec:
         - name: argocd-stripprefix
       services:
         - name: nidhogg-argocd-server
-          namespace: nidhogg
           port: 80
   tls:
     secretName: argo-tls
@@ -22,7 +21,7 @@ apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: argocd-stripprefix
-  namespace: tooling
+  namespace: nidhogg
 spec:
   stripPrefix:
     prefixes:
@@ -32,7 +31,7 @@ apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
   name: argocd-tls
-  namespace: tooling
+  namespace: nidhogg
 spec:
   dnsNames:
     - service-poc.westeurope.cloudapp.azure.com
