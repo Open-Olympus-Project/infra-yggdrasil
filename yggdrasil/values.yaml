@@ -27,6 +27,9 @@ networking:
   
   cert-manager-issuer:
     enabled: true
+  
+  nidhogg-ingress:
+    enabled: true
 
 tooling: 
   enabled: true

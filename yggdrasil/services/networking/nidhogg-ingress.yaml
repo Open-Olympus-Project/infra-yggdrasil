@@ -1,0 +1,5 @@
+ingress:
+  host: {{ .Values.ingress.host }}
+  loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
+  LoadBalancerResoureGroup: {{ .Values.ingress.LoadBalancerResoureGroup }}
+  certmanagerissuer: {{ .Values.ingress.certmanagerissuer }}

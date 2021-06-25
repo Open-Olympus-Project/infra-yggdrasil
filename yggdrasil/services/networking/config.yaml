@@ -32,3 +32,9 @@ apps:
       targetRevision: dependency
       path: cert-manager-issuer
       valuesFile: "cert-manager-issuer.yaml"
+  - name: nidhogg-ingress
+    source:
+      repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
+      targetRevision: HEAD
+      path: nidhogg-ingress
+      valuesFile: "nidhogg-ingress.yaml"
