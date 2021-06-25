@@ -3,7 +3,7 @@ yggdrasil:
   repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
   targetRevision: "HEAD"
 
-  inrgess:
+  ingress:
     host: service-poc.westeurope.cloudapp.azure.com
     loadBalancerIP: 20.82.41.255
     LoadBalancerResoureGroup: service-aks-poc
