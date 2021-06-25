@@ -8,7 +8,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/argocd`)
+      match: Host(`{{ .Values.ingress.host }}`)
       priority: 10
       services:
         - name: argocd-server
