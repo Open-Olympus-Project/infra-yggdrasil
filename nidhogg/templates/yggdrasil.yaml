@@ -30,6 +30,13 @@ spec:
     path: yggdrasil
     helm:
       version: v3
+      values: |
+        ingress:
+          host: {{ .Values.yggdrasil.ingress.host }}
+          loadBalancerIP: {{ .Values.yggdrasil.ingress.loadBalancerIP }}
+          LoadBalancerResoureGroup: {{ .Values.yggdrasil.ingress.LoadBalancerResoureGroup }}
+          certmanagerissuer: {{ .Values.yggdrasil.ingress.certmanagerissuer }}
+
   destination:
     server: https://kubernetes.default.svc
     namespace: {{ .Release.Namespace }}

@@ -5,10 +5,10 @@
 
 # This values is if you want to use paths instead of subdomains.
 ingress:
-  host: service-poc.westeurope.cloudapp.azure.com
-  loadBalancerIP: 20.82.41.255
-  LoadBalancerResoureGroup: service-aks-poc
-  certmanagerissuer: letsencrypt-staging
+  host: <host>
+  loadBalancerIP: <ip>
+  LoadBalancerResoureGroup: <resource_group>
+  certmanagerissuer: <cert-manager-issuer>
   # className: ingress-traefik
 
   annotations:
