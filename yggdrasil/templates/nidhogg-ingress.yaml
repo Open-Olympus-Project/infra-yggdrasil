@@ -11,13 +11,13 @@ spec:
       match: Host(`{{ .Values.ingress.host }}`) && PathPrefix(`/argocd`)
       priority: 10
       services:
-        - name: argocd-server
+        - name: nidhogg-argocd-server
           port: 80
     - kind: Rule
       match: Host(`{{ .Values.ingress.host }}`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
-        - name: argocd-server
+        - name: nidhogg-argocd-server
           port: 80
           scheme: h2c
   tls:
