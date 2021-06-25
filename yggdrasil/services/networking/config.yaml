@@ -12,6 +12,8 @@ project:
   destinations: 
     - namespace: kube-system
       server: https://kubernetes.default.svc
+    - namespace: nidhogg
+      server: https://kubernetes.default.svc
 
 apps:
   - name: ingress
