@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: argocd-ingress-route
   namespace: nidhogg
+  annotations:
+    "helm.sh/hook": post-install
 spec:
   entryPoints:
     - websecure
@@ -28,6 +30,8 @@ kind: Certificate
 metadata:
   name: argocd-tls
   namespace: nidhogg
+  annotations:
+    "helm.sh/hook": post-install
 spec:
   dnsNames:
     - {{ .Values.ingress.host }}
