@@ -3,6 +3,8 @@ kind: IngressRoute
 metadata:
   name: argocd-ingress-route
   namespace: nidhogg
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   entryPoints:
     - websecure
@@ -28,6 +30,8 @@ kind: Certificate
 metadata:
   name: argocd-tls
   namespace: nidhogg
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   dnsNames:
     - {{ .Values.ingress.host }}
