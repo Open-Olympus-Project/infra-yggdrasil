@@ -49,15 +49,15 @@ apps:
         services:
           - name: grafana
             port: 80
-      #   middlewares:
-      #     - name: argo-stripprefix
+        middlewares:
+          - name: grafana-stripprefix
       
-      # middlewares:
-      # - name: argo-stripprefix
-      #   spec: 
-      #     stripPrefix:
-      #       prefixes:
-      #         - /argo
+      middlewares:
+      - name: grafana-stripprefix
+        spec: 
+          stripPrefix:
+            prefixes:
+              - /grafana
       certificate:
         enabled: true
         issuerRef:
@@ -91,15 +91,6 @@ apps:
         services:
           - name: jaeger-operator-jaeger-query
             port: 16686
-      #   middlewares:
-      #     - name: argo-stripprefix
-      
-      # middlewares:
-      # - name: argo-stripprefix
-      #   spec: 
-      #     stripPrefix:
-      #       prefixes:
-      #         - /argo
       certificate:
         enabled: true
         issuerRef:
