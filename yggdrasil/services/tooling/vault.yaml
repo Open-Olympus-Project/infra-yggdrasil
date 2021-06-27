@@ -7,3 +7,4 @@ vault:
       script.sh: |
         #!/bin/bash
         echo "This is a post script"
+        vault status -tls-skip-verify
