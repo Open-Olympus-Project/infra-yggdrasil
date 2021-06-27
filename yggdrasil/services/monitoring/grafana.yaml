@@ -6,13 +6,13 @@ grafana:
     datasources.yaml:
       apiVersion: 1
       datasources:
-        # - name: Thanos
-        #   type: prometheus
-        #   url: http://tooling-thanos-query-http.monitoring:10902
-        #   access: proxy
-        #   isDefault: true
-        #   jsonData:
-        #     timeInterval: '1m'
+        - name: Prometheus
+          type: prometheus
+          url: http://prometheus-server.monitoring:9090
+          access: proxy
+          isDefault: true
+          jsonData:
+            timeInterval: '1m'
         - name: Loki
           type: loki
           url: http://loki.monitoring:3100
