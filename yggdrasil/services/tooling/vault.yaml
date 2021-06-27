@@ -1,1 +1,9 @@
-# vault:
+vault:
+  # This will run helm post-install hook to init the vault
+  initvault:
+
+    #The script run in post start
+    script:
+      script.sh: |
+        #!/bin/bash
+        echo "This is a post script"

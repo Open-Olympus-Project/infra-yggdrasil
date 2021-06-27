@@ -55,7 +55,7 @@ apps:
   - name: vault
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
-      targetRevision: dependency
+      targetRevision: vault-init-job
       path: vault
       valuesFile: "vault.yaml"  
   - name: external-secrets
