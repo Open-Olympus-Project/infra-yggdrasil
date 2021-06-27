@@ -40,6 +40,9 @@ argo-cd:
         - type: helm
           url: https://grafana.github.io/helm-charts
           name: grafana
+        - type: helm
+          url: https://external-secrets.github.io/kubernetes-external-secrets
+          name: external-secrets
       resource.customizations: |
         admissionregistration.k8s.io/MutatingWebhookConfiguration:
           ignoreDifferences: |
