@@ -1,1 +1,28 @@
-# jaeger-operator:
+jaeger-operator:
+  jaeger:
+    # Specifies whether Jaeger instance should be created
+    create: true
+    # namespace where Jaeger resource should be created default to .Release.Namespace
+    namespace: monitoring
+    spec: 
+      storage:
+        options:
+          memory:
+            max-traces: 100000
+    
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+  # nodeSelector:
+  #   agentpool: monitoring
+
+  rbac:
+    # Specifies whether RBAC resources should be created
+    create: true
+    pspEnabled: false
+    clusterRole: true
