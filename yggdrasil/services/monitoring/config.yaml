@@ -18,8 +18,8 @@ apps:
   - name: prometheus
     source:
       repoURL: 'https://github.com/Open-Olympus-Project/tooling-prometheus.git'
-      targetRevision: dependency
-      path: prometheus
+      targetRevision: HEAD
+      path: chart
       valuesFile: "prometheus.yaml"
   - name: thanos
     source:
