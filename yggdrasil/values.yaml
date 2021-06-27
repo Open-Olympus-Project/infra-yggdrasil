@@ -62,7 +62,7 @@ monitoring:
     enabled: true
   
   loki:
-    enabled: false
+    enabled: true
 
   jaeger-operator:
     enabled: true

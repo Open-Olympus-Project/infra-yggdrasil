@@ -5,7 +5,7 @@ grafana:
   datasources:
     datasources.yaml:
       apiVersion: 1
-      datasources: []
+      datasources:
         # - name: Thanos
         #   type: prometheus
         #   url: http://tooling-thanos-query-http.monitoring:10902
@@ -13,13 +13,13 @@ grafana:
         #   isDefault: true
         #   jsonData:
         #     timeInterval: '1m'
-        # - name: Loki-test
-        #   type: loki
-        #   url: https://dp-test.westeurope.cloudapp.azure.com/loki
-        #   access: proxy
-        #   isDefault: false
-        #   jsonData:
-        #     timeInterval: '1m'
+        - name: Loki
+          type: loki
+          url: http://loki.monitoring:3100
+          access: proxy
+          isDefault: false
+          jsonData:
+            timeInterval: '1m'
         # - name: Loki-prod
         #   type: loki
         #   url: https://dp-prod.westeurope.cloudapp.azure.com/loki
