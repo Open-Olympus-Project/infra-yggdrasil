@@ -65,6 +65,6 @@ alertmanager:
   ingress:
     enabled: false
 
-nodeExporter:
+# nodeExporter: 
   # nodeSelector:
   #   agentpool: monitoring
