@@ -20,12 +20,12 @@ server:
     enabled: false
   # nodeSelector:
   #   agentpool: monitoring
-  resources:
-    requests:
-      cpu: 500m
-      memory: 10Gi
-    limits:
-      memory: 25Gi
+  # resources:
+  #   requests:
+  #     cpu: 500m
+  #     memory: 10Gi
+  #   limits:
+  #     memory: 25Gi
 
   # sidecarContainers:
   #   - name: thanos-sidecar
