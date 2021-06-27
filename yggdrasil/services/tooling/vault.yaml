@@ -4,7 +4,12 @@ initvault:
   script:
     script.sh: |
       #!/bin/bash
-      echo "This is a post script"
-      vault status -tls-skip-verify
+      set +x
+      while ! nslookup vault </dev/null || ! nc -w1 vault 8200 </dev/null; do
+          echo "Waiting for Vault to Come up!"
+          sleep 0.1
+      done
+      sleep 10
+
 
 # vault:
