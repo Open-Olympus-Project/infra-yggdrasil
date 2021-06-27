@@ -1,3 +1,16 @@
 # initvault:
 
-# vault:
+vault:
+  server:
+    standalone:
+      enabled: "false"
+
+    ha:
+      enabled: true
+      replicas: 3
+
+      raft:
+        enabled: true
+  # Vault UI
+  ui:
+    enabled: true
