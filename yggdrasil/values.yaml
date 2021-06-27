@@ -44,7 +44,7 @@ tooling:
     enabled: false
 
   vault:
-    enabled: false
+    enabled: true
 
   external-secrets:
     enabled: true
