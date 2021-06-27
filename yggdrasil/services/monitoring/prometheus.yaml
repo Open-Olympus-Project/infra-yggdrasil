@@ -1,67 +1,70 @@
-prometheus:
-  pushgateway:
-    # nodeSelector:
-    #   agentpool: monitoring
+# no need for this since the current helm chart used is not a dependency chart
+# prometheus:
 
-    ## pushgateway container image
-    ##
-    image:
-      repository: weaveworks/prom-aggregation-gateway
-      tag: master-c4415bbe
-      pullPolicy: IfNotPresent
 
-    extraArgs: ["-listen", ":9091"]
+pushgateway:
+  # nodeSelector:
+  #   agentpool: monitoring
 
-  server:
-    ingress:
-      enabled: false
-    # nodeSelector:
-    #   agentpool: monitoring
-    resources:
-      requests:
-        cpu: 500m
-        memory: 10Gi
-      limits:
-        memory: 25Gi
+  ## pushgateway container image
+  ##
+  image:
+    repository: weaveworks/prom-aggregation-gateway
+    tag: master-c4415bbe
+    pullPolicy: IfNotPresent
 
-    # sidecarContainers:
-    #   - name: thanos-sidecar
-    #     image: thanosio/thanos:main-2021-06-04-ef94b7e6
-    #     ports:
-    #     - name: http
-    #       containerPort: 10902
-    #     - name: grpc
-    #       containerPort: 10901
-    #     args:     
-    #       - "sidecar"
-    #       - "--debug.name=sidecar"
-    #       - "--log.level=debug"
-    #       - "--grpc-address=0.0.0.0:10901"
-    #       - "--grpc-grace-period=1s"
-    #       - "--http-address=0.0.0.0:10902"
-    #       - "--http-grace-period=1s"
-    #       - "--prometheus.url=http://localhost:9090/"
-    #       - "--tsdb.path=/data"
-    #       - "--objstore.config-file=/vault/secrets/bucket.yml"
-    #     volumeMounts:
-    #       - name: config-volume
-    #         mountPath: /etc/config
-    #         readOnly: true
-    #       - name: storage-volume
-    #         mountPath: /data
-    #     resources:
-    #       requests:
-    #         cpu: 500m
-    #         memory: 500Mi 
+  extraArgs: ["-listen", ":9091"]
 
-    
+server:
+  ingress:
+    enabled: false
+  # nodeSelector:
+  #   agentpool: monitoring
+  resources:
+    requests:
+      cpu: 500m
+      memory: 10Gi
+    limits:
+      memory: 25Gi
 
-  alertmanager:
-    # nodeSelector:
-    #   agentpool: monitoring
-    ingress:
-      enabled: false
+  # sidecarContainers:
+  #   - name: thanos-sidecar
+  #     image: thanosio/thanos:main-2021-06-04-ef94b7e6
+  #     ports:
+  #     - name: http
+  #       containerPort: 10902
+  #     - name: grpc
+  #       containerPort: 10901
+  #     args:     
+  #       - "sidecar"
+  #       - "--debug.name=sidecar"
+  #       - "--log.level=debug"
+  #       - "--grpc-address=0.0.0.0:10901"
+  #       - "--grpc-grace-period=1s"
+  #       - "--http-address=0.0.0.0:10902"
+  #       - "--http-grace-period=1s"
+  #       - "--prometheus.url=http://localhost:9090/"
+  #       - "--tsdb.path=/data"
+  #       - "--objstore.config-file=/vault/secrets/bucket.yml"
+  #     volumeMounts:
+  #       - name: config-volume
+  #         mountPath: /etc/config
+  #         readOnly: true
+  #       - name: storage-volume
+  #         mountPath: /data
+  #     resources:
+  #       requests:
+  #         cpu: 500m
+  #         memory: 500Mi 
+
   
-  nodeExporter:
-    # nodeSelector:
-    #   agentpool: monitoring
+
+alertmanager:
+  # nodeSelector:
+  #   agentpool: monitoring
+  ingress:
+    enabled: false
+
+nodeExporter:
+  # nodeSelector:
+  #   agentpool: monitoring
