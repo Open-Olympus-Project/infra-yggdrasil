@@ -13,6 +13,8 @@ prometheus:
     extraArgs: ["-listen", ":9091"]
 
   server:
+    ingress:
+      enabled: false
     # nodeSelector:
     #   agentpool: monitoring
     resources:
@@ -52,8 +54,7 @@ prometheus:
     #         cpu: 500m
     #         memory: 500Mi 
 
-    ingress:
-      enabled: false
+    
 
   alertmanager:
     # nodeSelector:
