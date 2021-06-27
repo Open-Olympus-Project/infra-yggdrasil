@@ -5,6 +5,12 @@ jaeger-operator:
     # namespace where Jaeger resource should be created default to .Release.Namespace
     namespace: monitoring
     spec: 
+      strategy: allInOne
+      allInOne:
+        options:
+          query:
+            base-path: /jaeger
+      
       storage:
         options:
           memory:
