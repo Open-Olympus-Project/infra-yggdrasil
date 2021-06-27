@@ -57,3 +57,27 @@ apps:
       path: jaeger-operator
       # filename of values file that is local right next to this config.yaml file
       valuesFile: "jaeger-operator.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/jeager`)
+        services:
+          - name: jaeger-operator-jaeger-query
+            port: 16686
+      #   middlewares:
+      #     - name: argo-stripprefix
+      
+      # middlewares:
+      # - name: argo-stripprefix
+      #   spec: 
+      #     stripPrefix:
+      #       prefixes:
+      #         - /argo
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
