@@ -63,7 +63,7 @@ apps:
       routes:
       - kind: Rule
         # Without host
-        match: PathPrefix(`/jeager`)
+        match: PathPrefix(`/jaeger`)
         services:
           - name: jaeger-operator-jaeger-query
             port: 16686
