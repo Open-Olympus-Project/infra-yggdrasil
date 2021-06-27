@@ -1,10 +1,10 @@
-vault:
-  # This will run helm post-install hook to init the vault
-  initvault:
+initvault:
 
-    #The script run in post start
-    script:
-      script.sh: |
-        #!/bin/bash
-        echo "This is a post script"
-        vault status -tls-skip-verify
+  #The script run in post start
+  script:
+    script.sh: |
+      #!/bin/bash
+      echo "This is a post script"
+      vault status -tls-skip-verify
+
+# vault:
