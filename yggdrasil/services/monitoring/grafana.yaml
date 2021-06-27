@@ -8,7 +8,7 @@ grafana:
       datasources:
         - name: Prometheus
           type: prometheus
-          url: http://prometheus-server.monitoring:9090
+          url: http://prometheus-server.monitoring
           access: proxy
           isDefault: true
           jsonData:
