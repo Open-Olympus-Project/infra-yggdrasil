@@ -39,6 +39,30 @@ apps:
       path: grafana
       # filename of values file that is local right next to this config.yaml file
       valuesFile: "grafana.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/grafana`)
+        services:
+          - name: grafana
+            port: 80
+      #   middlewares:
+      #     - name: argo-stripprefix
+      
+      # middlewares:
+      # - name: argo-stripprefix
+      #   spec: 
+      #     stripPrefix:
+      #       prefixes:
+      #         - /argo
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
   - name: loki
     source:
       repoURL: 'https://github.com/Open-Olympus-Project/tooling-loki.git'
