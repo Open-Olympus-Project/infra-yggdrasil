@@ -53,7 +53,7 @@ monitoring:
   enabled: true
 
   prometheus:
-    enabled: false
+    enabled: true
 
   thanos:
     enabled: false

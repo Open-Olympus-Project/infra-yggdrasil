@@ -1,21 +1,23 @@
 loki:
   enabled: true
-  config:
-    # schema_config:
-    #   configs:
-    #   - from: 2020-05-15
-    #     store: azure
-    #     object_store: azure
-    #     schema: v11
-    #     index:
-    #       prefix: loki_index
-    #       period: 0
-    # storage_config:
-    #   azure:
-    #     container_name: "loki"
-    #     account_name: ""
-    #     account_key: ""
-
-    table_manager:
-      retention_deletes_enabled: true
-      retention_period: 336h
+  # nodeSelector:
+  #   agentpool: monitoring
+  # config:
+  #   schema_config:
+  #     configs:
+  #       - from: 2018-04-15
+  #         store: boltdb-shipper
+  #         object_store: azure
+  #         schema: v11
+  #         index:
+  #           prefix: loki_index_
+  #           period: 24h
+  #   storage_config:
+  #     azure:
+  #       container_name: loki
+  #       account_name: 
+  #       account_key: 
+  #     boltdb_shipper:
+  #       active_index_directory: /data/loki/index
+  #       shared_store: azure
+  #       cache_location: /data/loki/boltdb-cache
