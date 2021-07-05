@@ -1,5 +1,0 @@
-ingress:
-  host: <host_name>
-  loadBalancerIP: <ip>
-  LoadBalancerResoureGroup: <resource_group>
-  certmanagerissuer: <cert-manager-issuer>
