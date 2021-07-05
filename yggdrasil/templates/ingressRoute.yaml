@@ -13,7 +13,7 @@ metadata:
   name: {{ .name }}-ingress-route
   namespace: {{ $project.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints:
 {{ .ingressRoute.entryPoints | toYaml | indent 4 }}
@@ -37,7 +37,7 @@ metadata:
   name: {{ .name }}
   namespace: {{ $project.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
 {{ .spec | toYaml | indent 2 }}
 {{ end }}
@@ -50,7 +50,7 @@ metadata:
   name: {{ .name }}-tls
   namespace: {{ $project.namespace }}
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   dnsNames:
     - {{ $root.Values.ingress.host }}
