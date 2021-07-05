@@ -4,7 +4,7 @@ metadata:
   name: argocd-ingress-route
   namespace: nidhogg
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   entryPoints:
     - websecure
@@ -31,7 +31,7 @@ metadata:
   name: argocd-tls
   namespace: nidhogg
   annotations:
-    argocd.argoproj.io/sync-wave: "5"
+    argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   dnsNames:
     - {{ .Values.ingress.host }}
