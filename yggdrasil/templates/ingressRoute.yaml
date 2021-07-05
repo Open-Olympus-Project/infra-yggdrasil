@@ -12,6 +12,8 @@ kind: IngressRoute
 metadata:
   name: {{ .name }}-ingress-route
   namespace: {{ $project.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   entryPoints:
 {{ .ingressRoute.entryPoints | toYaml | indent 4 }}
@@ -34,6 +36,8 @@ kind: Middleware
 metadata:
   name: {{ .name }}
   namespace: {{ $project.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
 {{ .spec | toYaml | indent 2 }}
 {{ end }}
@@ -45,6 +49,8 @@ kind: Certificate
 metadata:
   name: {{ .name }}-tls
   namespace: {{ $project.namespace }}
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   dnsNames:
     - {{ $root.Values.ingress.host }}
