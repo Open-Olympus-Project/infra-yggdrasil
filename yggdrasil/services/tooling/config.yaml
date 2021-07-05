@@ -58,30 +58,30 @@ apps:
       targetRevision: vault-init-job
       path: vault
       valuesFile: "vault.yaml"
-    ingressRoute:
-      entryPoints:
-        - websecure
-      routes:
-      - kind: Rule
-        # Without host
-        match: PathPrefix(`/vault`)
-        services:
-          - name: vault-ui
-            port: 8200
-        middlewares:
-          - name: vault-stripprefix
+    # ingressRoute:
+    #   entryPoints:
+    #     - websecure
+    #   routes:
+    #   - kind: Rule
+    #     # Without host
+    #     match: PathPrefix(`/vault`)
+    #     services:
+    #       - name: vault-ui
+    #         port: 8200
+    #     middlewares:
+    #       - name: vault-stripprefix
       
-      middlewares:
-      - name: vault-stripprefix
-        spec: 
-          stripPrefix:
-            prefixes:
-              - /vault
-      certificate:
-        enabled: true
-        issuerRef:
-          name: letsencrypt-staging
-          kind: ClusterIssuer
+    #   middlewares:
+    #   - name: vault-stripprefix
+    #     spec: 
+    #       stripPrefix:
+    #         prefixes:
+    #           - /vault
+    #   certificate:
+    #     enabled: true
+    #     issuerRef:
+    #       name: letsencrypt-staging
+    #       kind: ClusterIssuer
   - name: external-secrets
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-external-secrets.git"
