@@ -34,7 +34,7 @@ apps:
         spec: 
           stripPrefix:
             prefixes:
-              - /argo/
+              - /argo
       certificate:
         enabled: true
         issuerRef:
