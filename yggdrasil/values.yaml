@@ -35,7 +35,7 @@ tooling:
   enabled: true
 
   argo:
-    enabled: false
+    enabled: true
 
   argo-events:
     enabled: false
