@@ -22,7 +22,7 @@ apps:
       routes:
       - kind: Rule
         # Without host
-        match: PathPrefix(`/argo/`)
+        match: PathPrefix(`/argowf`)
         services:
           - name: argo-argo-workflows-server
             port: 2746
@@ -34,7 +34,7 @@ apps:
         spec: 
           stripPrefix:
             prefixes:
-              - /argo
+              - /argowf
       certificate:
         enabled: true
         issuerRef:
