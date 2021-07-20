@@ -38,7 +38,7 @@ tooling:
     enabled: true
 
   argo-events:
-    enabled: false
+    enabled: true
 
   harbor:
     enabled: false
