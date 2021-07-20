@@ -1,0 +1,19 @@
+name: argo-events-setup
+clusterService: false
+namespace: argo-events-setup
+description: Argo events setup
+
+project:
+  name: argo-events-setup
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+  
+
+apps:
+  - name: argo-events-setup
+    source:
+      repoURL: "https://github.com/Open-Dataplatform/argo-events-setup.git"
+      targetRevision: HEAD
+      path: setup
+      valuesFile: "argo-events-setup.yaml"

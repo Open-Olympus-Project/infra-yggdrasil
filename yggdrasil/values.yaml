@@ -74,3 +74,9 @@ example-guestbook:
   # The same name as one of the apps listed under the project.
   example-guestbook:
     enabled: false
+
+argo-events-setup:
+  enabled: true
+
+  argo-events-setup:
+    enabled: true
