@@ -24,7 +24,7 @@ apps:
         # Without host
         match: PathPrefix(`/argowf`)
         services:
-          - name: argo-workflows-argo-workflows-server
+          - name: argo-workflows-server
             port: 2746
         middlewares:
           - name: argo-stripprefix
