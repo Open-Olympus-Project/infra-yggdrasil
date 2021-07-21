@@ -11,6 +11,7 @@ The table contains the key of the secret, a small description about the use of t
 |------|-----|-------------|-------|------|--------------|
 | github-ssh | github | A ssh key the is allowed to access | to pull from repo in workflows | k8s/secrets/github-ssh | an ssh key
 | github-ssh | github.pub | The public key that belongs to the ssh key | to pull from repo in workflows | k8s/secrets/github-ssh | the public key
+| github-api-key | github-api | An api key that is alowed the repo-hook access | used as an event-source in argo-events | k8s/secrets/github-api | an api key from github
 | server-url | url | A secret the contains the servers url | for some workflows to know which server their on | k8s/configs/server-url | service-test.com
 | vault-url | url | A secret the contains the vault url | used to configure OIDC for the vault | k8s/configs/vault-url | service-vault-test.com
 | harbor-creds | username | a username for Harbor | To create projects in docker build flow | k8s/secrets/harbor | harbor-acc
