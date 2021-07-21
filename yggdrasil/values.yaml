@@ -34,7 +34,7 @@ networking:
 tooling: 
   enabled: true
 
-  argo:
+  argowf:
     enabled: true
 
   argo-events:
