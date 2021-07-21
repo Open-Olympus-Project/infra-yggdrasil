@@ -30,7 +30,7 @@ apps:
         # Without host
         match: PathPrefix(`/argo-events/azure`)
         services:
-          - name: azure-storage-test-eventsource-svc
+          - name: webhook-eventsource-svc
             port: 12000
       certificate:
         enabled: true
