@@ -26,6 +26,12 @@ apps:
         services:
           - name: github-eventsource-svc
             port: 12000
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/argo-events/azure`)
+        services:
+          - name: azure-storage-test-eventsource-svc
+            port: 12000
       certificate:
         enabled: true
         issuerRef:
