@@ -17,3 +17,18 @@ apps:
       targetRevision: HEAD
       path: setup
       valuesFile: "argo-events-setup.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/argo-events/github/push`)
+        services:
+          - name: github-eventsource-svc
+            port: 12000
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
