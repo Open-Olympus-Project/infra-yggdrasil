@@ -22,7 +22,7 @@ apps:
       routes:
       - kind: Rule
         # Without host
-        match: PathPrefix(`/argo-events/github/push`)
+        match: PathPrefix(`/argo-events/github`)
         services:
           - name: github-eventsource-svc
             port: 12000
