@@ -1,4 +1,5 @@
 argo-workflows:
+  singleNamespace: true
   server:
     enabled: true
     # only updates base url of resources on client side,
@@ -8,3 +9,12 @@ argo-workflows:
     secure: false
   controller:
     containerRuntimeExecutor: pns
+    workflowNamespaces:
+      - tooling
+
+  workflow:
+    serviceAccount:
+      create: true
+      name: "argo-workflow"
+    rbac:
+      create: true
