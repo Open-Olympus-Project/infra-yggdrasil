@@ -1,1 +1,2 @@
-# argo-events:
+argo-events:
+  singleNamespace: false
