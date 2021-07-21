@@ -11,6 +11,10 @@ argo-workflows:
     containerRuntimeExecutor: pns
     workflowNamespaces:
       - tooling
+    
+    workflowDefaults:
+      spec:
+        serviceAccountName: argo-workflow
 
   workflow:
     serviceAccount:
