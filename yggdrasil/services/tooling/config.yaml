@@ -10,7 +10,7 @@ project:
     - '*'
 
 apps:
-  - name: argowf
+  - name: argo-workflows
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-wf.git"
       targetRevision: dependency
@@ -24,7 +24,7 @@ apps:
         # Without host
         match: PathPrefix(`/argowf`)
         services:
-          - name: argo-argo-workflows-server
+          - name: argo-workflows-argo-workflows-server
             port: 2746
         middlewares:
           - name: argo-stripprefix
