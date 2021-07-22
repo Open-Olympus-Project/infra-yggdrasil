@@ -30,7 +30,7 @@ apps:
         # Without host
         match: PathPrefix(`/argo-events/github`)
         services:
-          - name: github-eventsource-svc
+          - name: github-pr-eventsource-svc
             port: 12000
       certificate:
         enabled: true
