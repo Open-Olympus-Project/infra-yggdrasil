@@ -1,6 +1,6 @@
 name: argo-events-setup
 clusterService: false
-namespace: events
+namespace: argo-events
 description: Argo events setup
 
 project:
