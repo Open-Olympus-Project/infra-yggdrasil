@@ -1,5 +1,4 @@
 argo-workflows:
-  singleNamespace: true
   server:
     enabled: true
     # only updates base url of resources on client side,
