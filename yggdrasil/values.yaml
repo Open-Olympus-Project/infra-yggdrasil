@@ -83,3 +83,6 @@ argo-events-setup:
   
   argo-events-github:
     enabled: true
+  
+  argo-events-azure:
+    enabled: true
