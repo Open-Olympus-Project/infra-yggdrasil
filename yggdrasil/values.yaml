@@ -84,5 +84,5 @@ argo-events-setup:
 argo-events-events:
   enabled: true
 
-  argo-events-events:
+  argo-events-github:
     enabled: true
