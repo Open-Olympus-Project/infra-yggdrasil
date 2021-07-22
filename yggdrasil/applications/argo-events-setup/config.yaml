@@ -43,18 +43,18 @@ apps:
       targetRevision: HEAD
       path: events-azure
       valuesFile: "argo-events-azure.yaml"
-    # ingressRoute:
-    #   entryPoints:
-    #     - websecure
-    #   routes:
-    #   - kind: Rule
-    #     # Without host
-    #     match: PathPrefix(`/argo-events/github`)
-    #     services:
-    #       - name: github-pr-eventsource-svc
-    #         port: 12000
-    #   certificate:
-    #     enabled: true
-    #     issuerRef:
-    #       name: letsencrypt-staging
-    #       kind: ClusterIssuer
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/argo-events/azure`)
+        services:
+          - name: azure-eventsource-svc
+            port: 12000
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
