@@ -37,3 +37,24 @@ apps:
         issuerRef:
           name: letsencrypt-staging
           kind: ClusterIssuer
+  - name: argo-events-azure
+    source:
+      repoURL: "https://github.com/Open-Dataplatform/argo-events-setup.git"
+      targetRevision: HEAD
+      path: events-azure
+      valuesFile: "argo-events-azure.yaml"
+    # ingressRoute:
+    #   entryPoints:
+    #     - websecure
+    #   routes:
+    #   - kind: Rule
+    #     # Without host
+    #     match: PathPrefix(`/argo-events/github`)
+    #     services:
+    #       - name: github-pr-eventsource-svc
+    #         port: 12000
+    #   certificate:
+    #     enabled: true
+    #     issuerRef:
+    #       name: letsencrypt-staging
+    #       kind: ClusterIssuer
