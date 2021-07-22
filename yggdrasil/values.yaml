@@ -80,3 +80,9 @@ argo-events-setup:
 
   argo-events-setup:
     enabled: true
+
+argo-events-events:
+  enabled: true
+
+  argo-events-events:
+    enabled: true

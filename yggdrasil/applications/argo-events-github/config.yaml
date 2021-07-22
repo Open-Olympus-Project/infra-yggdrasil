@@ -1,10 +1,10 @@
-name: argo-events-setup
+name: argo-events-events
 clusterService: false
-namespace: github-events
-description: Argo events setup
+namespace: events
+description: Argo events events
 
 project:
-  name: argo-events-setup
+  name: argo-events-events
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
