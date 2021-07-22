@@ -1,0 +1,33 @@
+name: argo-events-setup
+clusterService: false
+namespace: github-events
+description: Argo events setup
+
+project:
+  name: argo-events-setup
+  server: https://kubernetes.default.svc
+  sourceRepos:
+    - '*'
+
+apps:
+  - name: argo-events-github
+    source:
+      repoURL: "https://github.com/Open-Dataplatform/argo-events-github.git"
+      targetRevision: HEAD
+      path: events-github
+      valuesFile: "argo-events-github.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/argo-events/github`)
+        services:
+          - name: github-eventsource-svc
+            port: 12000
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
