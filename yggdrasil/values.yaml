@@ -80,3 +80,6 @@ argo-events-setup:
 
   argo-events-setup:
     enabled: true
+  
+  argo-events-github:
+    enabled: true
