@@ -8,6 +8,9 @@ project:
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
+  destinations:
+    - namespace: argo-events
+      server: https://kubernetes.default.svc
 
 apps:
   - name: argo-events-setup
