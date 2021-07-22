@@ -1,6 +1,6 @@
 name: argo-events-setup
 clusterService: false
-namespace: tooling
+namespace: events
 description: Argo events setup
 
 project:
@@ -16,3 +16,24 @@ apps:
       targetRevision: HEAD
       path: setup
       valuesFile: "argo-events-setup.yaml"
+  - name: argo-events-github
+    source:
+      repoURL: "https://github.com/Open-Dataplatform/argo-events-setup.git"
+      targetRevision: HEAD
+      path: events-github
+      valuesFile: "argo-events-github.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/argo-events/github`)
+        services:
+          - name: github-eventsource-svc
+            port: 12000
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
