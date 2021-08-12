@@ -24,6 +24,10 @@ nidhogg:
       enabled: false
     server:   
       replicas: 3
+      extraArgs:
+      - --insecure
+      - --rootpath
+      - /argocd
       config:
         url: https://service-poc.westeurope.cloudapp.azure.com/argocd
         repositories: |
