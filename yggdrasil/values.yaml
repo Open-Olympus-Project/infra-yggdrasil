@@ -1,9 +1,10 @@
-#fqdn: 
+#ingressDomain: dev.garagen
 
-# This values is if you want to have the applications as a subdomain.
-# ingressDomain: test.domain.com 
+#clusterNetworking: 
+#  ipRangeStart: 192.168.1.40
+  # ipRangeStop is both the ipRangeStop but also the ingress loadBalancerIP
+#  ipRangeStop: 192.168.1.49
 
-# This values is if you want to use paths instead of subdomains.
 ingress:
   host: <host>
   loadBalancerIP: <ip>
@@ -16,73 +17,19 @@ ingress:
     traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
     cert-manager.io/cluster-issuer: letsencrypt-staging
 
-networking:
-  enabled: true
-
-  ingress:
-    enabled: true
-
-  cert-manager:
-    enabled: true
-  
-  cert-manager-issuer:
-    enabled: true
-  
-  nidhogg-ingress:
-    enabled: true
-
-tooling: 
-  enabled: true
-
-  argo-workflows:
-    enabled: true
-
-  argo-events:
-    enabled: true
-
-  harbor:
-    enabled: false
-
-  vault:
-    enabled: true
-
-  external-secrets:
-    enabled: true
-
-monitoring:
-  enabled: true
-
-  prometheus:
-    enabled: true
-
-  thanos:
-    enabled: false
-  
-  grafana:
-    enabled: true
-  
-  loki:
-    enabled: true
-
-  jaeger-operator:
-    enabled: true
-
-# The same name as the project - This can be used to disable the whole project and namespace.
-example-guestbook:
-  enabled: false
-
-  # The same name as one of the apps listed under the project.
-  example-guestbook:
-    enabled: false
-
-argo-events-setup:
-  enabled: true
-
-  argo-events-setup:
-    enabled: true
-  
-  argo-events-github:
-    enabled: true
-  
-  argo-events-azure:
-    enabled: true
+applications: 
+  argowf:                 true
+  argo-events:            true
+  cert-manager:           true
+  example-guestbook:      false
+  grafana:                true
+  harbor:                 true
+  ingress:                true
+  jaeger-operator:        true
+  loki:                   true
+  prometheus:             true
+  thanos:                 true
+  vault:                  true
+  argo-events-setup:      true
+  argo-events-github:     true
+  argo-events-azure:      true

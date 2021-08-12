@@ -1,65 +1,73 @@
-# A reference to this repo itself.
-yggdrasil:
-  repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
-  targetRevision: "HEAD"
+nidhogg: 
+  yggdrasil:
+    repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
+    targetRevision: "main"
 
-  ingress:
-    host: service-poc.westeurope.cloudapp.azure.com
-    loadBalancerIP: 20.82.41.255
-    LoadBalancerResoureGroup: service-aks-poc
-    certmanagerissuer: letsencrypt-staging
+    ingress:
+      host: service-poc.westeurope.cloudapp.azure.com
+      loadBalancerIP: 20.82.41.255
+      LoadBalancerResoureGroup: service-aks-poc
+      certmanagerissuer: letsencrypt-staging
 
+  installCNI: false
 
-installCNI: false
+  argo-cd:
+    controller: 
+      replicas: 3
+      env:
+        - name: "ARGOCD_CONTROLLER_REPLICAS"
+          value: "3"
+      enableStatefulSet: true
+    redis-ha: 
+      enabled: true
+    redis:
+      enabled: false
+    server:   
+      replicas: 3
+      config:
+        url: https://service-poc.westeurope.cloudapp.azure.com/argocd
+        repositories: |
+          - type: helm
+            url: https://argoproj.github.io/argo-helm
+            name: argoproj
+          - type: helm
+            url: https://distributed-technologies.github.io/helm-repository/
+            name: dt-helmrepo
+          - type: helm
+            url: https://kubernetes.github.io/kube-state-metrics
+            name: metrics
+          - type: helm
+            url: https://prometheus-community.github.io/helm-charts
+            name: node-exporter
+          - type: helm
+            url: https://grafana.github.io/helm-charts
+            name: grafana
+          - type: helm
+            url: https://external-secrets.github.io/kubernetes-external-secrets
+            name: external-secrets
+        resource.customizations: |
+          admissionregistration.k8s.io/MutatingWebhookConfiguration:
+            ignoreDifferences: |
+              jsonPointers:
+              - /webhooks/0/clientConfig/caBundle
+          admissionregistration.k8s.io/ValidatingWebhookConfiguration:
+            ignoreDifferences: |
+              jsonPointers:
+              - /webhooks/0/clientConfig/caBundle
+              - /webhooks/0/namespaceSelector/matchExpressions/2
+          networking.k8s.io/Ingress:
+            health.lua: |
+              hs = {}
+              hs.status = "Healthy"
+              return hs
+          jaegertracing.io/Jaeger:
+            health.lua: |
+              hs = {}
+              hs.status = "Healthy"
+              return hs
 
-argo-cd: 
-  controller: 
-    enableStatefulSet: true
-  redis-ha: 
-    enabled: true
-  server: 
-    extraArgs:
-      - --insecure
-      - --rootpath
-      - /argocd
-    config:
-      url: https://service-poc.westeurope.cloudapp.azure.com/argocd
-      repositories: |
-        - type: helm
-          url: https://argoproj.github.io/argo-helm
-          name: argoproj
-        - type: helm
-          url: https://distributed-technologies.github.io/helm-repository/
-          name: dt-helmrepo
-        - type: helm
-          url: https://kubernetes.github.io/kube-state-metrics
-          name: metrics
-        - type: helm
-          url: https://prometheus-community.github.io/helm-charts
-          name: node-exporter
-        - type: helm
-          url: https://grafana.github.io/helm-charts
-          name: grafana
-        - type: helm
-          url: https://external-secrets.github.io/kubernetes-external-secrets
-          name: external-secrets
-      resource.customizations: |
-        admissionregistration.k8s.io/MutatingWebhookConfiguration:
-          ignoreDifferences: |
-            jsonPointers:
-            - /webhooks/0/clientConfig/caBundle
-        admissionregistration.k8s.io/ValidatingWebhookConfiguration:
-          ignoreDifferences: |
-            jsonPointers:
-            - /webhooks/0/clientConfig/caBundle
-            - /webhooks/0/namespaceSelector/matchExpressions/2
-        networking.k8s.io/Ingress:
-          health.lua: |
-            hs = {}
-            hs.status = "Healthy"
-            return hs
-        jaegertracing.io/Jaeger:
-          health.lua: |
-            hs = {}
-            hs.status = "Healthy"
-            return hs
+    configs:
+      secret:
+        # This is not a secret password. It is okay to be on github
+        argocdServerAdminPassword: $2y$12$m4KC7G9d8NFxInl7GRpQ1OpPPrF43Msa33ZQjj0YmT6f8uwjHW8AO
+        argocdServerAdminPasswordMtime: "2021-01-02T15:04:05Z"
