@@ -1,11 +1,9 @@
-{{- $root := . -}}
+{{- $root := . }}
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
-  {{ $project := $root.Files.Get $path | fromYaml }}
-  {{ $projectValues := index $root.Values $project.name }}
-  {{ if $projectValues.enabled }}
+  {{- $project := $root.Files.Get $path | fromYaml }}
   {{- range $project.apps }}
-    {{ if (index $projectValues .name).enabled }}
-    {{- if .ingressRoute }}
+    {{- if get $root.Values.applications .name -}}
+      {{- if .ingressRoute }}
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
@@ -62,8 +60,7 @@ spec:
   {{ end }}
 {{ end }}
 
+      {{ end }}
     {{ end }}
-    {{ end }}
-  {{ end }}
   {{ end }}
 {{ end }}
