@@ -18,10 +18,15 @@ ingress:
     cert-manager.io/cluster-issuer: letsencrypt-staging
 
 applications: 
-  argowf:                 true
+  argo-workflows:         true
   argo-events:            true
+  argo-events-setup:      true
+  argo-events-github:     true
+  argo-events-azure:      true
   cert-manager:           true
+  cert-manager-issuer:    true
   example-guestbook:      false
+  external-secrets:       true
   grafana:                true
   harbor:                 true
   ingress:                true
@@ -30,6 +35,3 @@ applications:
   prometheus:             true
   thanos:                 true
   vault:                  true
-  argo-events-setup:      true
-  argo-events-github:     true
-  argo-events-azure:      true
