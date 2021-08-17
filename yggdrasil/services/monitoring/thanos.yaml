@@ -10,4 +10,5 @@
 # querytls:
 
 # Values for the subchart
-# thanos:
+thanos:
+  objstoreSecretOverride: "thanos-bucket"
