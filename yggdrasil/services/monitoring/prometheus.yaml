@@ -28,6 +28,15 @@ prometheus:
     # nodeSelector:
     #   agentpool: monitoring
 
+    baseURL: "https://{{ .Values.ingress.host }}/prometheus"
+    prefixURL: "/prometheus"
+
+    extraFlags:
+    - web.enable-lifecycle
+    - web.route-prefix=/prometheus
+
+    retention: "2h"
+
     extraVolumes:
     - name: prometheus-bucket
       secret:
@@ -69,6 +78,12 @@ prometheus:
     #   agentpool: monitoring
     ingress:
       enabled: false
+    
+    baseURL: "https://{{ .Values.ingress.host }}/alertmanager"
+    prefixURL: "/alertmanager"
+
+    extraFlags:
+    - web.route-prefix=/alertmanager
 
   # nodeExporter: 
     # nodeSelector:
