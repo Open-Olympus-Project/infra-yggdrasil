@@ -89,6 +89,6 @@ apps:
   - name: external-secrets
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-external-secrets.git"
-      targetRevision: HEAD
+      targetRevision: operator
       path: external-secrets
       valuesFile: "external-secrets.yaml"
