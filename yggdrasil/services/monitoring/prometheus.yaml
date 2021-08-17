@@ -28,9 +28,10 @@ prometheus:
     # nodeSelector:
     #   agentpool: monitoring
 
-    extraSecretMounts :
+    extraVolumes:
     - name: prometheus-bucket
-      secretName: prometheus-bucket
+      secret:
+        secretName: prometheus-bucket
 
     sidecarContainers:
       - name: thanos-sidecar
