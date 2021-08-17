@@ -69,7 +69,10 @@ prometheus:
             mountPath: /etc/objectStorage
             readOnly: true
 
-    
+    global:
+        
+      external_labels:
+        prometheus: Prometheus    
 
   alertmanager:
     # nodeSelector:
