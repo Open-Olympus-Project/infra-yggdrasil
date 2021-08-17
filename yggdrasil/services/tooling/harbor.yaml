@@ -1,7 +1,5 @@
 harbor:
   externalURL: "https://{{ .Values.ingress.host }}"
-  expose:
-    type: clusterIP
 
   persistence:
     persistentVolumeClaim:
