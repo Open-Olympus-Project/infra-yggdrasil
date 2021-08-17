@@ -1,23 +1,26 @@
-# We're not using the dependency chart since we're interrested in changing the gateway to the prom-aggregation-gateway
-# https://github.com/weaveworks/prom-aggregation-gateway
-# 
-# Which needs a change to the liveness and 
-#
-# no need for this since the current helm chart used is not a dependency chart
+standalonePushgateway:
+  enabled: true
+
+prometheus-pushgateway:
+
+  image:
+    repository: weaveworks/prom-aggregation-gateway
+    tag: master-c4415bbe
+    pullPolicy: IfNotPresent
+
+  extraArgs: ["-listen", ":9091"]
+
+  # nodeSelector:
+  #   agentpool: monitoring
+
 prometheus:
 
+  serviceAccounts:
+    pushgateway:
+      create: false
+
   pushgateway:
-    # nodeSelector:
-    #   agentpool: monitoring
-
-    ## pushgateway container image
-    ##
-    image:
-      repository: weaveworks/prom-aggregation-gateway
-      tag: master-c4415bbe
-      pullPolicy: IfNotPresent
-
-    extraArgs: ["-listen", ":9091"]
+    enabled: false
 
   server:
     ingress:
