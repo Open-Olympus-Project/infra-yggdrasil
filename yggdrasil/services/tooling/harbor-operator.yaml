@@ -1,3 +1,0 @@
-minio-operator:
-  # minio-operator.enabled -- Whether to enabled [MinIO Operator](https://github.com/minio/operator)
-  enabled: true

@@ -36,6 +36,6 @@ applications:
   minio-operator:         false
   postgres-operator:      false
   prometheus:             true
-  redis-operator:         false
+  redis-operator:         true
   thanos:                 true
   vault:                  true
