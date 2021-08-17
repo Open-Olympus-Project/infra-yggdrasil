@@ -21,6 +21,21 @@ apps:
       targetRevision: dependency
       path: prometheus
       valuesFile: "prometheus.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/alertmanager`)
+        services:
+          - name: prometheus-alertmanager
+            port: 80
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
   - name: thanos
     source:
       repoURL: 'https://github.com/Open-Olympus-Project/tooling-thanos.git'
