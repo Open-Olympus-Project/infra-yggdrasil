@@ -1,1 +1,4 @@
-
+minio-operator:
+  tenants:
+  - name: minio1
+    namespace: tooling
