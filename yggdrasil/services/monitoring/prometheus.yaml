@@ -28,9 +28,6 @@ prometheus:
     # nodeSelector:
     #   agentpool: monitoring
 
-    baseURL: "https://{{ .Values.ingress.host }}/prometheus"
-    prefixURL: "/prometheus"
-
     extraFlags:
     - web.enable-lifecycle
     - storage.tsdb.max-block-duration=2h
