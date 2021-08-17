@@ -98,3 +98,21 @@ apps:
       targetRevision: operator
       path: external-secrets
       valuesFile: "external-secrets.yaml"
+  - name: redis-operator
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-redis-operator.git"
+      targetRevision: main
+      path: redis-operator
+      valuesFile: "redis-operator.yaml"
+  - name: minio-operator
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-minio-operator.git"
+      targetRevision: main
+      path: minio-operator
+      valuesFile: "minio-operator.yaml"
+  - name: postgress-operator
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-postgress-operator.git"
+      targetRevision: main
+      path: postgress-operator
+      valuesFile: "postgress-operator.yaml"

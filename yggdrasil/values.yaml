@@ -33,6 +33,9 @@ applications:
   ingress:                true
   jaeger-operator:        true
   loki:                   true
+  minio-operator:         true
+  postgres-operator:      true
   prometheus:             true
+  redis-operator:         true
   thanos:                 true
   vault:                  true
