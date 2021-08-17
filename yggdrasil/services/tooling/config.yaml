@@ -110,9 +110,9 @@ apps:
       targetRevision: main
       path: minio-operator
       valuesFile: "minio-operator.yaml"
-  - name: postgress-operator
+  - name: postgres-operator
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-postgress-operator.git"
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-postgres-operator.git"
       targetRevision: main
-      path: postgress-operator
-      valuesFile: "postgress-operator.yaml"
+      path: postgres-operator
+      valuesFile: "postgres-operator.yaml"
