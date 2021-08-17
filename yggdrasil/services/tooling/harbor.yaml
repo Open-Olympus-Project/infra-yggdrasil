@@ -1,1 +1,16 @@
-# harbor:
+harbor:
+  externalURL: "https://{{ .Values.ingress.host }}"
+  expose:
+    type: clusterIP
+
+  persistence:
+    persistentVolumeClaim:
+      registry:
+        size: 100Gi
+      chartmuseum:
+        size: 25Gi
+      jobservice:
+        size: 5Gi
+
+  metrics:
+    enabled: true
