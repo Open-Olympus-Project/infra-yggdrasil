@@ -50,12 +50,12 @@ apps:
       targetRevision: dependency
       path: argo-events
       valuesFile: "argo-events.yaml"
-  - name: quay-operator
+  - name: harbor
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-quay-operator.git"
-      targetRevision: main
-      path: quay-operator
-      valuesFile: "quay-operator.yaml"
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-harbor.git"
+      targetRevision: dependency
+      path: harbor
+      valuesFile: "harbor.yaml"
   - name: vault
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
