@@ -1,10 +1,5 @@
 #ingressDomain: dev.garagen
 
-#clusterNetworking: 
-#  ipRangeStart: 192.168.1.40
-  # ipRangeStop is both the ipRangeStop but also the ingress loadBalancerIP
-#  ipRangeStop: 192.168.1.49
-
 ingress:
   host: <host>
   hostVault: <host-vault>

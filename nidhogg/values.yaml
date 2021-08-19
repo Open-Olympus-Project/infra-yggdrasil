@@ -6,6 +6,7 @@ nidhogg:
     ingress:
       host: service-poc.westeurope.cloudapp.azure.com
       loadBalancerIP: 20.82.41.255
+      vaultLoadBalancerIP: 20.82.41.148
       LoadBalancerResoureGroup: service-aks-poc
       certmanagerissuer: letsencrypt-staging
 
