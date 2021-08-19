@@ -7,15 +7,11 @@
 
 ingress:
   host: <host>
+  hostVault: <host-vault>
   loadBalancerIP: <ip>
   LoadBalancerResoureGroup: <resource_group>
   certmanagerissuer: <cert-manager-issuer>
   # className: ingress-traefik
-
-  annotations:
-    # kubernetes.io/ingress.class: traefik
-    traefik.ingress.kubernetes.io/router.entrypoints: web, websecure
-    cert-manager.io/cluster-issuer: letsencrypt-staging
 
 applications: 
   argo-workflows:         true
@@ -25,7 +21,6 @@ applications:
   argo-events-azure:      true
   cert-manager:           true
   cert-manager-issuer:    true
-  example-guestbook:      false
   external-secrets:       true
   grafana:                true
   harbor:                 true
