@@ -1,11 +1,13 @@
-# serviceDomain: {{ .Values.fqdn }}
-
-dashboardRoute:
-  host: {{ .Values.ingress.host }}
-
 traefik:
+  deployment:
+    enabled: true
+    # Can be either Deployment or DaemonSet
+    kind: DaemonSet
+
   ingressClass:
     fallbackApiVersion: "v1"
+    enabled: true
+    isDefaultClass: true
 
   service:
     enabled: true
@@ -14,12 +16,6 @@ traefik:
       service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.ingress.LoadBalancerResoureGroup | quote }}
     spec:
       loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
-
-#  ports:
-#    web:
-#      nodePort: 32080
-#    websecure:
-#      nodePort: 32443
 
   logs:
     access:

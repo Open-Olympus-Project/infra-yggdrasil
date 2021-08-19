@@ -18,9 +18,9 @@ project:
 apps:
   - name: ingress
     source:
-      repoURL: "https://github.com/distributed-technologies/mukube-ingress.git"
-      targetRevision: HEAD
-      path: chart
+      repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
+      targetRevision: main
+      path: traefik
       valuesFile: "ingress.yaml"
   - name: cert-manager
     source:
