@@ -49,9 +49,6 @@ nidhogg:
           - type: helm
             url: https://charts.external-secrets.io
             name: external-secrets
-          - type: helm
-            url: https://operator.min.io/
-            name: minio
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
             ignoreDifferences: |
