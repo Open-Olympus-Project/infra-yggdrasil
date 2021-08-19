@@ -32,6 +32,6 @@ applications:
   jaeger-operator:        true
   loki:                   true
   prometheus:             true
-  quay-operator:          true
+  quay-operator:          false
   thanos:                 true
   vault:                  true
