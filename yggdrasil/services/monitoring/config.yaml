@@ -59,7 +59,7 @@ apps:
         - websecure
       routes:
       - kind: Rule
-        # Without host
+        host: service-poc.westeurope.cloudapp.azure.com
         match: PathPrefix(`/grafana`)
         services:
           - name: grafana
@@ -101,7 +101,7 @@ apps:
         - websecure
       routes:
       - kind: Rule
-        # Without host
+        host: service-poc.westeurope.cloudapp.azure.com
         match: PathPrefix(`/jaeger`)
         services:
           - name: jaeger-operator-jaeger-query

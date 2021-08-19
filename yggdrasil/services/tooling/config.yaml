@@ -25,7 +25,7 @@ apps:
         - websecure
       routes:
       - kind: Rule
-        # Without host
+        host: service-poc.westeurope.cloudapp.azure.com
         match: PathPrefix(`/argowf`)
         services:
           - name: argo-workflows-server
@@ -61,37 +61,37 @@ apps:
     #     - websecure
     #   routes:
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/`)
     #     services:
     #       - name: harbor-portal
     #         port: 80
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/api/`)
     #     services:
     #       - name: harbor-core
     #         port: 80
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/service/`)
     #     services:
     #       - name: harbor-core
     #         port: 80
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/v2`)
     #     services:
     #       - name: harbor-core
     #         port: 80
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/chartrepo/`)
     #     services:
     #       - name: harbor-core
     #         port: 80
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/c/`)
     #     services:
     #       - name: harbor-core
@@ -112,7 +112,7 @@ apps:
     #     - websecure
     #   routes:
     #   - kind: Rule
-    #     # Without host
+    #     host: service-poc.westeurope.cloudapp.azure.com
     #     match: PathPrefix(`/vault`)
     #     services:
     #       - name: vault-ui

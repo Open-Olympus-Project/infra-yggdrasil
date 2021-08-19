@@ -1,10 +1,11 @@
 #ingressDomain: dev.garagen
 
 ingress:
-  host: <host>
-  hostVault: <host-vault>
-  loadBalancerIP: <ip>
-  vaultLoadBalancerIP: <ip>
+  hosts:
+  - host: <host1>
+    loadBalancerIP: <ip>
+  - host: <host2>
+    loadBalancerIP: <ip>
   LoadBalancerResoureGroup: <resource_group>
   certmanagerissuer: <cert-manager-issuer>
   # className: ingress-traefik
