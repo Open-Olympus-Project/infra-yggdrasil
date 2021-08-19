@@ -9,6 +9,7 @@ ingress:
   host: <host>
   hostVault: <host-vault>
   loadBalancerIP: <ip>
+  vaultLoadBalancerIP: <ip>
   LoadBalancerResoureGroup: <resource_group>
   certmanagerissuer: <cert-manager-issuer>
   # className: ingress-traefik

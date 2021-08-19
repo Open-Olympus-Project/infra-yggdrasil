@@ -1,3 +1,5 @@
+ip: {{ .Values.ingress.vaultLoadBalancerIP }}  
+
 traefik:
   deployment:
     enabled: true
