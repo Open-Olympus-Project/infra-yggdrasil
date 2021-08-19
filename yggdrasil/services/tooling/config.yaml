@@ -56,6 +56,51 @@ apps:
       targetRevision: dependency
       path: harbor
       valuesFile: "harbor.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/`)
+        services:
+          - name: harbor-portal
+            port: 80
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/api/`)
+        services:
+          - name: harbor-core
+            port: 80
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/service/`)
+        services:
+          - name: harbor-core
+            port: 80
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/v2`)
+        services:
+          - name: harbor-core
+            port: 80
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/chartrepo/`)
+        services:
+          - name: harbor-core
+            port: 80
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/c/`)
+        services:
+          - name: harbor-core
+            port: 80
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
   - name: vault
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"

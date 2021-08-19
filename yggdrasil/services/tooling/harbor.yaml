@@ -1,0 +1,13 @@
+externalURL: "https://service-dp.westeurope.cloudapp.azure.com"
+
+persistence:
+  persistentVolumeClaim:
+    registry:
+      size: 100Gi
+    chartmuseum:
+      size: 25Gi
+    jobservice:
+      size: 5Gi
+
+metrics:
+  enabled: true
