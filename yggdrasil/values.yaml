@@ -28,14 +28,10 @@ applications:
   example-guestbook:      false
   external-secrets:       true
   grafana:                true
-  harbor:                 true
-  harbor-operator:        true
   ingress:                true
   jaeger-operator:        true
   loki:                   true
-  minio-operator:         true
-  postgres-operator:      false
   prometheus:             true
-  redis-operator:         false
+  quay-operator:          true
   thanos:                 true
   vault:                  true

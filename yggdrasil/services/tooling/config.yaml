@@ -50,18 +50,12 @@ apps:
       targetRevision: dependency
       path: argo-events
       valuesFile: "argo-events.yaml"
-  - name: harbor-operator
+  - name: quay-operator
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-harbor.git"
-      targetRevision: operator
-      path: harbor-operator
-      valuesFile: "harbor-operator.yaml"  
-  - name: harbor
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-harbor.git"
-      targetRevision: operator
-      path: harbor
-      valuesFile: "harbor.yaml"
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-quay-operator.git"
+      targetRevision: main
+      path: quay-operator
+      valuesFile: "quay-operator.yaml"
   - name: vault
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
@@ -98,21 +92,3 @@ apps:
       targetRevision: operator
       path: external-secrets
       valuesFile: "external-secrets.yaml"
-  - name: redis-operator
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-redis-operator.git"
-      targetRevision: main
-      path: redis-operator
-      valuesFile: "redis-operator.yaml"
-  - name: minio-operator
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-minio-operator.git"
-      targetRevision: main
-      path: minio-operator
-      valuesFile: "minio-operator.yaml"
-  - name: postgres-operator
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-postgres-operator.git"
-      targetRevision: main
-      path: postgres-operator
-      valuesFile: "postgres-operator.yaml"
