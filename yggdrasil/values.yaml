@@ -20,7 +20,7 @@ applications:
   cert-manager-issuer:    true
   external-secrets:       true
   grafana:                true
-  harbor:                 true
+  harbor:                 false
   ingress:                true
   jaeger-operator:        true
   loki:                   true
