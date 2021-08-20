@@ -24,6 +24,7 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
         # Without host
@@ -57,9 +58,9 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
-        host: service-poc.westeurope.cloudapp.azure.com
         match: PathPrefix(`/grafana`)
         services:
           - name: grafana
@@ -99,9 +100,9 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
-        host: service-poc.westeurope.cloudapp.azure.com
         match: PathPrefix(`/jaeger`)
         services:
           - name: jaeger-operator-jaeger-query

@@ -2,6 +2,7 @@
 {{- range $path, $_ := .Files.Glob "**/**/config.yaml" }}
   {{- $project := $root.Files.Get $path | fromYaml }}
   {{- range $project.apps }}
+    {{ $app := . }}
     {{- if get $root.Values.applications .name -}}
       {{- if .ingressRoute }}
 ---
@@ -18,7 +19,7 @@ spec:
   routes:
 {{- range .ingressRoute.routes}}
   - kind: {{ .kind }}
-    match: Host(`{{ .host }}`) && {{ .match }}
+    match: Host(`{{ $app.ingressRoute.host }}`) && {{ .match }}
     services:
 {{ .services | toYaml | indent 6 }}
     middlewares:
@@ -51,7 +52,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   dnsNames:
-    - {{ $root.Values.ingress.host }}
+    - {{ $app.ingressRoute.host }}
   secretName: {{ .name }}-tls
   {{- with .ingressRoute.certificate.issuerRef }}
   issuerRef:

@@ -23,9 +23,9 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
-        host: service-poc.westeurope.cloudapp.azure.com
         match: PathPrefix(`/argowf`)
         services:
           - name: argo-workflows-server
