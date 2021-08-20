@@ -5,7 +5,7 @@ nidhogg:
 
     ingress:
       hosts:
-      - host: service-poc.westeurope.cloudapp.azure.com
+      - host: service-poc.westeurope.cloudapp.azure.com #This IS what argocd will run on
         loadBalancerIP: 20.82.41.255
       - host: service-vault-poc.westeurope.cloudapp.azure.com
         loadBalancerIP: 20.82.41.148
