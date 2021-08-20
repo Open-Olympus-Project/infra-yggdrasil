@@ -50,87 +50,28 @@ apps:
       targetRevision: dependency
       path: argo-events
       valuesFile: "argo-events.yaml"
-  - name: harbor
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-harbor.git"
-      targetRevision: dependency
-      path: harbor
-      valuesFile: "harbor.yaml"
-    # ingressRoute:
-    #   entryPoints:
-    #     - websecure
-    #   routes:
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/`)
-    #     services:
-    #       - name: harbor-portal
-    #         port: 80
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/api/`)
-    #     services:
-    #       - name: harbor-core
-    #         port: 80
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/service/`)
-    #     services:
-    #       - name: harbor-core
-    #         port: 80
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/v2`)
-    #     services:
-    #       - name: harbor-core
-    #         port: 80
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/chartrepo/`)
-    #     services:
-    #       - name: harbor-core
-    #         port: 80
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/c/`)
-    #     services:
-    #       - name: harbor-core
-    #         port: 80
-    #   certificate:
-    #     enabled: true
-    #     issuerRef:
-    #       name: letsencrypt-staging
-    #       kind: ClusterIssuer
   - name: vault
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
       targetRevision: vault-init-job
       path: vault
       valuesFile: "vault.yaml"
-    # ingressRoute:
-    #   entryPoints:
-    #     - websecure
-    #   routes:
-    #   - kind: Rule
-    #     host: service-poc.westeurope.cloudapp.azure.com
-    #     match: PathPrefix(`/vault`)
-    #     services:
-    #       - name: vault-ui
-    #         port: 8200
-    #     middlewares:
-    #       - name: vault-stripprefix
-      
-    #   middlewares:
-    #   - name: vault-stripprefix
-    #     spec: 
-    #       stripPrefix:
-    #         prefixes:
-    #           - /vault
-    #   certificate:
-    #     enabled: true
-    #     issuerRef:
-    #       name: letsencrypt-staging
-    #       kind: ClusterIssuer
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-vault-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/`)
+        services:
+          - name: vault-ui
+            port: 8200
+
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
   - name: external-secrets
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-external-secrets.git"
