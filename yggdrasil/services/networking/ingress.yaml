@@ -1,6 +1,7 @@
 services:
 {{- range $.Values.ingress.hosts}}
 - enabled: true
+  namePrefix: {{ .name | quote }}
   type: LoadBalancer
   # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
   annotations: {}
