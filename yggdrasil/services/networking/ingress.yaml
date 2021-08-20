@@ -5,7 +5,7 @@ services:
   type: LoadBalancer
   # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
   annotations:
-    service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.ingress.LoadBalancerResoureGroup | quote }}
+    service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ $.Values.ingress.LoadBalancerResoureGroup | quote }}
 
   # Additional annotations for TCP service only
   annotationsTCP: {}
