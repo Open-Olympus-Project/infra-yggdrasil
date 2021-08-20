@@ -25,6 +25,7 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
         # Without host
@@ -46,6 +47,7 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
         # Without host
