@@ -67,7 +67,7 @@ nidhogg:
           apiextensions.k8s.io/v1:
             ignoreDifferences: |
               jsonPointers:
-              - /preserveUnknownFields
+              - /spec/preserveUnknownFields
           networking.k8s.io/Ingress:
             health.lua: |
               hs = {}
