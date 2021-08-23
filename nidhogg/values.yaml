@@ -10,7 +10,7 @@ nidhogg:
         name: ""
       - host: service-vault-poc.westeurope.cloudapp.azure.com
         loadBalancerIP: 20.82.41.148
-        name: "vault"
+        name: "-vault"
       LoadBalancerResoureGroup: service-aks-poc
       certmanagerissuer: letsencrypt-staging
 

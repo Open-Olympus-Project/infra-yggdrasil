@@ -22,6 +22,32 @@ apps:
       targetRevision: main
       path: traefik
       valuesFile: "ingress.yaml"
+    ingressRoute:
+      entryPoints:
+        - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/auth`)
+        services:
+          - name: traefikauth
+            port: 80
+        middlewares:
+          - name: auth
+      
+      middlewares:
+      - name: auth
+        spec: 
+          forwardAuth:
+            address: https://service-poc.westeurope.cloudapp.azure.com/auth/_oauth
+            trustForwardHeader: true
+            authResponseHeaders:
+              - X-Forwarded-User
+      certificate:
+        enabled: true
+        issuerRef:
+          name: letsencrypt-staging
+          kind: ClusterIssuer
   - name: cert-manager
     source:
       repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
