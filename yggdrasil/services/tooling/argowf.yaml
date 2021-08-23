@@ -8,7 +8,7 @@ argo-workflows:
     secure: false
     #TODO delete this when oidc comes into play
     extraArgs:
-    - --auth-mode client
+    - --auth-mode [client]
   controller:
     containerRuntimeExecutor: pns
     workflowNamespaces:
