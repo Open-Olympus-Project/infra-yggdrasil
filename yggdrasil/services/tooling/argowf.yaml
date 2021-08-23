@@ -6,6 +6,8 @@ argo-workflows:
     # https://github.com/argoproj/argo-workflows/issues/716#issuecomment-433213190
     baseHref: /argowf/
     secure: false
+    extraArgs:
+    - --auth-mode=client
   controller:
     containerRuntimeExecutor: pns
     workflowNamespaces:
