@@ -28,21 +28,11 @@ apps:
       host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
-        match: PathPrefix(`/auth`)
+        match: {}
         services:
           - name: traefikauth
             port: 80
-        middlewares:
-          - name: auth
-      
-      middlewares:
-      - name: auth
-        spec: 
-          forwardAuth:
-            address: https://service-poc.westeurope.cloudapp.azure.com/auth/_oauth
-            trustForwardHeader: true
-            authResponseHeaders:
-              - X-Forwarded-User
+
       certificate:
         enabled: true
         issuerRef:
