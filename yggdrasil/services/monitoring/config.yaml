@@ -33,7 +33,7 @@ apps:
           - name: prometheus-alertmanager
             port: 80
       certificate:
-        enabled: true
+        enabled: trues
         issuerRef:
           name: letsencrypt-staging
           kind: ClusterIssuer
@@ -67,6 +67,7 @@ apps:
             port: 80
         middlewares:
           - name: grafana-stripprefix
+          - name: auth
       
       middlewares:
       - name: grafana-stripprefix
