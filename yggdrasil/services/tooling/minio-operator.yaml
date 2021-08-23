@@ -1,0 +1,4 @@
+minio-operator:
+
+  ## MinIO Tenant Definition
+  tenants: {}

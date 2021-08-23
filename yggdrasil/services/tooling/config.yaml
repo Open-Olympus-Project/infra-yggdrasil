@@ -78,3 +78,9 @@ apps:
       targetRevision: operator
       path: external-secrets
       valuesFile: "external-secrets.yaml"
+  - name: minio-operator
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/tooling-minio-operator.git"
+      targetRevision: main
+      path: minio-operator
+      valuesFile: "minio-operator.yaml"
