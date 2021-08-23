@@ -64,7 +64,7 @@ nidhogg:
               jsonPointers:
               - /webhooks/0/clientConfig/caBundle
               - /webhooks/0/namespaceSelector/matchExpressions/2
-          apiextensions.k8s.io/v1:
+          apiextensions.k8s.io/CustomResourceDefinition:
             ignoreDifferences: |
               jsonPointers:
               - /spec/preserveUnknownFields
