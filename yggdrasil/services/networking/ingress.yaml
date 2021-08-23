@@ -36,3 +36,7 @@ traefik:
   logs:
     access:
       enabled: true
+
+traefikForwardAuth:
+  host: {{ (first .Values.ingress.hosts).host }}
+  authPath: /_oauth
