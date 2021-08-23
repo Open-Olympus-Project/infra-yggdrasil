@@ -32,6 +32,8 @@ apps:
             port: 2746
         middlewares:
           - name: argo-stripprefix
+          - name: auth
+            namespace: networking
       middlewares:
       - name: argo-stripprefix
         spec: 
