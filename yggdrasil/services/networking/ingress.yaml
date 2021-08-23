@@ -37,6 +37,9 @@ traefik:
     access:
       enabled: true
 
+  additionalArguments:
+  - --entryPoints.websecure.forwardedHeaders.trustedIPs=10.244.0.0/16
+
 traefikForwardAuth:
   host: {{ (first .Values.ingress.hosts).host }}
   authPath: /auth/_oauth
