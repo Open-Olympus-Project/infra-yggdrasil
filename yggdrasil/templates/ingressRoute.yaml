@@ -19,7 +19,7 @@ spec:
   routes:
 {{- range .ingressRoute.routes}}
   - kind: {{ .kind }}
-    match: Host(`{{ $app.ingressRoute.host }}`) && {{ .match }}
+    match: Host(`{{ $app.ingressRoute.host }}`) {{ if .match }}{{ printf "%s %s" "&&" .match }}{{ end }}
     services:
 {{ .services | toYaml | indent 6 }}
     middlewares:
