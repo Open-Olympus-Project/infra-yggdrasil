@@ -39,4 +39,4 @@ traefik:
 
 traefikForwardAuth:
   host: {{ (first .Values.ingress.hosts).host }}
-  authPath: /_oauth
+  authPath: /auth/_oauth
