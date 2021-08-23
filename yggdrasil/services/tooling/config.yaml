@@ -32,6 +32,7 @@ apps:
             port: 2746
         middlewares:
           - name: argo-stripprefix
+          - name: auth
       
       middlewares:
       - name: argo-stripprefix
@@ -39,6 +40,14 @@ apps:
           stripPrefix:
             prefixes:
               - /argowf
+      - name: auth
+        spec: 
+          forwardAuth:
+            address: https://service-poc.westeurope.cloudapp.azure.com/auth/_oauth
+            trustForwardHeader: true
+            authResponseHeaders:
+              - X-Forwarded-User
+              
       certificate:
         enabled: true
         issuerRef:

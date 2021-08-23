@@ -28,7 +28,7 @@ apps:
       host: service-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
-        match: {}
+        match: PathPrefix(`/auth`)
         services:
           - name: traefikauth
             port: 80
