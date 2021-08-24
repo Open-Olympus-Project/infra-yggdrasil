@@ -1,2 +1,2 @@
 host: {{ (last .Values.ingress.hosts).host }}
-authPath: /auth/_oauth
+authPath: /_oauth

@@ -43,10 +43,10 @@ apps:
     ingressRoute:
       entryPoints:
         - websecure
-      host: service-poc.westeurope.cloudapp.azure.com
+      host: service-auth-poc.westeurope.cloudapp.azure.com
       routes:
       - kind: Rule
-        match: PathPrefix(`/auth`)
+        match: {}
         services:
           - name: traefik-forward-auth-service
             port: 80
