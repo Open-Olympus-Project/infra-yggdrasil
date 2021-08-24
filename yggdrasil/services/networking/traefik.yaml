@@ -41,6 +41,3 @@ traefik:
 
   additionalArguments:
   - --metrics.prometheus=true
-  - --entrypoints.web.http.redirections.entrypoint.to=websecure
-  - --entrypoints.web.http.redirections.entrypoint.scheme=https
-  - --providers.kubernetesingress.ingressclass=traefik
