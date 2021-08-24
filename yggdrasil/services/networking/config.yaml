@@ -50,8 +50,5 @@ apps:
         services:
           - name: traefik-forward-auth-service
             port: 80
-        middlewares:
-        - name: auth
-          namespace: networking
       certificate:
         enabled: true
