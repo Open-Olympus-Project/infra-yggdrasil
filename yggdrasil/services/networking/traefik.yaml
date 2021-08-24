@@ -37,5 +37,15 @@ traefik:
     access:
       enabled: true
 
+  ports:
+    web:
+      port: 80
+    websecure:
+      port: 443
+  
   additionalArguments:
-  - --entryPoints.websecure.forwardedHeaders.trustedIPs=10.244.0.0/16
+  - --providers.kubernetesingress
+  - --providers.kubernetesingress.ingressclass=traefik2
+  - --metrics.prometheus=true
+  - --entrypoints.web.http.redirections.entrypoint.to=websecure
+  - --entrypoints.web.http.redirections.entrypoint.scheme=https
