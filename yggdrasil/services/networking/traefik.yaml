@@ -34,8 +34,6 @@ traefik:
     isDefaultClass: true
 
   logs:
-    general:
-      level: DEBUG
     access:
       enabled: true
 
