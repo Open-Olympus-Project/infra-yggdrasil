@@ -11,7 +11,7 @@ issuers:
   solvers:
   - http01:
       ingress:
-        class: traefik2
+        class: traefik
 
 - name: letsencrypt-staging
   enabled: true
@@ -25,4 +25,4 @@ issuers:
   solvers:
   - http01:
       ingress:
-        class: traefik2
+        class: traefik
