@@ -35,9 +35,7 @@ apps:
             port: 12000
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+
   - name: argo-events-azure
     source:
       repoURL: "https://github.com/Open-Dataplatform/argo-events-setup.git"
@@ -57,6 +55,3 @@ apps:
             port: 12000
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer

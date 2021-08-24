@@ -55,6 +55,3 @@ apps:
           namespace: networking
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer

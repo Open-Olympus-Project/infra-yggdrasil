@@ -42,9 +42,7 @@ apps:
               - /argowf              
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+
   - name: argo-events
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-events.git"
@@ -70,9 +68,7 @@ apps:
 
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+
   - name: external-secrets
     source:
       repoURL: "https://github.com/Open-Olympus-Project/tooling-external-secrets.git"

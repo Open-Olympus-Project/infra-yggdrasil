@@ -54,11 +54,9 @@ spec:
   dnsNames:
     - {{ $app.ingressRoute.host }}
   secretName: {{ .name }}-tls
-  {{- with .ingressRoute.certificate.issuerRef }}
   issuerRef:
-    name: {{ .name }}
-    kind: {{ .kind }}
-  {{ end }}
+    kind: ClusterIssuer
+    name: {{ $root.Values.ingress.certmanagerissuer }}
 {{ end }}
 
       {{ end }}

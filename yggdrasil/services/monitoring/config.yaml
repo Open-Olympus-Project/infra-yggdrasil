@@ -34,9 +34,7 @@ apps:
             port: 80
       certificate:
         enabled: trues
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+
   - name: thanos
     source:
       repoURL: 'https://github.com/Open-Olympus-Project/tooling-thanos.git'
@@ -77,9 +75,7 @@ apps:
               - /grafana
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
+
   - name: loki
     source:
       repoURL: 'https://github.com/Open-Olympus-Project/tooling-loki.git'
@@ -110,6 +106,3 @@ apps:
             port: 16686
       certificate:
         enabled: true
-        issuerRef:
-          name: letsencrypt-prod
-          kind: ClusterIssuer
