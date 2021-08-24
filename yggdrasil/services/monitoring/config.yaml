@@ -74,7 +74,7 @@ apps:
             prefixes:
               - /grafana
       certificate:
-        enabled: true
+        enabled: false
 
   - name: loki
     source:
