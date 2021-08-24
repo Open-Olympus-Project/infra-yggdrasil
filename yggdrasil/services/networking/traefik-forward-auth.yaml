@@ -1,0 +1,3 @@
+traefikForwardAuth:
+  host: {{ (first .Values.ingress.hosts).host }}
+  authPath: /auth/_oauth

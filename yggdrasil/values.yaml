@@ -14,13 +14,14 @@ applications:
   argo-workflows:         true
   argo-events:            true
   argo-events-setup:      true
-  argo-events-github:     true
-  argo-events-azure:      true
+  argo-events-github:     false
+  argo-events-azure:      false
   cert-manager:           true
   cert-manager-issuer:    true
   external-secrets:       true
   grafana:                true
-  ingress:                true
+  traefik:                true
+  traefik-forward-auth:   true
   jaeger-operator:        true
   loki:                   true
   minio-operator:         true
