@@ -35,7 +35,7 @@ apps:
       certificate:
         enabled: trues
         issuerRef:
-          name: letsencrypt-staging
+          name: letsencrypt-prod
           kind: ClusterIssuer
   - name: thanos
     source:
@@ -78,7 +78,7 @@ apps:
       certificate:
         enabled: true
         issuerRef:
-          name: letsencrypt-staging
+          name: letsencrypt-prod
           kind: ClusterIssuer
   - name: loki
     source:
@@ -111,5 +111,5 @@ apps:
       certificate:
         enabled: true
         issuerRef:
-          name: letsencrypt-staging
+          name: letsencrypt-prod
           kind: ClusterIssuer

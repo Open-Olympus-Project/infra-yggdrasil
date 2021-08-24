@@ -36,7 +36,7 @@ apps:
       certificate:
         enabled: true
         issuerRef:
-          name: letsencrypt-staging
+          name: letsencrypt-prod
           kind: ClusterIssuer
   - name: argo-events-azure
     source:
@@ -58,5 +58,5 @@ apps:
       certificate:
         enabled: true
         issuerRef:
-          name: letsencrypt-staging
+          name: letsencrypt-prod
           kind: ClusterIssuer

@@ -13,14 +13,14 @@ issuers:
         ingress:
           class: traefik
 
-  - name: letsencrypt-staging
+  - name: letsencrypt-prod
     enabled: true
     kind: ClusterIssuer
 
     email: dataplatform@energinet.dk
 
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
-    privateKeySecretRef: letsencrypt-staging
+    server: https://acme-prod-v02.api.letsencrypt.org/directory
+    privateKeySecretRef: letsencrypt-prod
 
     solvers:
     - http01:

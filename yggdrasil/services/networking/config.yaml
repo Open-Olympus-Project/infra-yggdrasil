@@ -56,5 +56,5 @@ apps:
       certificate:
         enabled: true
         issuerRef:
-          name: letsencrypt-staging
+          name: letsencrypt-prod
           kind: ClusterIssuer

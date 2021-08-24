@@ -12,7 +12,7 @@ nidhogg:
         loadBalancerIP: 20.82.41.148
         name: "-vault"
       LoadBalancerResoureGroup: service-aks-poc
-      certmanagerissuer: letsencrypt-staging
+      certmanagerissuer: letsencrypt-prod
 
   installCNI: false
 
