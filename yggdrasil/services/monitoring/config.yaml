@@ -65,8 +65,8 @@ apps:
             port: 80
         middlewares:
           - name: grafana-stripprefix
-          # - name: auth
-          #   namespace: networking
+          - name: auth
+            namespace: networking
       middlewares:
       - name: grafana-stripprefix
         spec: 
