@@ -50,7 +50,9 @@ apps:
         services:
           - name: traefikauth
             port: 80
-
+        middlewares:
+        - name: auth
+          namespace: networking
       certificate:
         enabled: true
         issuerRef:
