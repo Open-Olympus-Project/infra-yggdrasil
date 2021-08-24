@@ -49,7 +49,7 @@ apps:
         match: PathPrefix(`/auth`)
         services:
           - name: traefik-forward-auth-service
-            port: 4181
+            port: 80
         middlewares:
         - name: auth
           namespace: networking
