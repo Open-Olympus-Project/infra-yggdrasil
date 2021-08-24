@@ -48,8 +48,8 @@ apps:
       - kind: Rule
         match: PathPrefix(`/auth`)
         services:
-          - name: traefikauth
-            port: 80
+          - name: traefik-forward-auth-service
+            port: 4181
         middlewares:
         - name: auth
           namespace: networking
