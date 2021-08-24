@@ -1,28 +1,28 @@
 issuers: 
-- name: letsencrypt-prod
-  enabled: true
-  kind: ClusterIssuer
+  - name: letsencrypt-prod
+    enabled: true
+    kind: ClusterIssuer
 
-  email: dataplatform@energinet.dk
+    email: dataplatform@energinet.dk
 
-  server: https://acme-v02.api.letsencrypt.org/directory
-  privateKeySecretRef: letsencrypt
+    server: https://acme-v02.api.letsencrypt.org/directory
+    privateKeySecretRef: letsencrypt
 
-  solvers:
-  - http01:
-      ingress:
-        class: traefik
+    solvers:
+    - http01:
+        ingress:
+          class: traefik
 
-- name: letsencrypt-staging
-  enabled: true
-  kind: ClusterIssuer
+  - name: letsencrypt-staging
+    enabled: true
+    kind: ClusterIssuer
 
-  email: dataplatform@energinet.dk
+    email: dataplatform@energinet.dk
 
-  server: https://acme-staging-v02.api.letsencrypt.org/directory
-  privateKeySecretRef: letsencrypt-staging
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef: letsencrypt-staging
 
-  solvers:
-  - http01:
-      ingress:
-        class: traefik
+    solvers:
+    - http01:
+        ingress:
+          class: traefik
