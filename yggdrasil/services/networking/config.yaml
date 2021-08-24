@@ -16,12 +16,30 @@ project:
       server: https://kubernetes.default.svc
 
 apps:
-  - name: ingress
+  - name: traefik
     source:
       repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
       targetRevision: main
       path: traefik
-      valuesFile: "ingress.yaml"
+      valuesFile: "traefik.yaml"
+  - name: cert-manager
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
+      targetRevision: dependency
+      path: cert-manager
+      valuesFile: "cert-manager.yaml"
+  - name: cert-manager-issuer
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
+      targetRevision: dependency
+      path: cert-manager-issuer
+      valuesFile: "cert-manager-issuer.yaml"
+  - name: traefik-forward-auth
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
+      targetRevision: main
+      path: traefik-forward-auth
+      valuesFile: "traefik-forward-auth.yaml"
     ingressRoute:
       entryPoints:
         - websecure
@@ -38,15 +56,3 @@ apps:
         issuerRef:
           name: letsencrypt-staging
           kind: ClusterIssuer
-  - name: cert-manager
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
-      targetRevision: dependency
-      path: cert-manager
-      valuesFile: "cert-manager.yaml"
-  - name: cert-manager-issuer
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
-      targetRevision: dependency
-      path: cert-manager-issuer
-      valuesFile: "cert-manager-issuer.yaml"
