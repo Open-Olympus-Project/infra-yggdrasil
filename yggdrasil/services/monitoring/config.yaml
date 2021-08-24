@@ -65,8 +65,8 @@ apps:
             port: 80
         middlewares:
           - name: grafana-stripprefix
-          - name: auth
-            namespace: networking
+          # - name: auth
+          #   namespace: networking
       middlewares:
       - name: grafana-stripprefix
         spec: 
@@ -104,5 +104,8 @@ apps:
         services:
           - name: jaeger-operator-jaeger-query
             port: 16686
+        middlewares:
+          - name: auth
+            namespace: networking
       certificate:
         enabled: true
