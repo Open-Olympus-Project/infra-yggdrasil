@@ -5,7 +5,7 @@ issuers:
 
     email: dataplatform@energinet.dk
 
-    server: https://acme-prod-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     privateKeySecretRef: letsencrypt-prod
 
     solvers:
