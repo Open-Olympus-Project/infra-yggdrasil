@@ -1,2 +1,2 @@
-host: {{ (last .Values.ingress.hosts).host }}
+host: service-auth-poc.westeurope.cloudapp.azure.com
 authPath: /_oauth
