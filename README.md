@@ -116,6 +116,22 @@ project:
 This PR will then need to be approved by the cluster development team, before it is merged into Yggdrasil. When this is merged, ArgoCD will automatically deploy the application onto the cluster. 
 When the deployment is done, ArgoCD will poll the environment repository every 3 minutes, to check for changes to the application. 
 
+## Secret store
+TODO write something about the secret store..
+
+Currently the following items are required for all applications to run correctly
+
+| path | key | dummy value |
+|------|-----|-------------|
+| k8s/secrets/sa-metrics | sa-name      | Storage account name |
+| k8s/secrets/sa-metrics | sa-key       | Storage account key  |
+| k8s/secrets/sso        | issuerurl    | https://login.microsoftonline.com/\<tenant-id\>>/v2.0/ |
+| k8s/secrets/sso        | clientid     | The Id of the app in AzureAD |
+| k8s/secrets/sso        | clientsecret | A secret from the app in AzureAD |
+| k8s/secrets/sso        | jwtsecret    | A secret random secret |
+| k8s/secrets/minio      | accesskey    | An access key for minio |
+| k8s/secrets/minio      | secretkey    | An secret key for minio |
+
 ## Installing chart
 To install Yggdrasil, you first need to navigate to the nidhogg directory and run `helm dependency update`.
 Then, from the root directory of Yggdrasil, run the command `helm install --create-namespace -n yggdrasil nidhogg ./nidhogg`. 
