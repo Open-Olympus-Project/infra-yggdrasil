@@ -1,7 +1,7 @@
 nidhogg: 
   yggdrasil:
     repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
-    targetRevision: "prod"
+    targetRevision: "main"
     containerRegistryUrl: serviceacrpoc.azurecr.io
     ingress:
       hosts:
@@ -15,7 +15,7 @@ nidhogg:
         loadBalancerIP: 51.138.91.124
         name: "-auth"
       LoadBalancerResoureGroup: service-aks-poc
-      certmanagerissuer: letsencrypt-prod
+      certmanagerissuer: letsencrypt-staging
 
   installCNI: false
 

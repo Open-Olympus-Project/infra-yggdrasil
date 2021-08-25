@@ -1,12 +1,12 @@
 issuers: 
-  - name: letsencrypt-prod
+  - name: letsencrypt-staging
     enabled: true
     kind: ClusterIssuer
 
     email: dataplatform@energinet.dk
 
-    server: https://acme-v02.api.letsencrypt.org/directory
-    privateKeySecretRef: letsencrypt-prod
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    privateKeySecretRef: letsencrypt-staging
 
     solvers:
     - http01:
