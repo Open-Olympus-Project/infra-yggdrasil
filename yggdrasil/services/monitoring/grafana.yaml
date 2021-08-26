@@ -9,7 +9,7 @@ grafana:
       header_property: email
       auto_sign_up: true
       sync_tll: 60
-      headers: Groups:X-Forwarded-Groups
+      headers: Groups:X-Forwarded-Role
 
     
   datasources:
