@@ -151,3 +151,8 @@ To see the argo, open the browser to [argo web gui](https://localhost:30080).
 To remove the cluster after test use kind delete
 
     kind delete cluster 
+
+## Known issues
+| Issue | optional |
+|-------|-------------|
+| Currently there are some problems with the PathPrefixStrip middleware and the forward-auth middlware. | https://github.com/thomseddon/traefik-forward-auth/pull/49 |
