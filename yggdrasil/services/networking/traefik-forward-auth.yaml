@@ -1,2 +1,2 @@
-appHost: service-poc.westeurope.cloudapp.azure.com
+appHost: westeurope.cloudapp.azure.com
 authHost: service-auth-poc.westeurope.cloudapp.azure.com
