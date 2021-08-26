@@ -156,3 +156,4 @@ To remove the cluster after test use kind delete
 | Issue | optional |
 |-------|-------------|
 | Currently there are some problems with the PathPrefixStrip middleware and the forward-auth middlware. | https://github.com/thomseddon/traefik-forward-auth/pull/49 |
+| There are also currently no way to get the token from the header. | https://github.com/thomseddon/traefik-forward-auth/pull/100 |
