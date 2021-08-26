@@ -1,7 +1,16 @@
 grafana:
   grafana.ini:
     server:
-      root_url: https://{{ .Values.ingress.host }}/grafana
+      #TODO HOST URL
+      root_url: https://service-poc.westeurope.cloudapp.azure.com/grafana
+    auth.proxy:
+      enabled: true
+      header_name: X-Forwarded-User
+      header_property: email
+      auto_sign_up: true
+      sync_tll: 60
+      
+    
   datasources:
     datasources.yaml:
       apiVersion: 1
