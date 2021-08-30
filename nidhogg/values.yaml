@@ -3,7 +3,7 @@ nidhogg:
     repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
     targetRevision: "main"
     # containerRegistryUrl: serviceacrpoc.azurecr.io
-    # ingress:
+    ingress:
     #   hosts:
     #   - host: service-poc.westeurope.cloudapp.azure.com #This is what argocd will run on
     #     loadBalancerIP: 20.82.41.255
