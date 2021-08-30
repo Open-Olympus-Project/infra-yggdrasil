@@ -1,6 +1,8 @@
 argo-workflows:
   server:
     baseHref: /argowf/
+    extraArgs:
+      - --auth-mode=sso
   controller:
     workflowNamespaces:
       - tooling
