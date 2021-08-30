@@ -2,19 +2,19 @@ nidhogg:
   yggdrasil:
     repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
     targetRevision: "main"
-    # containerRegistryUrl: serviceacrpoc.azurecr.io
+    containerRegistryUrl: serviceacrpoc.azurecr.io
     ingress:
-    #   hosts:
-    #   - host: service-poc.westeurope.cloudapp.azure.com #This is what argocd will run on
-    #     loadBalancerIP: 20.82.41.255
-    #     name: ""
-    #   - host: service-vault-poc.westeurope.cloudapp.azure.com
-    #     loadBalancerIP: 20.82.41.148
-    #     name: "-vault"
-    #   - host: service-auth-poc.westeurope.cloudapp.azure.com
-    #     loadBalancerIP: 51.138.91.124
-    #     name: "-auth"
-    #   LoadBalancerResoureGroup: service-aks-poc
+      hosts:
+      - host: service-poc.westeurope.cloudapp.azure.com #This is what argocd will run on
+        loadBalancerIP: 20.82.41.255
+        name: ""
+      - host: service-vault-poc.westeurope.cloudapp.azure.com
+        loadBalancerIP: 20.82.41.148
+        name: "-vault"
+      - host: service-auth-poc.westeurope.cloudapp.azure.com
+        loadBalancerIP: 51.138.91.124
+        name: "-auth"
+      LoadBalancerResoureGroup: service-aks-poc
       certmanagerissuer: letsencrypt-staging
 
   installCNI: false
