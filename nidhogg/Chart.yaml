@@ -1,10 +1,13 @@
 apiVersion: v2
 name: nidhogg
-description: A Helm chart for nidhogg values and dependencies
+description: A proxy chart for nidhogg
 type: application
-version: v1.0.0
+version: 1.0.4
+
+maintainers:
+  - name: MadsHT
 
 dependencies:
   - name: nidhogg
-    version: "v1.0.0"
+    version: "v1.0.1"
     repository: "https://distributed-technologies.github.io/helm-repository/"

@@ -1,25 +1,25 @@
 name: monitoring
 clusterService: true
 namespace: monitoring
-description: All the monitoring apps, including but not limited to prometheus, grafana, thanos, loki. 
+description: All the monitoring apps, including but not limited to prometheus, grafana, thanos, loki.
 
 project:
   name: monitoring
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
-  destinations: 
+  destinations:
     - namespace: kube-system
       server: https://kubernetes.default.svc
     - namespace: rook-ceph
       server: https://kubernetes.default.svc
-    
+
 apps:
   - name: prometheus
     source:
-      repoURL: 'https://github.com/Open-Olympus-Project/tooling-prometheus.git'
-      targetRevision: dependency
-      path: prometheus
+      repoURL: 'https://open-olympus-project.github.io/repo-helm/'
+      targetRevision: 0.1.4
+      chart: "prometheus"
       valuesFile: "prometheus.yaml"
     ingressRoute:
       entryPoints:
@@ -40,21 +40,15 @@ apps:
 
   - name: thanos
     source:
-      repoURL: 'https://github.com/Open-Olympus-Project/tooling-thanos.git'
-      # standard targetRevision is HEAD
-      targetRevision: dependency
-      # path to Helm chart in repo. Should be . if Helm chart is in root. 
-      path: thanos
-      # filename of values file that is local right next to this config.yaml file
+      repoURL: 'https://open-olympus-project.github.io/repo-helm/'
+      targetRevision: 0.1.4
+      chart: "thanos"
       valuesFile: "thanos.yaml"
   - name: grafana
     source:
-      repoURL: 'https://github.com/Open-Olympus-Project/tooling-grafana.git'
-      # standard targetRevision is HEAD
-      targetRevision: dependency
-      # path to Helm chart in repo. Should be . if Helm chart is in root. 
-      path: grafana
-      # filename of values file that is local right next to this config.yaml file
+      repoURL: 'https://open-olympus-project.github.io/repo-helm/'
+      targetRevision: 0.1.1
+      chart: "grafana"
       valuesFile: "grafana.yaml"
     ingressRoute:
       entryPoints:
@@ -72,7 +66,7 @@ apps:
           - name: grafana-stripprefix
       middlewares:
       - name: grafana-stripprefix
-        spec: 
+        spec:
           stripPrefix:
             prefixes:
               - /grafana
@@ -81,21 +75,15 @@ apps:
 
   - name: loki
     source:
-      repoURL: 'https://github.com/Open-Olympus-Project/tooling-loki.git'
-      # standard targetRevision is HEAD
-      targetRevision: dependency
-      # path to Helm chart in repo. Should be . if Helm chart is in root. 
-      path: loki
-      # filename of values file that is local right next to this config.yaml file
+      repoURL: 'https://open-olympus-project.github.io/repo-helm/'
+      targetRevision: 0.1.0
+      chart: "loki-stack"
       valuesFile: "loki.yaml"
   - name: jaeger-operator
     source:
-      repoURL: 'https://github.com/Open-Olympus-Project/tooling-jaeger-operator.git'
-      # standard targetRevision is HEAD
-      targetRevision: dependency
-      # path to Helm chart in repo. Should be . if Helm chart is in root. 
-      path: jaeger-operator
-      # filename of values file that is local right next to this config.yaml file
+      repoURL: 'https://open-olympus-project.github.io/repo-helm/'
+      targetRevision: 0.1.1
+      chart: "jaeger-operator"
       valuesFile: "jaeger-operator.yaml"
     ingressRoute:
       entryPoints:

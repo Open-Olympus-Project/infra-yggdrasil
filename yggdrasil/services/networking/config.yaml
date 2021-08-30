@@ -9,7 +9,7 @@ project:
   server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
-  destinations: 
+  destinations:
     - namespace: kube-system
       server: https://kubernetes.default.svc
     - namespace: nidhogg
@@ -18,27 +18,27 @@ project:
 apps:
   - name: traefik
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
-      targetRevision: main
-      path: traefik
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: v0.2.2
+      chart: "traefik"
       valuesFile: "traefik.yaml"
   - name: cert-manager
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
-      targetRevision: dependency
-      path: cert-manager
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.1
+      chart: "cert-manager"
       valuesFile: "cert-manager.yaml"
   - name: cert-manager-issuer
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/k8s-certmanager.git"
-      targetRevision: dependency
-      path: cert-manager-issuer
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.1
+      chart: "cert-manager-issuer"
       valuesFile: "cert-manager-issuer.yaml"
   - name: traefik-forward-auth
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/networking-traefik.git"
-      targetRevision: main
-      path: traefik-forward-auth
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.2
+      chart: "traefik-forward-auth"
       valuesFile: "traefik-forward-auth.yaml"
     ingressRoute:
       entryPoints:

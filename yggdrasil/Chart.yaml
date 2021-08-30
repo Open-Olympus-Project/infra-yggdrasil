@@ -2,9 +2,12 @@ apiVersion: v2
 name: yggdrasil
 description: A Helm chart for deploying services and applications
 type: application
-version: v1.0.0
+version: 1.0.5
 
-dependencies: 
+maintainers:
+  - name: MadsHT
+
+dependencies:
   - name: lightvessel
-    version: "v0.1.6"
+    version: "v1.0.2"
     repository: "https://distributed-technologies.github.io/helm-repository/"

@@ -16,9 +16,9 @@ project:
 apps:
   - name: argo-workflows
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-wf.git"
-      targetRevision: dependency
-      path: argo-wf
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.2
+      chart: "argo-wf"
       valuesFile: "argowf.yaml"
     ingressRoute:
       entryPoints:
@@ -36,24 +36,24 @@ apps:
             namespace: networking
       middlewares:
       - name: argo-stripprefix
-        spec: 
+        spec:
           stripPrefix:
             prefixes:
-              - /argowf              
+              - /argowf
       certificate:
         enabled: true
 
   - name: argo-events
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-argo-events.git"
-      targetRevision: dependency
-      path: argo-events
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.1
+      chart: "argo-events"
       valuesFile: "argo-events.yaml"
   - name: vault
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-vault.git"
-      targetRevision: vault-init-job
-      path: vault
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.0
+      chart: "vault"
       valuesFile: "vault.yaml"
     ingressRoute:
       entryPoints:
@@ -70,14 +70,14 @@ apps:
 
   - name: external-secrets
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-external-secrets.git"
-      targetRevision: operator
-      path: external-secrets
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.0
+      chart: "external-secrets"
       valuesFile: "external-secrets.yaml"
-      
+
   - name: minio-operator
     source:
-      repoURL: "https://github.com/Open-Olympus-Project/tooling-minio-operator.git"
-      targetRevision: main
-      path: minio-operator
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.0
+      chart: "minio-operator"
       valuesFile: "minio-operator.yaml"
