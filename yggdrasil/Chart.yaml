@@ -2,7 +2,7 @@ apiVersion: v2
 name: yggdrasil
 description: A Helm chart for deploying services and applications
 type: application
-version: 1.0.5
+version: 1.0.6
 
 maintainers:
   - name: MadsHT

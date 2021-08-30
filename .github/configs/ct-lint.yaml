@@ -4,8 +4,7 @@
 remote: origin
 target-branch: main
 chart-dirs:
-  - nidhogg
-  - yggdrasil
+  - ./
 chart-repos:
   - olympus=https://open-olympus-project.github.io/repo-helm/
   - stable=https://charts.helm.sh/stable
