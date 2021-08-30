@@ -17,7 +17,7 @@ apps:
   - name: argo-workflows
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.9
+      targetRevision: 0.1.10
       chart: "argo-wf"
       valuesFile: "argowf.yaml"
     ingressRoute:
