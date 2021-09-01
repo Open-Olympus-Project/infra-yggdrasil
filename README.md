@@ -130,7 +130,7 @@ The token used to login I located in the log of the vault-config job.
 |------|-----|-------------|
 | k8s/secrets/sa-metrics | sa-name      | Storage account name |
 | k8s/secrets/sa-metrics | sa-key       | Storage account key  |
-| k8s/secrets/sso        | issuerurl    | https://login.microsoftonline.com/\<tenan-id>\/v2.0 |
+| k8s/secrets/sso        | issuerurl    | https://login.microsoftonline.com/\<tenan-id\>/v2.0 |
 | k8s/secrets/sso        | clientid     | The Id of the app in AzureAD |
 | k8s/secrets/sso        | clientsecret | A secret from the app in AzureAD |
 | k8s/secrets/sso        | jwtsecret    | A secret random secret |
