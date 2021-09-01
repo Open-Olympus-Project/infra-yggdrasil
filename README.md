@@ -120,7 +120,7 @@ When the deployment is done, ArgoCD will poll the environment repository every 3
 To install Yggdrasil, you first need to navigate to the nidhogg directory and run `helm dependency update`.
 Then, from the root directory of Yggdrasil, run the command `helm install --create-namespace -n yggdrasil nidhogg ./nidhogg`.
 
-### Currently there are some manual setup needed to get the cluster going "correctly"
+### Manual setup
 
 There are some values needed in the Vault - the table below shows the information needed to configure the secret needed.
 This can be done by using port-forwarding or the url used service-vault-poc...
@@ -148,7 +148,7 @@ This is done by using the following command
 This will alow us to access the minio-operator web-ui on http://localhost:9090
 where you need a JWT token to log-in this can be gained by using
 
-    kubectl get secrets -n tooling minio-operator-token-fqfnk -o jsonpath='{.data.token}' | base64 -di
+    kubectl -n tooling get $(kubectl get secrets -n tooling -o name| grep "minio-operator") -o jsonpath='{.data.token}' | base64 -di
 
 use the output to log into the web-ui
 
