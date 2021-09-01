@@ -1,6 +1,9 @@
 argo-workflows:
   server:
     baseHref: /argowf/
+    sso:
+      issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
+      redirectUrl: https://{{ (first .Values.ingress.hosts).host }}/argowf/oauth2/callback
   controller:
     workflowNamespaces:
       - tooling
