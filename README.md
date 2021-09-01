@@ -116,10 +116,15 @@ project:
 This PR will then need to be approved by the cluster development team, before it is merged into Yggdrasil. When this is merged, ArgoCD will automatically deploy the application onto the cluster.
 When the deployment is done, ArgoCD will poll the environment repository every 3 minutes, to check for changes to the application.
 
-## Secret store
-TODO write something about the secret store..
+## Installing chart
+To install Yggdrasil, you first need to navigate to the nidhogg directory and run `helm dependency update`.
+Then, from the root directory of Yggdrasil, run the command `helm install --create-namespace -n yggdrasil nidhogg ./nidhogg`.
 
-Currently the following items are required for all applications to run correctly
+### Currently there are some manual setup needed to get the cluster going "correctly"
+
+There are some values needed in the Vault - the table below shows the information needed to configure the secret needed.
+This can be done by using port-forwarding or the url used service-vault-poc...
+The token used to login I located in the log of the vault-config job.
 
 | path | key | dummy value |
 |------|-----|-------------|
@@ -132,9 +137,28 @@ Currently the following items are required for all applications to run correctly
 | k8s/secrets/minio      | accesskey    | An access key for minio |
 | k8s/secrets/minio      | secretkey    | An secret key for minio |
 
-## Installing chart
-To install Yggdrasil, you first need to navigate to the nidhogg directory and run `helm dependency update`.
-Then, from the root directory of Yggdrasil, run the command `helm install --create-namespace -n yggdrasil nidhogg ./nidhogg`.
+### Minio setup for argocd
+
+There is also the need of configuring the minio for argo-workflows
+Since it's currently not plausible to autogenerate a bucket - we need to generate one manually.
+This is done by using the following command
+
+    kubectl port-forward -n tooling svc/console 9090
+
+This will alow us to access the minio-operator web-ui on http://localhost:9090
+where you need a JWT token to log-in this can be gained by using
+
+    kubectl get secrets -n tooling minio-operator-token-fqfnk -o jsonpath='{.data.token}' | base64 -di
+
+use the output to log into the web-ui
+
+1. click on the argo-artifacts tenant
+2. click manage tenant
+3. go to bucket in the left menu
+4. click create bucket in the upper right button
+5. give it the name `argo-artifacts`
+
+That should be all that is needed for the minio setup for argo-workflows.
 
 ## Testing using kind
 
