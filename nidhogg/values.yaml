@@ -1,7 +1,7 @@
 nidhogg:
   yggdrasil:
     repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
-    targetRevision: "argowf-update"
+    targetRevision: "main"
     containerRegistryUrl: serviceacrpoc.azurecr.io
     ingress:
       LoadBalancerResoureGroup: service-aks-poc
