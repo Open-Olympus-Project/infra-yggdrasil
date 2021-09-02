@@ -48,7 +48,7 @@ prometheus:
           containerPort: 10902
         - name: grpc
           containerPort: 10901
-        args:     
+        args:
           - "sidecar"
           - "--debug.name=sidecar"
           - "--log.level=debug"
@@ -58,7 +58,7 @@ prometheus:
           - "--http-grace-period=1s"
           - "--prometheus.url=http://localhost:9090/"
           - "--tsdb.path=/data"
-          - "--objstore.config-file=/etc/objectStorage/object-storage.yaml"
+          - "--objstore.config-file=/etc/objectStorage/object-store.yaml"
         volumeMounts:
           - name: config-volume
             mountPath: /etc/config
@@ -70,22 +70,22 @@ prometheus:
             readOnly: true
 
     global:
-        
+
       external_labels:
-        prometheus: Prometheus    
+        prometheus: Prometheus
 
   alertmanager:
     # nodeSelector:
     #   agentpool: monitoring
     ingress:
       enabled: false
-    
+
     baseURL: "https://{{ .Values.ingress.host }}/alertmanager"
     prefixURL: "/alertmanager"
 
     extraFlags:
     - web.route-prefix=/alertmanager
 
-  # nodeExporter: 
+  # nodeExporter:
     # nodeSelector:
     #   agentpool: monitoring
