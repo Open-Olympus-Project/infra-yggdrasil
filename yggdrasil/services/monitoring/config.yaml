@@ -18,7 +18,7 @@ apps:
   - name: prometheus
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.5
+      targetRevision: 0.1.6
       chart: "prometheus"
       valuesFile: "prometheus.yaml"
     ingressRoute:
@@ -41,7 +41,7 @@ apps:
   - name: thanos
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.5
+      targetRevision: 0.1.6
       chart: "thanos"
       valuesFile: "thanos.yaml"
   - name: grafana
