@@ -1,12 +1,10 @@
 name: networking
-clusterService: true
 namespace: networking
 description: networking services like ingress, cert-manager.
 
 
 project:
   name: networking
-  server: https://kubernetes.default.svc
   sourceRepos:
     - '*'
   destinations:
