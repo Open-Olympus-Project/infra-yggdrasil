@@ -1,2 +1,24 @@
 appHost: westeurope.cloudapp.azure.com
 authHost: service-auth-poc.westeurope.cloudapp.azure.com
+
+janus:
+  host: service-auth-poc.westeurope.cloudapp.azure.com
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name:
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        match: {}
+        services:
+          - name: traefik-forward-auth-service
+            port: 4181
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true

@@ -38,18 +38,3 @@ apps:
       targetRevision: 0.1.3
       chart: "traefik-forward-auth"
       valuesFile: "traefik-forward-auth.yaml"
-    ingressRoute:
-      entryPoints:
-        - websecure
-      host: service-auth-poc.westeurope.cloudapp.azure.com
-      routes:
-      - kind: Rule
-        match: {}
-        services:
-          - name: traefik-forward-auth-service
-            port: 4181
-        middlewares:
-          - name: auth
-            namespace: networking
-      certificate:
-        enabled: true
