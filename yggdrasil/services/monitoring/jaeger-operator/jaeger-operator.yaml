@@ -51,8 +51,6 @@ janus:
           - name: jaeger-operator-jaeger-query
             port: 16686
         middlewares:
-          - name: oauth-errors
-            namespace: networking
           - name: oauth-auth
             namespace: networking
       certificate:

@@ -33,7 +33,7 @@ janus:
         - websecure
       routes:
       - kind: Rule
-        match: PathPrefix(`/oauth2/`)
+        # match: PathPrefix(`/oauth2/`)
         services:
           - name: oauth2-proxy
             port: 80
@@ -57,8 +57,11 @@ janus:
     - name: oauth-auth
       spec:
         forwardAuth:
-          address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
+          address: https://{{ .Values.ingress.hosts.auth.host }}/
           trustForwardHeader: true
+          authResponseHeaders:
+            - X-Auth-Request-Access-Token
+            - Authorization
           #TODO remove
           tls:
             insecureSkipVerify: true
