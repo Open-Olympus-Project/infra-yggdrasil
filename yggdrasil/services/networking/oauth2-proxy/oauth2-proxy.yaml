@@ -3,7 +3,7 @@ oauth2-proxy:
   extraArgs:
     provider: oidc
     azure-tenant: f7619355-6c67-4100-9a78-1847f30742e2
-    email-domain: energinet.com
+    email-domain: '*'
     set-authorization-header: true
     set-xauthrequest: true
     pass-access-token: true
@@ -11,6 +11,7 @@ oauth2-proxy:
     pass-user-headers: true
     pass-host-header: true
     skip-jwt-bearer-tokens: true
+    oidc-email-claim: oid
     oidc-issuer-url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
     reverse-proxy: true
     redirect-url: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/callback
