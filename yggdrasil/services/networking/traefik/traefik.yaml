@@ -25,7 +25,7 @@ services:
 
 {{- with .vault }}
   - enabled: true
-    namePrefix: {{ printf "%s" "" | quote }}
+    namePrefix: {{ printf "%s" "-vault" | quote }}
     type: LoadBalancer
     # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
     annotations:
@@ -48,7 +48,7 @@ services:
 
 {{- with .auth }}
   - enabled: true
-    namePrefix: {{ printf "%s" "" | quote }}
+    namePrefix: {{ printf "%s" "-auth" | quote }}
     type: LoadBalancer
     # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
     annotations:
