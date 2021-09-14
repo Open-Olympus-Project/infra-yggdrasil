@@ -60,6 +60,9 @@ janus:
         forwardAuth:
           address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
           trustForwardHeader: true
+          #TODO remove
+          tls:
+            insecureSkipVerify: true
     - name: oauth-errors
       spec:
         errors:
