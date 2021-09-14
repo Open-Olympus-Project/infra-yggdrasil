@@ -1,14 +1,15 @@
 appHost: westeurope.cloudapp.azure.com
-authHost: service-auth-poc.westeurope.cloudapp.azure.com
+authHost: {{ .Values.ingress.hosts.auth.host }}
 
 janus:
-  host: service-auth-poc.westeurope.cloudapp.azure.com
+  enabled: true
+  host: {{ .Values.ingress.hosts.auth.host }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer }}
     kind: ClusterIssuer
 
   ingressRoutes:
-    - name:
+    - name: traefik-forward-auth
       entryPoints:
         - websecure
       routes:

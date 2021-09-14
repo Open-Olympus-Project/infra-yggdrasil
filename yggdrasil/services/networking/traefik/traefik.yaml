@@ -1,26 +1,74 @@
 services:
-{{- range $.Values.ingress.hosts}}
-- enabled: true
-  namePrefix: {{ .name | quote }}
-  type: LoadBalancer
-  # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
-  annotations:
-    service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ $.Values.ingress.LoadBalancerResoureGroup | quote }}
+{{- with $.Values.ingress.hosts }}
+{{- with .main }}
+  - enabled: true
+    namePrefix: {{ printf "%s" "" | quote }}
+    type: LoadBalancer
+    # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ $.Values.ingress.LoadBalancerResoureGroup | quote }}
 
-  # Additional annotations for TCP service only
-  annotationsTCP: {}
-  # Additional annotations for UDP service only
-  annotationsUDP: {}
-  # Additional service labels (e.g. for filtering Service by custom labels)
-  labels:
-    host: {{ .host }}
-  # Additional entries here will be added to the service spec. Cannot contains
-  # type, selector or ports entries.
-  spec:
-    loadBalancerIP: {{ .loadBalancerIP }}
-  loadBalancerSourceRanges: []
-  externalIPs: []
-{{ end }}
+    # Additional annotations for TCP service only
+    annotationsTCP: {}
+    # Additional annotations for UDP service only
+    annotationsUDP: {}
+    # Additional service labels (e.g. for filtering Service by custom labels)
+    labels:
+      host: {{ .host }}
+    # Additional entries here will be added to the service spec. Cannot contains
+    # type, selector or ports entries.
+    spec:
+      loadBalancerIP: {{ .loadBalancerIP }}
+    loadBalancerSourceRanges: []
+    externalIPs: []
+{{- end }}
+
+{{- with .vault }}
+  - enabled: true
+    namePrefix: {{ printf "%s" "" | quote }}
+    type: LoadBalancer
+    # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ $.Values.ingress.LoadBalancerResoureGroup | quote }}
+
+    # Additional annotations for TCP service only
+    annotationsTCP: {}
+    # Additional annotations for UDP service only
+    annotationsUDP: {}
+    # Additional service labels (e.g. for filtering Service by custom labels)
+    labels:
+      host: {{ .host }}
+    # Additional entries here will be added to the service spec. Cannot contains
+    # type, selector or ports entries.
+    spec:
+      loadBalancerIP: {{ .loadBalancerIP }}
+    loadBalancerSourceRanges: []
+    externalIPs: []
+{{- end }}
+
+{{- with .auth }}
+  - enabled: true
+    namePrefix: {{ printf "%s" "" | quote }}
+    type: LoadBalancer
+    # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
+    annotations:
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ $.Values.ingress.LoadBalancerResoureGroup | quote }}
+
+    # Additional annotations for TCP service only
+    annotationsTCP: {}
+    # Additional annotations for UDP service only
+    annotationsUDP: {}
+    # Additional service labels (e.g. for filtering Service by custom labels)
+    labels:
+      host: {{ .host }}
+    # Additional entries here will be added to the service spec. Cannot contains
+    # type, selector or ports entries.
+    spec:
+      loadBalancerIP: {{ .loadBalancerIP }}
+    loadBalancerSourceRanges: []
+    externalIPs: []
+{{- end }}
+{{- end }}
 
 traefik:
   deployment:

@@ -1,8 +1,13 @@
 ingress:
   hosts:
-    - host: <host1>
+    main:
+      host: <host1>
       loadBalancerIP: <ip>
-    - host: <host2>
+    auth:
+      host: <host2>
+      loadBalancerIP: <ip>
+    vault:
+      host: <host3>
       loadBalancerIP: <ip>
   LoadBalancerResoureGroup: <resource_group>
   certmanagerissuer: <cert-manager-issuer>

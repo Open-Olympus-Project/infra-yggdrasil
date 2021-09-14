@@ -1,2 +1,2 @@
 ingress:
-  url: {{ .Values.ingress.host }}
+  url: {{ .Values.ingress.hosts.main.host }}
