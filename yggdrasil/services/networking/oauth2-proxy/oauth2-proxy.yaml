@@ -51,6 +51,7 @@ janus:
           browserXssFilter: true
           contentTypeNosniff: true
           forceSTSHeader: true
+          sslHost: westeurope.cloudapp.azure.com
           stsIncludeSubdomains: true
           stsPreload: true
           frameDeny: true
@@ -59,9 +60,6 @@ janus:
         forwardAuth:
           address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
           trustForwardHeader: true
-          authResponseHeaders:
-            - X-Auth-Request-Access-Token
-            - Authorization
     - name: oauth-errors
       spec:
         errors:
