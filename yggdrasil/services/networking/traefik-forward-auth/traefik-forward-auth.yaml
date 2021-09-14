@@ -3,9 +3,9 @@ authHost: {{ .Values.ingress.hosts.auth.host }}
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.auth.host }}
+  host: {{ .Values.ingress.hosts.auth.host | quote }}
   certmanagerIssuer:
-    name: {{ .Values.ingress.certmanagerissuer }}
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
 
   ingressRoutes:
