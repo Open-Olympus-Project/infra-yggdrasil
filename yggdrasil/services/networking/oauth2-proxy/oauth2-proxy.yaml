@@ -3,9 +3,7 @@ oauth2-proxy:
   config:
     # Default configuration, to be overridden
     configFile: |-
-      email_domains = [ "*" ]
-      upstreams = [ "file:///dev/null" ]
-      provider = oidc
+      provider=oidc
       azure-tenant=f7619355-6c67-4100-9a78-1847f30742e2
       email-domain=energinet.com
       set-authorization-header=true
@@ -17,8 +15,53 @@ oauth2-proxy:
       pass-host-header=true
       skip-jwt-bearer-tokens=true
       oidc-issuer-url=https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
+      reverse-proxy=true
+      redirect-url=https://{{ .Values.ingress.hosts.auth.host }}/oauth2/callback
 
   # Node labels for pod assignment
   # Ref: https://kubernetes.io/docs/user-guide/node-selection/
   nodeSelector: {}
 
+janus:
+  enabled: true
+  host: {{ .Values.ingress.hosts.auth.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: oauth2-proxy
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/oauth2/`)
+        services:
+          - name: oauth2-proxy
+            port: 80
+        middlewares:
+          - name: auth-headers
+      certificate:
+        enabled: true
+
+  middlewares:
+    auth-headers:
+      headers:
+        sslRedirect: true
+        stsSeconds: 315360000
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        frameDeny: true
+    oauth-auth:
+      forwardAuth:
+        address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
+        trustForwardHeader: true
+    oauth-errors:
+      errors:
+        status:
+          - "401-403"
+        service: oauth2-proxy
+        query: "/oauth2/sign_in"

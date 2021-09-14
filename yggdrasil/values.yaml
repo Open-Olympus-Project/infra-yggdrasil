@@ -28,6 +28,7 @@ applications:
   jaeger-operator: true
   loki: true
   minio-operator: true
+  oauth2-proxy: true
   prometheus: true
   thanos: true
   vault: true
