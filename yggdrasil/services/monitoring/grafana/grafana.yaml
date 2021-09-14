@@ -2,7 +2,7 @@ grafana:
   grafana.ini:
     server:
       #TODO HOST URL
-      root_url: https://service-poc.westeurope.cloudapp.azure.com/grafana
+      root_url: https://{{ .Values.ingress.hosts.main.host }}/grafana
     auth.proxy:
       enabled: true
       header_name: X-Forwarded-User
