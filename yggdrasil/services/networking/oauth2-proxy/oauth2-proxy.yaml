@@ -22,7 +22,7 @@ oauth2-proxy:
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.auth.host | quote }}
+  host: {{ .Values.ingress.hosts.main.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
@@ -33,7 +33,7 @@ janus:
         - websecure
       routes:
       - kind: Rule
-        # match: PathPrefix(`/oauth2/`)
+        match: PathPrefix(`/oauth2/`)
         services:
           - name: oauth2-proxy
             port: 80
@@ -57,7 +57,7 @@ janus:
     - name: oauth-auth
       spec:
         forwardAuth:
-          address: https://{{ .Values.ingress.hosts.auth.host }}/
+          address: https://{{ .Values.ingress.hosts.main.host }}/oauth2/auth
           trustForwardHeader: true
           authResponseHeaders:
             - X-Auth-Request-Access-Token
