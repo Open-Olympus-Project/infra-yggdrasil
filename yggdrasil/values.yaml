@@ -24,7 +24,7 @@ applications:
   external-secrets: true
   grafana: true
   traefik: true
-  traefik-forward-auth: true
+  traefik-forward-auth: false
   jaeger-operator: true
   loki: true
   minio-operator: true
