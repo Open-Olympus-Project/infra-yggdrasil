@@ -72,6 +72,6 @@ janus:
             - "401-403"
           service:
             name: oauth2-proxy
-            namespace: netowrking
+            namespace: networking
             port: 80
           query: "/oauth2/sign_in"
