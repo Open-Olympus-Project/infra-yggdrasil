@@ -14,7 +14,7 @@ oauth2-proxy:
     reverse-proxy: true
     set-authorization-header: true
     set-xauthrequest: true
-    whitelist-domains: .westeurope.cloudapp.azure.com
+    whitelist-domain: .westeurope.cloudapp.azure.com
 
   # Node labels for pod assignment
   # Ref: https://kubernetes.io/docs/user-guide/node-selection/
