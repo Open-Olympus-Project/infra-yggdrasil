@@ -1,20 +1,21 @@
 oauth2-proxy:
   # Oauth client configuration specifics
   extraArgs:
-    provider: oidc
     azure-tenant: f7619355-6c67-4100-9a78-1847f30742e2
+    cookie-domain: service-poc.westeurope.cloudapp.azure.com
     email-domain: '*'
-    set-authorization-header: true
-    set-xauthrequest: true
+    oidc-email-claim: oid
+    oidc-issuer-url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
     pass-access-token: true
     pass-authorization-header: true
     pass-user-headers: true
     pass-host-header: true
-    skip-jwt-bearer-tokens: true
-    oidc-email-claim: oid
-    oidc-issuer-url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
+    provider: oidc
     reverse-proxy: true
     redirect-url: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/callback
+    set-authorization-header: true
+    set-xauthrequest: true
+    skip-jwt-bearer-tokens: true
 
   # Node labels for pod assignment
   # Ref: https://kubernetes.io/docs/user-guide/node-selection/
