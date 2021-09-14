@@ -14,7 +14,7 @@ oauth2-proxy:
     oidc-email-claim: oid
     oidc-issuer-url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
     reverse-proxy: true
-    redirect-url: https://{{ .Values.ingress.hosts.main.host }}/oauth2/callback
+    redirect-url: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/callback
 
   # Node labels for pod assignment
   # Ref: https://kubernetes.io/docs/user-guide/node-selection/
@@ -22,7 +22,7 @@ oauth2-proxy:
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.main.host | quote }}
+  host: {{ .Values.ingress.hosts.auth.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
@@ -57,7 +57,7 @@ janus:
     - name: oauth-auth
       spec:
         forwardAuth:
-          address: https://{{ .Values.ingress.hosts.main.host }}/oauth2/auth
+          address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
           trustForwardHeader: true
           authResponseHeaders:
             - X-Auth-Request-Access-Token
@@ -72,5 +72,6 @@ janus:
             - "401-403"
           service:
             name: oauth2-proxy
+            namespace: netowrking
             port: 80
           query: "/oauth2/sign_in"
