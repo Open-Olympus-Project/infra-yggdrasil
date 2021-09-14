@@ -2,7 +2,7 @@ oauth2-proxy:
   # Oauth client configuration specifics
   config:
     # Default configuration, to be overridden
-    configFile: -|
+    configFile: |
       provider=oidc
       azure-tenant=f7619355-6c67-4100-9a78-1847f30742e2
       email-domain=energinet.com
