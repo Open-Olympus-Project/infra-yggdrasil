@@ -1,8 +1,8 @@
 oauth2-proxy:
   # Oauth client configuration specifics
   extraArgs:
-    azure-tenant: f7619355-6c67-4100-9a78-1847f30742e2
-    cookie-domain: service-poc.westeurope.cloudapp.azure.com
+    cookie-domain: .westeurope.cloudapp.azure.com
+    cookie_name: oauth2_proxy
     email-domain: '*'
     oidc-email-claim: oid
     oidc-issuer-url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
@@ -14,7 +14,7 @@ oauth2-proxy:
     reverse-proxy: true
     set-authorization-header: true
     set-xauthrequest: true
-    skip-jwt-bearer-tokens: true
+    whitelist_domains: .westeurope.cloudapp.azure.com
 
   # Node labels for pod assignment
   # Ref: https://kubernetes.io/docs/user-guide/node-selection/
@@ -57,7 +57,7 @@ janus:
     - name: oauth-auth
       spec:
         forwardAuth:
-          address: 'http://oauth2-proxy.networking.svc:80'
+          address: https://{{ .Values.ingress.hosts.main.host }}/oauth2/auth
           trustForwardHeader: true
           authResponseHeaders:
             - X-Auth-Request-Access-Token
