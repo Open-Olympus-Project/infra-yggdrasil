@@ -56,7 +56,9 @@ janus:
           - name: grafana
             port: 80
         middlewares:
-          - name: auth
+          - name: oauth-errors
+            namespace: networking
+          - name: oauth-auth
             namespace: networking
           - name: grafana-stripprefix
       certificate:
