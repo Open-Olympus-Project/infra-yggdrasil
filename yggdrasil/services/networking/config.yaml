@@ -35,6 +35,6 @@ apps:
   - name: traefik-forward-auth
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.3
+      targetRevision: 0.1.4
       chart: "traefik-forward-auth"
       valuesFile: "traefik-forward-auth.yaml"
