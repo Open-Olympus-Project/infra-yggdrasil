@@ -15,32 +15,9 @@ apps:
   - name: argo-workflows
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.12
+      targetRevision: 0.1.14
       chart: "argo-wf"
       valuesFile: "argowf.yaml"
-    ingressRoute:
-      entryPoints:
-        - websecure
-      host: service-poc.westeurope.cloudapp.azure.com
-      routes:
-      - kind: Rule
-        match: PathPrefix(`/argowf`)
-        services:
-          - name: argo-workflows-server
-            port: 2746
-        middlewares:
-          - name: argo-stripprefix
-          - name: auth
-            namespace: networking
-      middlewares:
-      - name: argo-stripprefix
-        spec:
-          stripPrefix:
-            prefixes:
-              - /argowf
-      certificate:
-        enabled: true
-
   - name: argo-events
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
@@ -50,29 +27,15 @@ apps:
   - name: vault
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.0
+      targetRevision: 0.1.2
       chart: "vault"
       valuesFile: "vault.yaml"
-    ingressRoute:
-      entryPoints:
-        - websecure
-      host: service-vault-poc.westeurope.cloudapp.azure.com
-      routes:
-      - kind: Rule
-        match: PathPrefix(`/`)
-        services:
-          - name: vault-ui
-            port: 8200
-      certificate:
-        enabled: true
-
   - name: external-secrets
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.1.0
       chart: "external-secrets"
       valuesFile: "external-secrets.yaml"
-
   - name: minio-operator
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"

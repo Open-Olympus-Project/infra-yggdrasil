@@ -11,7 +11,7 @@ grafana:
       sync_tll: 60
       headers: Groups:X-Forwarded-Role
 
-    
+
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -37,3 +37,34 @@ grafana:
         #   isDefault: false
         #   jsonData:
         #     timeInterval: '1m'
+
+janus:
+  enabled: true
+  host: {{ .Values.ingress.hosts.main.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: grafana
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/grafana`)
+        services:
+          - name: grafana
+            port: 80
+        middlewares:
+          - name: auth
+            namespace: networking
+          - name: grafana-stripprefix
+      certificate:
+        enabled: true
+
+  middlewares:
+    - name: grafana-stripprefix
+      spec:
+        stripPrefix:
+          prefixes:
+            - /grafana

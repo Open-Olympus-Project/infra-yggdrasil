@@ -14,7 +14,6 @@ prometheus-pushgateway:
   #   agentpool: monitoring
 
 prometheus:
-
   serviceAccounts:
     pushgateway:
       create: false
@@ -89,3 +88,27 @@ prometheus:
   # nodeExporter:
     # nodeSelector:
     #   agentpool: monitoring
+
+janus:
+  enabled: true
+  host: {{ .Values.ingress.hosts.main.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: prometheus
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        # Without host
+        match: PathPrefix(`/alertmanager`)
+        services:
+          - name: prometheus-alertmanager
+            port: 80
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true

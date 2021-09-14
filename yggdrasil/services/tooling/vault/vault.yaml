@@ -14,3 +14,23 @@ vault:
   # Vault UI
   ui:
     enabled: true
+
+janus:
+  enabled: true
+  host: {{ .Values.ingress.hosts.vault.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: vault
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/`)
+        services:
+          - name: vault-ui
+            port: 8200
+      certificate:
+        enabled: true

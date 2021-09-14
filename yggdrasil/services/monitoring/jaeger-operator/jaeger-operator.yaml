@@ -3,18 +3,18 @@ jaeger-operator:
     # Specifies whether Jaeger instance should be created
     create: true
 
-    spec: 
+    spec:
       strategy: allInOne
       allInOne:
         options:
           query:
             base-path: /jaeger
-      
+
       storage:
         options:
           memory:
             max-traces: 100000
-    
+
   resources:
     limits:
       cpu: 200m
@@ -31,3 +31,27 @@ jaeger-operator:
     create: true
     pspEnabled: false
     clusterRole: true
+
+janus:
+  enabled: true
+  host: {{ .Values.ingress.hosts.main.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: jaeger-operator
+      entryPoints:
+        - websecure
+      host: service-poc.westeurope.cloudapp.azure.com
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/jaeger`)
+        services:
+          - name: jaeger-operator-jaeger-query
+            port: 16686
+        middlewares:
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true

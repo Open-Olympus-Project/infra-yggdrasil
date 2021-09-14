@@ -8,3 +8,34 @@ argo-workflows:
     workflowNamespaces:
       - tooling
       - argo-events
+
+janus:
+  enabled: true
+  host: {{ .Values.ingress.hosts.main.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: argo-workflows
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/argowf`)
+        services:
+          - name: argo-workflows-server
+            port: 2746
+        middlewares:
+          - name: argo-stripprefix
+          - name: auth
+            namespace: networking
+      certificate:
+        enabled: true
+
+  middlewares:
+    - name: argo-stripprefix
+      spec:
+        stripPrefix:
+          prefixes:
+            - /argowf
