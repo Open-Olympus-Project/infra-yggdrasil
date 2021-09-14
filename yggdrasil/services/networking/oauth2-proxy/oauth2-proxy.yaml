@@ -5,7 +5,6 @@ oauth2-proxy:
     azure-tenant: f7619355-6c67-4100-9a78-1847f30742e2
     email-domain: energinet.com
     set-authorization-header: true
-    set-authorization-header: true
     set-xauthrequest: true
     pass-access-token: true
     pass-authorization-header: true
