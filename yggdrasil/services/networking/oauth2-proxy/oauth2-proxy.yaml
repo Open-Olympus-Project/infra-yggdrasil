@@ -45,23 +45,26 @@ janus:
         enabled: true
 
   middlewares:
-    auth-headers:
-      headers:
-        sslRedirect: true
-        stsSeconds: 315360000
-        browserXssFilter: true
-        contentTypeNosniff: true
-        forceSTSHeader: true
-        stsIncludeSubdomains: true
-        stsPreload: true
-        frameDeny: true
-    oauth-auth:
-      forwardAuth:
-        address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
-        trustForwardHeader: true
-    oauth-errors:
-      errors:
-        status:
-          - "401-403"
-        service: oauth2-proxy
-        query: "/oauth2/sign_in"
+    - name: auth-headers
+      spec:
+        headers:
+          sslRedirect: true
+          stsSeconds: 315360000
+          browserXssFilter: true
+          contentTypeNosniff: true
+          forceSTSHeader: true
+          stsIncludeSubdomains: true
+          stsPreload: true
+          frameDeny: true
+    - name: oauth-auth
+      spec:
+        forwardAuth:
+          address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
+          trustForwardHeader: true
+    - name: oauth-errors
+      spec:
+        errors:
+          status:
+            - "401-403"
+          service: oauth2-proxy
+          query: "/oauth2/sign_in"
