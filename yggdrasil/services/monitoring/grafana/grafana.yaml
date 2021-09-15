@@ -1,4 +1,5 @@
 grafana:
+  revisionHistoryLimit: 2
   grafana.ini:
     server:
       #TODO HOST URL
