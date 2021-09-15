@@ -11,3 +11,11 @@ dependencies:
   - name: nidhogg
     version: "v1.0.1"
     repository: "https://distributed-technologies.github.io/helm-repository/"
+  - name: lethe
+    version: "0.1.0"
+    repository: https://open-olympus-project.github.io/repo-helm/
+    condition: lethe.enabled
+  - name: janus
+    version: "0.1.1"
+    repository: https://open-olympus-project.github.io/repo-helm/
+    condition: janus.enabled
