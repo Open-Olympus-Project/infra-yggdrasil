@@ -26,7 +26,7 @@ grafana:
       client_secret: vEvhtr52dUYU6P5IydU2_J~AGd_rW.QT.7
       scopes: openid email profile
       empty_scopes: false
-      auth_url: ""https://service-auth-poc.westeurope.cloudapp.azure.com/auth"
+      auth_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/auth"
       token_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/token"
       allowed_domains: mycompany.com mycompany.org
       allow_sign_up: true
