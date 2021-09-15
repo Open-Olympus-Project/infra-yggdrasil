@@ -1,0 +1,51 @@
+dex:
+  config:
+    # Set it to a valid URL
+    issuer: http://my-issuer-url.com
+
+    # See https://dexidp.io/docs/storage/ for more options
+    storage:
+      type: memory
+
+lethe:
+  enabled: false
+  # secretStores:
+  #   - name: sso-secret-store
+  #     providers:
+  #       vault:
+  #         server: "http://vault.tooling.svc:8200"
+  #         path: "k8s"
+  #         version: "v2"
+  #         auth:
+  #           # Authenticate against Vault using a Kubernetes ServiceAccount
+  #           # token stored in a Secret.
+  #           # https://www.vaultproject.io/docs/auth/kubernetes
+  #           kubernetes:
+  #             # Path where the Kubernetes authentication backend is mounted in Vault
+  #             mountPath: "kubernetes"
+  #             # A required field containing the Vault Role to assume.
+  #             role: "k8s-secrets"
+
+  # secrets:
+  #   - name: sso-secret
+  #     secretStore:
+  #       backend: sso-secret-store
+  #       kind: SecretStore
+  #     target:
+  #       name: oauth2
+  #     data:
+  #       - secretKey: client-id
+  #         remoteRef:
+  #           key: secrets/sso
+  #           property: clientid
+  #       - secretKey: client-secret
+  #         remoteRef:
+  #           key: secrets/sso
+  #           property: clientsecret
+  #       - secretKey: cookie-secret
+  #         remoteRef:
+  #           key: secrets/sso
+  #           property: jwtsecret
+
+janus:
+  enabled: false
