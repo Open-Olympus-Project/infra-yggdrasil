@@ -7,6 +7,8 @@ dex:
     storage:
       type: memory
 
+  enablePasswordDB: true
+
 lethe:
   enabled: false
   # secretStores:
