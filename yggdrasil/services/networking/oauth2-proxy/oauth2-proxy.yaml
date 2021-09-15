@@ -11,6 +11,7 @@ oauth2-proxy:
     pass-user-headers: true
     pass-host-header: true
     provider: oidc
+    redirect-url: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/callback
     reverse-proxy: true
     set-authorization-header: true
     set-xauthrequest: true
