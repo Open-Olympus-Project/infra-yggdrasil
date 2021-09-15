@@ -27,7 +27,7 @@ apps:
   - name: vault
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.2
+      targetRevision: 0.1.3
       chart: "vault"
       valuesFile: "vault.yaml"
   - name: external-secrets
