@@ -4,7 +4,6 @@ argo-workflows:
     sso:
       issuer: https://{{ .Values.ingress.hosts.auth.host }}/
       redirectUrl: https://{{ .Values.ingress.hosts.auth.host }}/callback
-
   controller:
     workflowNamespaces:
       - tooling
