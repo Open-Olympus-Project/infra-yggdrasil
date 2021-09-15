@@ -1,53 +1,69 @@
 dex:
-  config:
-    # Set it to a valid URL
-    issuer: https://{{ .Values.ingress.hosts.auth.host }}
+  confgiSecret:
+    name: dex-config
 
-    # See https://dexidp.io/docs/storage/ for more options
-    storage:
-      type: memory
-
-  enablePasswordDB: true
 
 lethe:
-  enabled: false
-  # secretStores:
-  #   - name: sso-secret-store
-  #     providers:
-  #       vault:
-  #         server: "http://vault.tooling.svc:8200"
-  #         path: "k8s"
-  #         version: "v2"
-  #         auth:
-  #           # Authenticate against Vault using a Kubernetes ServiceAccount
-  #           # token stored in a Secret.
-  #           # https://www.vaultproject.io/docs/auth/kubernetes
-  #           kubernetes:
-  #             # Path where the Kubernetes authentication backend is mounted in Vault
-  #             mountPath: "kubernetes"
-  #             # A required field containing the Vault Role to assume.
-  #             role: "k8s-secrets"
+  enabled: true
+  secretStores:
+    - name: sso-secret-store
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
 
-  # secrets:
-  #   - name: sso-secret
-  #     secretStore:
-  #       backend: sso-secret-store
-  #       kind: SecretStore
-  #     target:
-  #       name: oauth2
-  #     data:
-  #       - secretKey: client-id
-  #         remoteRef:
-  #           key: secrets/sso
-  #           property: clientid
-  #       - secretKey: client-secret
-  #         remoteRef:
-  #           key: secrets/sso
-  #           property: clientsecret
-  #       - secretKey: cookie-secret
-  #         remoteRef:
-  #           key: secrets/sso
-  #           property: jwtsecret
+  secrets:
+    - name: sso-secret
+      secretStore:
+        backend: sso-secret-store
+        kind: SecretStore
+      target:
+        name: dex-config
+        template:
+          data:
+            config.yaml: |
+                # Set it to a valid URL
+                issuer: https://{{ .Values.ingress.hosts.auth.host }}
+
+                # See https://dexidp.io/docs/storage/ for more options
+                storage:
+                  type: memory
+
+                connectors:
+                  - type: microsoft
+                    # Required field for connector id.
+                    id: microsoft
+                    # Required field for connector name.
+                    name: Microsoft
+                    config:
+                      # Credentials can be string literals or pulled from the environment.
+                      clientID: {{`{{ .client-id | toString }}`}}
+                      clientSecret: {{`{{ .client-secret | toString }}`}}
+                      tenant: {{`{{ .tenant-id | toString }}`}}
+                      redirectURI: https://{{ .Values.ingress.hosts.auth.host }}/callback
+      data:
+        - secretKey: client-id
+          remoteRef:
+            key: secrets/sso
+            property: clientid
+        - secretKey: client-secret
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret
+        - secretKey: tenant-id
+          remoteRef:
+            key: secrets/sso
+            property: tenantid
 
 janus:
   enabled: true
