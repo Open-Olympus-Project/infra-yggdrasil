@@ -22,7 +22,7 @@ oauth2-proxy:
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.auth.host | quote }}
+  host: {{ .Values.ingress.hosts.main.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
@@ -57,7 +57,7 @@ janus:
     - name: oauth-auth
       spec:
         forwardAuth:
-          address: https://{{ .Values.ingress.hosts.auth.host }}/oauth2/auth
+          address: https://{{ .Values.ingress.hosts.main.host }}/oauth2/auth
           trustForwardHeader: true
           #TODO remove
           tls:
