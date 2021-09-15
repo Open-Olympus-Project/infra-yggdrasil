@@ -70,7 +70,7 @@ janus:
   enabled: true
   host: {{ .Values.ingress.hosts.auth.host | quote }}
   certmanagerIssuer:
-    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    name: letsencrypt-prod
     kind: ClusterIssuer
 
   ingressRoutes:
