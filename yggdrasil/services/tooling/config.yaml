@@ -45,6 +45,6 @@ apps:
   - name: dex
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.0
+      targetRevision: 0.1.1
       chart: "dex"
       valuesFile: "dex.yaml"
