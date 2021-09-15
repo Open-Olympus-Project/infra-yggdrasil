@@ -23,8 +23,8 @@ grafana:
 
     auth.generic_oauth:
       enabled: true
-      client_id: 1b976479-a11f-4f1b-a5d8-64259d3b05da
-      client_secret: vEvhtr52dUYU6P5IydU2_J~AGd_rW.QT.7
+      client_id: example-app
+      client_secret: ZXhhbXBsZS1hcHAtc2VjcmV0
       scopes: openid email profile
       empty_scopes: false
       auth_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/auth"
