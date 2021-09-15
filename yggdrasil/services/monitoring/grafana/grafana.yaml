@@ -11,6 +11,10 @@ grafana:
       headers: Name:X-Forwarded-Email Email:X-Forwarded-Email
       enable_login_token: false
 
+    auth.jwt:
+      enabled: true
+      header_name: X-Auth-Request-Access-Token
+
     auth.basic:
       enabled: false
 
