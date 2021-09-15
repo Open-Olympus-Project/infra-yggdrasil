@@ -59,8 +59,8 @@ janus:
         forwardAuth:
           address: https://{{ .Values.ingress.hosts.main.host }}/oauth2/auth
           trustForwardHeader: true
-          # authResponseHeaders:
-          #   - X-Auth-Request-Access-Token
+          authResponseHeaders:
+            - X-Auth-Request-Access-Token
           #   - Authorization
           #TODO remove
           tls:
