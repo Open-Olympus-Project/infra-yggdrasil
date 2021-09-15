@@ -4,7 +4,7 @@ grafana:
       #TODO HOST URL
       root_url: https://{{ .Values.ingress.hosts.main.host }}/grafana
     auth.proxy:
-      enabled: true
+      enabled: false
       header_name: X-Forwarded-Email
       header_property: email
       auto_sign_up: true
