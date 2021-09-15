@@ -1,6 +1,7 @@
 dex:
   confgiSecret:
     name: dex-config
+    create: false
 
 
 lethe:
