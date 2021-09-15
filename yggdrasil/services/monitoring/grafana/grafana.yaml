@@ -80,8 +80,8 @@ janus:
           #   namespace: networking
           # - name: oauth-auth
           #   namespace: networking
-          - name: auth
-            namespace: networking
+          # - name: auth
+          #   namespace: networking
           - name: grafana-stripprefix
       certificate:
         enabled: true
