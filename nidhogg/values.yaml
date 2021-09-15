@@ -42,18 +42,18 @@ nidhogg:
         #   - type: helm
         #     url: https://argoproj.github.io/argo-helm
 
-        oidc.config: |
-          name: Azure
-          issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
-          clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
-          clientSecret: $oidc.azure.clientSecret
-          requestedIDTokenClaims:
-            groups:
-              essential: true
-          requestedScopes:
-            - openid
-            - profile
-            - email
+        # oidc.config: |
+        #   name: Azure
+        #   issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
+        #   clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
+        #   clientSecret: $oidc.azure.clientSecret
+        #   requestedIDTokenClaims:
+        #     groups:
+        #       essential: true
+        #   requestedScopes:
+        #     - openid
+        #     - profile
+        #     - email
 
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
@@ -82,7 +82,7 @@ nidhogg:
 
     configs:
       secret:
-        createSecret: false
+        # createSecret: false
         # This is not a secret password. It is okay to be on github
         argocdServerAdminPassword: $2y$12$m4KC7G9d8NFxInl7GRpQ1OpPPrF43Msa33ZQjj0YmT6f8uwjHW8AO
         argocdServerAdminPasswordMtime: "2021-01-02T15:04:05Z"
@@ -114,7 +114,7 @@ janus:
         enabled: true
 
 lethe:
-  enabled: true
+  enabled: false
   secretStores:
     - name: k8s-secret-backend
       providers:
