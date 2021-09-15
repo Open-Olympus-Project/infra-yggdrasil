@@ -4,6 +4,11 @@ argo-workflows:
     sso:
       issuer: https://{{ .Values.ingress.hosts.auth.host }}/
       redirectUrl: https://{{ .Values.ingress.hosts.auth.host }}/callback
+
+    extraArgs:
+      - --insecure-skip-tls-verify
+      - --insecure-skip-verify
+
   controller:
     workflowNamespaces:
       - tooling
