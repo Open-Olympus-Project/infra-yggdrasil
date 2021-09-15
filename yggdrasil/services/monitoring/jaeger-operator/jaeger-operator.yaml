@@ -43,19 +43,18 @@ janus:
     - name: jaeger-operator
       entryPoints:
         - websecure
-      host: service-poc.westeurope.cloudapp.azure.com
       routes:
-      - kind: Rule
-        match: PathPrefix(`/jaeger`)
-        services:
-          - name: jaeger-operator-jaeger-query
-            port: 16686
-        middlewares:
-          # - name: oauth-errors
-          #   namespace: networking
-          # - name: oauth-auth
-          #   namespace: networking
-          - name: auth
-            namespace: networking
+        - kind: Rule
+          match: PathPrefix(`/jaeger`)
+          services:
+            - name: jaeger-operator-jaeger-query
+              port: 16686
+          middlewares:
+            # - name: oauth-errors
+            #   namespace: networking
+            # - name: oauth-auth
+            #   namespace: networking
+            - name: auth
+              namespace: networking
       certificate:
         enabled: true

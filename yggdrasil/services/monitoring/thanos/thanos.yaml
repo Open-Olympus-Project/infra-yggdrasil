@@ -4,3 +4,6 @@
 # Values for the subchart
 thanos:
   objstoreSecretOverride: "thanos-bucket"
+
+janus:
+  enabled: false
