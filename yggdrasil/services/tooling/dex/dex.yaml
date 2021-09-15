@@ -47,20 +47,20 @@ lethe:
                     name: Microsoft
                     config:
                       # Credentials can be string literals or pulled from the environment.
-                      clientID: {{`{{ .client-id | toString }}`}}
-                      clientSecret: {{`{{ .client-secret | toString }}`}}
-                      tenant: {{`{{ .tenant-id | toString }}`}}
+                      clientID: {{`{{ .clientId | toString }}`}}
+                      clientSecret: {{`{{ .clientSecret | toString }}`}}
+                      tenant: {{`{{ .tenantId | toString }}`}}
                       redirectURI: https://{{ .Values.ingress.hosts.auth.host }}/callback
       data:
-        - secretKey: client-id
+        - secretKey: clientId
           remoteRef:
             key: secrets/sso
             property: clientid
-        - secretKey: client-secret
+        - secretKey: clientSecret
           remoteRef:
             key: secrets/sso
             property: clientsecret
-        - secretKey: tenant-id
+        - secretKey: tenantId
           remoteRef:
             key: secrets/sso
             property: tenantid
