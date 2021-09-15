@@ -29,7 +29,7 @@ grafana:
       empty_scopes: false
       auth_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/auth"
       token_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/token"
-      allowed_domains: mycompany.com mycompany.org
+      allowed_domains: .westeurope.cloudapp.azure.com
       allow_sign_up: true
       tls_skip_verify_insecure: true
 
