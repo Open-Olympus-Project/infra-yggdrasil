@@ -1,7 +1,7 @@
 dex:
   config:
     # Set it to a valid URL
-    issuer: http://my-issuer-url.com
+    issuer: https://{{ .Values.ingress.hosts.auth.host }}
 
     # See https://dexidp.io/docs/storage/ for more options
     storage:
@@ -48,4 +48,21 @@ lethe:
   #           property: jwtsecret
 
 janus:
-  enabled: false
+  enabled: true
+  host: {{ .Values.ingress.hosts.auth.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: dex
+      entryPoints:
+        - websecure
+      routes:
+      - kind: Rule
+        match: PathPrefix(`/`)
+        services:
+          - name: dex
+            port: 5556
+      certificate:
+        enabled: true
