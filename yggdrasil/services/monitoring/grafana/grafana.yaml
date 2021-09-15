@@ -5,10 +5,10 @@ grafana:
       root_url: https://{{ .Values.ingress.hosts.main.host }}/grafana
     auth.proxy:
       enabled: true
-      header_name: X-Forwarded-Email
+      header_name: X-Forwarded-User
       header_property: email
       auto_sign_up: true
-      headers: Name:X-Forwarded-Email Email:X-Forwarded-Email
+      headers: Name:X-Forwarded-User Email:X-Forwarded-Email
       enable_login_token: false
 
     auth.basic:
