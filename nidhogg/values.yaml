@@ -41,22 +41,20 @@ nidhogg:
         # repositories: |
         #   - type: helm
         #     url: https://argoproj.github.io/argo-helm
-        #     name: argoproj
-        #   - type: helm
-        #     url: https://distributed-technologies.github.io/helm-repository/
-        #     name: dt-helmrepo
-        #   - type: helm
-        #     url: https://kubernetes.github.io/kube-state-metrics
-        #     name: metrics
-        #   - type: helm
-        #     url: https://prometheus-community.github.io/helm-charts
-        #     name: node-exporter
-        #   - type: helm
-        #     url: https://grafana.github.io/helm-charts
-        #     name: grafana
-        #   - type: helm
-        #     url: https://charts.external-secrets.io
-        #     name: external-secrets
+
+        # oidc.config: |
+        #   name: Azure
+        #   issuer: https://login.microsoftonline.com/{{ oauth_tenant_id }}/v2.0
+        #   clientID: {{ oauth_client_id }}
+        #   clientSecret: $oidc.azure.clientSecret
+        #   requestedIDTokenClaims:
+        #     groups:
+        #       essential: true
+        #   requestedScopes:
+        #     - openid
+        #     - profile
+        #     - email
+
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
             ignoreDifferences: |

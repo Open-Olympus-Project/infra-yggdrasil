@@ -42,3 +42,9 @@ apps:
       targetRevision: 0.1.0
       chart: "minio-operator"
       valuesFile: "minio-operator.yaml"
+  - name: dex
+    source:
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.0
+      chart: "dex"
+      valuesFile: "dex.yaml"
