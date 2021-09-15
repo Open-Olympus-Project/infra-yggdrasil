@@ -35,12 +35,12 @@ apps:
   - name: traefik-forward-auth
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.4
+      targetRevision: 0.1.5
       chart: "traefik-forward-auth"
       valuesFile: "traefik-forward-auth.yaml"
   - name: oauth2-proxy
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.1
+      targetRevision: 0.1.2
       chart: "oauth2-proxy"
       valuesFile: "oauth2-proxy.yaml"

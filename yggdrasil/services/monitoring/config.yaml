@@ -14,13 +14,13 @@ apps:
   - name: prometheus
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.9
+      targetRevision: 0.1.10
       chart: "prometheus"
       valuesFile: "prometheus.yaml"
   - name: thanos
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.6
+      targetRevision: 0.1.7
       chart: "thanos"
       valuesFile: "thanos.yaml"
   - name: grafana
