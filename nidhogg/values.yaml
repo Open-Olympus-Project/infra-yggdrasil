@@ -42,18 +42,18 @@ nidhogg:
         #   - type: helm
         #     url: https://argoproj.github.io/argo-helm
 
-        # oidc.config: |
-        #   name: Azure
-        #   issuer: https://login.microsoftonline.com/{{ oauth_tenant_id }}/v2.0
-        #   clientID: {{ oauth_client_id }}
-        #   clientSecret: $oidc.azure.clientSecret
-        #   requestedIDTokenClaims:
-        #     groups:
-        #       essential: true
-        #   requestedScopes:
-        #     - openid
-        #     - profile
-        #     - email
+        oidc.config: |
+          name: Azure
+          issuer: https://login.microsoftonline.com/{{ oauth_tenant_id }}/v2.0
+          clientID: {{ oauth_client_id }}
+          clientSecret: $oidc.azure.clientSecret
+          requestedIDTokenClaims:
+            groups:
+              essential: true
+          requestedScopes:
+            - openid
+            - profile
+            - email
 
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
@@ -82,6 +82,7 @@ nidhogg:
 
     configs:
       secret:
+        createSecret: false
         # This is not a secret password. It is okay to be on github
         argocdServerAdminPassword: $2y$12$m4KC7G9d8NFxInl7GRpQ1OpPPrF43Msa33ZQjj0YmT6f8uwjHW8AO
         argocdServerAdminPasswordMtime: "2021-01-02T15:04:05Z"
@@ -113,4 +114,33 @@ janus:
         enabled: true
 
 lethe:
-  enabled: false
+  enabled: true
+  secretStores:
+    - name: k8s-secret-backend
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: argocd-secret
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: argocd-secret
+      data:
+        - secretKey: oidc.azure.clientSecret
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret
