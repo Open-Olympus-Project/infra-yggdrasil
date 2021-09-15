@@ -82,7 +82,7 @@ nidhogg:
 
     configs:
       secret:
-        createSecret: false
+        # createSecret: false
         # This is not a secret password. It is okay to be on github
         argocdServerAdminPassword: $2y$12$m4KC7G9d8NFxInl7GRpQ1OpPPrF43Msa33ZQjj0YmT6f8uwjHW8AO
         argocdServerAdminPasswordMtime: "2021-01-02T15:04:05Z"
@@ -114,7 +114,7 @@ janus:
         enabled: true
 
 lethe:
-  enabled: true
+  enabled: false
   secretStores:
     - name: k8s-secret-backend
       providers:
