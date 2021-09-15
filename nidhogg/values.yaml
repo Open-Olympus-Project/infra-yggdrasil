@@ -94,7 +94,7 @@ janus:
     kind: ClusterIssuer
 
   ingressRoutes:
-    - name: argo-workflows
+    - name: argo-cd
       entryPoints:
         - websecure
       routes:
@@ -111,3 +111,6 @@ janus:
             scheme: h2c
       certificate:
         enabled: true
+
+lethe:
+  enabled: false
