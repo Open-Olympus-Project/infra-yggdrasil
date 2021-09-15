@@ -53,12 +53,6 @@ lethe:
                       tenant: {{`{{ .tenantId | toString }}`}}
                       redirectURI: https://{{ .Values.ingress.hosts.auth.host }}/callback
 
-                staticClients:
-                  - id: example-app
-                    redirectURIs:
-                    - 'https://service-dp.westeurope.cloudapp.azure.com/grafana/login/oauth'
-                    name: 'Example App'
-                    secret: ZXhhbXBsZS1hcHAtc2VjcmV0
       data:
         - secretKey: clientId
           remoteRef:

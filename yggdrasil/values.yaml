@@ -21,7 +21,7 @@ applications:
   argo-events-azure: false
   cert-manager: true
   cert-manager-issuer: true
-  dex: true
+  dex: false
   external-secrets: true
   grafana: true
   traefik: true

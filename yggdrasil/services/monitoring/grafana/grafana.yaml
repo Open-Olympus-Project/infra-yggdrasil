@@ -5,7 +5,7 @@ grafana:
       #TODO HOST URL
       root_url: https://{{ .Values.ingress.hosts.main.host }}/grafana
     auth.proxy:
-      enabled: false
+      enabled: true
       header_name: X-Forwarded-User
       header_property: email
       auto_sign_up: true
@@ -18,20 +18,8 @@ grafana:
     auth:
       disable_login_form: true
 
-    users.auto.assign:
-      org_role: Admin
-
-    auth.generic_oauth:
-      enabled: true
-      client_id: example-app
-      client_secret: ZXhhbXBsZS1hcHAtc2VjcmV0
-      scopes: openid email profile
-      empty_scopes: false
-      auth_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/auth"
-      token_url: "https://service-auth-poc.westeurope.cloudapp.azure.com/token"
-      allowed_domains: .westeurope.cloudapp.azure.com
-      allow_sign_up: true
-      tls_skip_verify_insecure: true
+    users:
+      auto_assign_org_role: Admin
 
   datasources:
     datasources.yaml:
@@ -81,8 +69,8 @@ janus:
           #   namespace: networking
           # - name: oauth-auth
           #   namespace: networking
-          # - name: auth
-          #   namespace: networking
+          - name: auth
+            namespace: networking
           - name: grafana-stripprefix
       certificate:
         enabled: true
