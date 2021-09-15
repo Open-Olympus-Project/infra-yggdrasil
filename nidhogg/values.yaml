@@ -45,7 +45,7 @@ nidhogg:
         oidc.config: |
           name: Azure
           issuer: https://login.microsoftonline.com/{{ oauth_tenant_id }}/v2.0
-          clientID: {{ oauth_client_id }}
+          clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
           clientSecret: $oidc.azure.clientSecret
           requestedIDTokenClaims:
             groups:
