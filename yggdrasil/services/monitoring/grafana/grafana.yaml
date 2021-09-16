@@ -25,9 +25,9 @@ grafana:
     datasources.yaml:
       apiVersion: 1
       datasources:
-        - name: Prometheus
+        - name: Thanos
           type: prometheus
-          url: http://prometheus-server.monitoring
+          url: http://thanos-query-http.monitoring:10902
           access: proxy
           isDefault: true
           jsonData:
