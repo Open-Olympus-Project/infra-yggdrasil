@@ -1,22 +1,70 @@
-loki-stack:
-  loki:
-    config:
-      # https://github.com/grafana/helm-charts/pull/542
-      schema_config:
-        configs:
-        - from: 2020-05-15
-          store: azure
-          object_store: azure
-          schema: v11
-          index:
-            prefix: loki_index
-            period: 0
-      storage_config:
-        azure:
-          container_name: "loki"
-          account_name: "<sa-name>"
-          account_key: "<sa-key>"
+config:
+  existingSecret: loki-config
+  # https://github.com/grafana/helm-charts/pull/542
 
-      table_manager:
-        retention_deletes_enabled: true
-        retention_period: 336h
+loki:
+  enabled: false
+
+promtail:
+  enabled: true
+
+janus:
+  enabled: false
+
+lethe:
+  enabled: true
+  secretStores:
+    - name: sa-secret-store
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: sa-secret
+      secretStore:
+        backend: sa-secret-store
+        kind: SecretStore
+      target:
+        name: loki-config
+        template:
+          data:
+            loki.yaml: |
+              schema_config:
+                configs:
+                - from: 2020-05-15
+                  store: azure
+                  object_store: azure
+                  schema: v11
+                  index:
+                    prefix: loki_index
+                    period: 0
+              storage_config:
+                azure:
+                  container_name: "loki"
+                  account_name: {{`{{ .saName | toString }}`}}
+                  account_key: {{`{{ .saKey | toString }}`}}
+
+              table_manager:
+                retention_deletes_enabled: true
+                retention_period: 336h
+
+      data:
+        - secretKey: saName
+          remoteRef:
+            key: secrets/sa-metrics
+            property: sa-name
+        - secretKey: saKey
+          remoteRef:
+            key: secrets/sa-metrics
+            property: sa-key
