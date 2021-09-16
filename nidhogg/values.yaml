@@ -87,32 +87,6 @@ nidhogg:
         argocdServerAdminPassword: $2y$12$m4KC7G9d8NFxInl7GRpQ1OpPPrF43Msa33ZQjj0YmT6f8uwjHW8AO
         argocdServerAdminPasswordMtime: "2021-01-02T15:04:05Z"
 
-janus:
-  enabled: true
-  host: service-poc.westeurope.cloudapp.azure.com
-  certmanagerIssuer:
-    name: letsencrypt-staging
-    kind: ClusterIssuer
-
-  ingressRoutes:
-    - name: argo-cd
-      entryPoints:
-        - websecure
-      routes:
-      - kind: Rule
-        match: PathPrefix(`/argocd`)
-        services:
-          - name: nidhogg-argocd-server
-            port: 80
-      - kind: Rule
-        match: Headers(`Content-Type`, `application/grpc`)
-        services:
-          - name: nidhogg-argocd-server
-            port: 80
-            scheme: h2c
-      certificate:
-        enabled: true
-
 lethe:
   enabled: false
   secretStores:
