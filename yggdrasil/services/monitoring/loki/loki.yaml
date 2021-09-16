@@ -52,8 +52,8 @@ lethe:
               storage_config:
                 azure:
                   container_name: "loki"
-                  account_name: {{`{{ .saName | toString }}`}}
-                  account_key: {{`{{ .saKey | toString }}`}}
+                  account_name: {{`{{ .saName | toString | quote }}`}}
+                  account_key: {{`{{ .saKey | toString | quote }}`}}
 
               table_manager:
                 retention_deletes_enabled: true
