@@ -8,7 +8,7 @@ loki:
 promtail:
   enabled: true
   config:
-    lokiAddress: "http://loki-loki-stack.monitoring.svc:3100/api/v1/push"
+    lokiAddress: "http://loki-loki-stack.monitoring.svc:3100/loki/api/v1/push"
 
 janus:
   enabled: false
