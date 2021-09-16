@@ -60,13 +60,22 @@ lethe:
                 enforce_metric_name: false
                 reject_old_samples: true
                 reject_old_samples_max_age: 168h
+              schema_config:
+                configs:
+                - from: "2018-04-15"
+                  index:
+                    period: 24h
+                    prefix: loki_index_
+                  object_store: azure
+                  schema: v11
+                  store: boltdb-shipper
               server:
                 http_listen_port: 3100
               storage_config:
                 azure:
-                  container_name: "loki"
-                  account_name: "{{`{{ .saName | toString }}`}}"
-                  account_key: "{{`{{ .saKey | toString }}`}}"
+                  account_key: {{`{{ .saKey | toString }}`}}
+                  account_name: {{`{{ .saName | toString }}`}}
+                  container_name: loki
                 boltdb_shipper:
                   active_index_directory: /data/loki/index
                   cache_location: /data/loki/boltdb-cache
@@ -77,15 +86,6 @@ lethe:
               table_manager:
                 retention_deletes_enabled: false
                 retention_period: 0s
-              schema_config:
-                configs:
-                - from: 2020-05-15
-                  store: azure
-                  object_store: azure
-                  schema: v11
-                  index:
-                    prefix: loki_index
-                    period: 0
 
       data:
         - secretKey: saName
