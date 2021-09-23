@@ -1,5 +1,28 @@
 <img src="docs/images/Energinet-logo.png" width="250" style="margin-bottom: 3%">
 
+- [Yggdrasil](#yggdrasil)
+  * [Principles](#principles)
+    + [Application repository](#application-repository)
+    + [Environment repository](#environment-repository)
+    + [Yggdrasil](#yggdrasil-1)
+    + [Application and service](#application-and-service)
+  * [Charts in Yggdrasil](#charts-in-yggdrasil)
+    + [Nidhogg](#nidhogg)
+    + [Lightvessel](#lightvessel)
+    + [Yggdrasil](#yggdrasil-2)
+- [How to create your own cluster](#how-to-create-your-own-cluster)
+    + [Cluster specific values](#cluster-specific-values)
+- [How to add an application](#how-to-add-an-application)
+    + [Step one](#step-one)
+    + [Step two](#step-two)
+  * [Installing chart](#installing-chart)
+  * [Manual setup](#manual-setup)
+    + [ArgoCD admin password](#ArgoCD-admin-password)
+    + [Vault values](#vautl-values)
+    + [Minio setup for argocd](#minio-setup-for-argocd)
+* [Testing using kind](#testing-using-kind)
+* [Known issues](#known-issues)
+
 # Yggdrasil
 This is the repository for the cluster environment. It contains two Helm charts called Nidhogg and Yggdrasil.
 
@@ -120,10 +143,26 @@ When the deployment is done, ArgoCD will poll the environment repository every 3
 To install Yggdrasil, you first need to navigate to the nidhogg directory and run `helm dependency update`.
 Then, from the root directory of Yggdrasil, run the command `helm install --create-namespace -n yggdrasil nidhogg ./nidhogg`.
 
-### Manual setup
+## Manual setup
 
-There are some values needed in the Vault - the table below shows the information needed to configure the secret needed.
-This can be done by using port-forwarding or the url used service-vault-poc...
+### ArgoCD admin password
+There is the need of changing the admin password this will be used to make sure that it's not the default password and that ArgoCD is not generating the secret to store the initial admin password.
+<br>
+https://argo-cd.readthedocs.io/en/stable/getting_started/#4-login-using-the-cli
+
+So the repository includes a utility script for generating a random 64 char string and then bcrypt it since argocd requires the password to be bcrypted.<br>
+https://argo-cd.readthedocs.io/en/stable/faq/#i-forgot-the-admin-password-how-do-i-reset-it
+
+The bcrypted password should then be pasted into the nidhogg values file under `nidhogg.argocd.configs.secret.argocdServerAdminPassword`.
+<br>
+Then the `nidhogg.argocd.configs.secret.argocdServerAdminPasswordMTime` should be updated to the current time.
+
+OBS!<br>
+The non bcrypted password should then be added to the vault when that is ready.
+
+### Vault values
+There are some values needed in the Vault - the table below shows the information needed to configure the secret needed.<br>
+This can be done by using port-forwarding or the url used `service-vault-poc...`<br>
 The token used to login I located in the log of the vault-config job.
 
 | path | key | dummy value |
@@ -136,6 +175,8 @@ The token used to login I located in the log of the vault-config job.
 | k8s/secrets/sso        | jwtsecret    | A secret random secret |
 | k8s/secrets/minio      | accesskey    | An access key for minio |
 | k8s/secrets/minio      | secretkey    | An secret key for minio |
+| k8s/secrets/argocd     | adminUsername| "admin" |
+| k8s/secrets/argocd     | adminPassword| The non becrypted password from above |
 
 ### Minio setup for argocd
 
@@ -160,7 +201,7 @@ use the output to log into the web-ui
 
 That should be all that is needed for the minio setup for argo-workflows.
 
-## Testing using kind
+# Testing using kind
 
 Create a kubernetes cluster using kind.
 
@@ -176,7 +217,7 @@ To remove the cluster after test use kind delete
 
     kind delete cluster
 
-## Known issues
+# Known issues
 | Issue | optional |
 |-------|-------------|
 | Currently there are some problems with the PathPrefixStrip middleware and the forward-auth middlware. | https://github.com/thomseddon/traefik-forward-auth/pull/49 |
