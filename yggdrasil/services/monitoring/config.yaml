@@ -14,13 +14,13 @@ apps:
   - name: prometheus
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.10
+      targetRevision: 0.1.11
       chart: "prometheus"
       valuesFile: "prometheus.yaml"
   - name: thanos
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.1.7
+      targetRevision: 0.1.8
       chart: "thanos"
       valuesFile: "thanos.yaml"
   - name: grafana
@@ -32,7 +32,7 @@ apps:
   - name: loki
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: 0.2.4
+      targetRevision: 0.2.5
       chart: "loki-stack"
       valuesFile: "loki.yaml"
   - name: jaeger-operator

@@ -15,7 +15,7 @@ apps:
   - name: argo-workflows
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.15
+      targetRevision: 0.1.16
       chart: "argo-wf"
       valuesFile: "argowf.yaml"
   - name: argo-events
@@ -45,6 +45,6 @@ apps:
   - name: dex
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.2
+      targetRevision: 0.1.3
       chart: "dex"
       valuesFile: "dex.yaml"
