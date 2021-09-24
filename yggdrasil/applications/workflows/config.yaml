@@ -9,7 +9,7 @@ project:
     - '*'
 
 apps:
-  - name: workflows
+  - name: hepheastus
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.1.0
