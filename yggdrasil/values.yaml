@@ -1,3 +1,5 @@
+scName: poc
+
 ingress:
   hosts:
     main:

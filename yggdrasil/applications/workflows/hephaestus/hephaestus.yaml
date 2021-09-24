@@ -1,1 +1,2 @@
 serverURL: {{ .Values.ingress.hosts.main.host }}
+serviceClusterName: {{ .Values.scName }}
