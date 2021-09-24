@@ -1,0 +1,17 @@
+name: workflows
+clusterService: false
+namespace: argo-events
+description: Argo events setup
+
+project:
+  name: workflows
+  sourceRepos:
+    - '*'
+
+apps:
+  - name: workflows
+    source:
+      repoURL: "https://open-olympus-project.github.io/repo-helm/"
+      targetRevision: 0.1.0
+      chart: "hepheastus"
+      valuesFile: "hepheastus.yaml"

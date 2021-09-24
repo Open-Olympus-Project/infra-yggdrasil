@@ -1,0 +1,1 @@
+serverURL: {{ .Values.ingress.hosts.main.host }}
