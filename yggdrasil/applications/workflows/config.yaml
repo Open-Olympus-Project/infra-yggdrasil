@@ -1,10 +1,10 @@
 name: workflows
 clusterService: false
-namespace: argo-events
+namespace: tooling
 description: Argo events setup
 
 project:
-  name: workflows
+  name: tooling
   sourceRepos:
     - '*'
 
