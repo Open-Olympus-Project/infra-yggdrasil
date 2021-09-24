@@ -24,7 +24,7 @@ applications:
   dex: false
   external-secrets: true
   grafana: true
-  hepheastus: true
+  hephaestus: true
   traefik: true
   traefik-forward-auth: true
   jaeger-operator: true

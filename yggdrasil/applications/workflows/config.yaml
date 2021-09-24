@@ -9,9 +9,9 @@ project:
     - '*'
 
 apps:
-  - name: hepheastus
+  - name: hephaestus
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.1.0
-      chart: "hepheastus"
-      valuesFile: "hepheastus.yaml"
+      chart: "hephaestus"
+      valuesFile: "hephaestus.yaml"
