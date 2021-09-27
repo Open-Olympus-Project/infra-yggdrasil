@@ -39,8 +39,8 @@ nidhogg:
       config:
         url: https://service-poc.westeurope.cloudapp.azure.com/argocd
         repositories: |
-          - type: git
-            url: https://github.com/Open-Olympus-Project/*
+          # - type: git
+          #   url: https://github.com/Open-Olympus-Project/*
 
         # oidc.config: |
         #   name: Azure
