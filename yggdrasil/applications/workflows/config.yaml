@@ -11,7 +11,7 @@ project:
 apps:
   - name: hephaestus
     source:
-      repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: 0.1.5
-      chart: "hephaestus"
+      repoURL: "https://github.com/Open-Olympus-Project/repo-helm.git"
+      targetRevision: workflow-helm
+      path: hephaestus
       valuesFile: "hephaestus.yaml"
