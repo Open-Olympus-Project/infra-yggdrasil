@@ -177,6 +177,8 @@ The token used to login I located in the log of the vault-config job.
 | k8s/secrets/minio      | secretkey    | An secret key for minio |
 | k8s/secrets/argocd     | adminUsername| "admin" |
 | k8s/secrets/argocd     | adminPassword| The non becrypted password from above |
+| k8s/secrets/github-ssh | github       | The private key for github repo |
+| k8s/secrets/github-ssh | github.pub   | The public key for github repo |
 
 ### Minio setup for argocd
 
