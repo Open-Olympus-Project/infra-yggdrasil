@@ -32,7 +32,7 @@ lethe:
       target:
         name: odp-github-ssh
       dataFrom:
-        - key: github-ssh
+        - key: secrets/github-ssh
 
 
     - name: dataplatform-dev-secret
