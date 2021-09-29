@@ -20,7 +20,6 @@ applications:
   argo-events: true
   argo-events-setup: true
   argo-events-github: false
-  argo-events-azure: false
   cert-manager: true
   cert-manager-issuer: true
   dex: false
