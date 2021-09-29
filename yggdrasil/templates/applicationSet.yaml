@@ -21,9 +21,6 @@ spec:
         repoURL: https://github.com/Open-Olympus-Project/argo-events-setup.git
         targetRevision: main
         path: '{{`{{path}}`}}'
-        helm:
-          values: |
-            {{`{{values}}`}}
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{`{{path.basename}}`}}'
