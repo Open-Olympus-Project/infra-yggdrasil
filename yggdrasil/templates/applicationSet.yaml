@@ -8,7 +8,7 @@ spec:
       repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
       revision: main
       directories:
-      - path: repo-helm/charts/prometheus/
+      - path: charts/prometheus/
   - list:
       elements:
         - values:
