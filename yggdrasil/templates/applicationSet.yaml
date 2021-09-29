@@ -4,15 +4,17 @@ metadata:
   name: cluster-addons
 spec:
   generators:
-  - git:
-      repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
-      revision: main
-      directories:
-      - path: charts/prometheus/
-  - list:
-      elements:
-        - values:
-{{ .Values.ingress | toYaml | indent 12 }}
+  - matrix:
+    generators:
+      - git:
+          repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
+          revision: main
+          directories:
+          - path: charts/prometheus/
+      - list:
+          elements:
+            - values:
+{{ .Values.ingress | toYaml | indent 16 }}
   template:
     metadata:
       name: '{{`{{path.basename}}`}}'
