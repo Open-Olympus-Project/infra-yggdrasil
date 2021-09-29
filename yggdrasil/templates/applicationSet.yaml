@@ -5,16 +5,16 @@ metadata:
 spec:
   generators:
   - matrix:
-    generators:
-      - git:
-          repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
-          revision: main
-          directories:
-          - path: charts/prometheus/
-      - list:
-          elements:
-            - values:
-{{ .Values.ingress | toYaml | indent 16 }}
+      generators:
+        - git:
+            repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
+            revision: main
+            directories:
+            - path: charts/prometheus/
+        - list:
+            elements:
+              - values:
+{{ .Values.ingress | toYaml | indent 18 }}
   template:
     metadata:
       name: '{{`{{path.basename}}`}}'
