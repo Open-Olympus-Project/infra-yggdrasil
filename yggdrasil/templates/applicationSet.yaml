@@ -11,13 +11,13 @@ spec:
       - path: examples/git-generator-directory/cluster-addons/*
   template:
     metadata:
-      name: '{{`cluster-addons`}}'
+      name: '{{`{{path.basename}}`}}'
     spec:
       project: default
       source:
         repoURL: https://github.com/argoproj-labs/applicationset.git
         targetRevision: HEAD
-        path: '{{`type_here`}}'
+        path: '{{`{{path}}`}}'
       destination:
         server: https://kubernetes.default.svc
-        namespace: '{{`type_here`}}'
+        namespace: '{{`{{path.basename}}`}}'
