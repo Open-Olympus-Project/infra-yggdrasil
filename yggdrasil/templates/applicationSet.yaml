@@ -10,7 +10,7 @@ spec:
             repoURL: https://github.com/Open-Olympus-Project/argo-events-setup.git
             revision: main
             directories:
-            - path: setup
+            - path: events-github
         - clusters: {}
   template:
     metadata:
@@ -22,5 +22,5 @@ spec:
         targetRevision: main
         path: '{{`{{path}}`}}'
       destination:
-        server: https://kubernetes.default.svc
+        server: '{{`{{ server }}`}}'
         namespace: '{{`{{path.basename}}`}}'
