@@ -87,6 +87,11 @@ nidhogg:
         argocdServerAdminPassword: $2y$12$m4KC7G9d8NFxInl7GRpQ1OpPPrF43Msa33ZQjj0YmT6f8uwjHW8AO
         argocdServerAdminPasswordMtime: "2021-01-02T15:04:05Z"
 
+argocd-applicationset:
+  args:
+    namespace: nidhogg
+    argocdRepoServer: nidhogg-argocd-repo-server:8081
+
 lethe:
   enabled: false
   secretStores:
