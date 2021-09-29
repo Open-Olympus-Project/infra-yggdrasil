@@ -5,10 +5,10 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/argoproj-labs/applicationset.git
+      repoURL: https://github.com/Open-Olympus-Project/yggdrasil-v2.git
       revision: HEAD
       directories:
-      - path: examples/git-generator-directory/cluster-addons/*
+      - path: service/*
   template:
     metadata:
       name: '{{`{{path.basename}}`}}'
