@@ -6,7 +6,7 @@ spec:
   generators:
   - git:
       repoURL: https://github.com/Open-Olympus-Project/yggdrasil-v2.git
-      revision: HEAD
+      revision: main
       directories:
       - path: service/*
   template:
