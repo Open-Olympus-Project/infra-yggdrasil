@@ -1,6 +1,6 @@
 nidhogg:
   yggdrasil:
-    repoURL: "https://github.com/Open-Dataplatform/infra-yggdrasil.git"
+    repoURL: "https://github.com/Open-Olympus-Project/infra-yggdrasil.git"
     targetRevision: "main"
     containerRegistryUrl: serviceacrpoc.azurecr.io
     ingress:
