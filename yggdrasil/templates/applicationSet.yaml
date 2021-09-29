@@ -8,7 +8,7 @@ spec:
       repoURL: https://github.com/Open-Olympus-Project/yggdrasil-v2.git
       revision: HEAD
       directories:
-      - path: service/*
+      - path: examples/git-generator-directory/cluster-addons/*
   template:
     metadata:
       name: '{{`{{path.basename}}`}}'
