@@ -1,8 +1,0 @@
-ingress:
-  hosts:
-    main:
-      host: poc-dev.westeurope.cloudapp.azure.com
-      loadBalancerIP: 51.124.85.220
-  LoadBalancerResoureGroup: env-aks-poc-dev
-  certmanagerissuer:  letsencrypt-staging
-  # className: ingress-traefik
