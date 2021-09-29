@@ -7,8 +7,6 @@ spec:
   - git:
       repoURL: https://github.com/Open-Olympus-Project/yggdrasil-v2.git
       revision: HEAD
-      directories:
-      - path: ./*
   template:
     metadata:
       name: '{{`{{path.basename}}`}}'
