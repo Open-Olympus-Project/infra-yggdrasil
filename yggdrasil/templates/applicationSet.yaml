@@ -5,19 +5,26 @@ metadata:
 spec:
   generators:
   - git:
-      repoURL: https://github.com/Open-Olympus-Project/yggdrasil-v2.git
-      revision: HEAD
+      repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
+      revision: main
       directories:
-      - path: service/*
+      - path: repo-helm/charts/prometheus/
+  - list:
+      elements:
+        - values:
+{{ .Values.ingress | toYaml | indent 12 }}
   template:
     metadata:
       name: '{{`{{path.basename}}`}}'
     spec:
       project: default
       source:
-        repoURL: https://github.com/Open-Olympus-Project/yggdrasil-v2.git
-        targetRevision: HEAD
+        repoURL: https://github.com/Open-Olympus-Project/repo-helm.git
+        targetRevision: main
         path: '{{`{{path}}`}}'
+        helm:
+          values: |
+            {{`{{values}}`}}
       destination:
         server: https://kubernetes.default.svc
         namespace: '{{`{{path.basename}}`}}'

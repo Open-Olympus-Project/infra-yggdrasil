@@ -20,10 +20,10 @@ applications:
   argo-events: true
   argo-events-setup: true
   argo-events-github: false
+  argo-events-azure: false
   cert-manager: true
   cert-manager-issuer: true
   dex: false
-  env-yggdrasil-test: true
   external-secrets: true
   grafana: true
   hephaestus: true
@@ -33,6 +33,6 @@ applications:
   loki: true
   minio-operator: true
   oauth2-proxy: false
-  prometheus: true
+  prometheus: false
   thanos: true
   vault: true
