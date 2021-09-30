@@ -1,7 +1,7 @@
 name: env-yggdrasil-test
 clusterService: false
 namespace: yggdrasil
-destinationServer: https://env-poc-test-931ac487.hcp.westeurope.azmk8s.io:443
+# destinationServer: https://env-poc-test-931ac487.hcp.westeurope.azmk8s.io:443
 description: The yggdrasil instance for test env
 
 project:
