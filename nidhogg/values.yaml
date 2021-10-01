@@ -2,9 +2,9 @@ nidhogg:
   yggdrasil:
     repoURL: "https://github.com/Open-Olympus-Project/infra-yggdrasil.git"
     targetRevision: "main"
-    containerRegistryUrl: serviceacrpoc.azurecr.io
+    containerRegistryUrl: serviceacrps.azurecr.io
     ingress:
-      LoadBalancerResoureGroup: service-aks-poc
+      LoadBalancerResoureGroup: service-aks-ps
       certmanagerissuer: letsencrypt-staging
       hosts:
         main:
@@ -14,7 +14,7 @@ nidhogg:
           host: service-vault-ps.westeurope.cloudapp.azure.com
           loadBalancerIP: 20.93.212.33
         auth:
-          host: service-auth-poc.westeurope.cloudapp.azure.com
+          host: service-auth-ps.westeurope.cloudapp.azure.com
           loadBalancerIP: 51.138.91.124
 
   installCNI: false
