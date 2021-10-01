@@ -24,7 +24,7 @@ applications:
   cert-manager: true
   cert-manager-issuer: true
   dex: false
-  env-yggdrasil-test: true
+  env-yggdrasil-test: false
   external-secrets: true
   grafana: true
   hephaestus: true
