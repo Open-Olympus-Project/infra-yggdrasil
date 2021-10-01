@@ -34,6 +34,6 @@ applications:
   loki: true
   minio-operator: true
   oauth2-proxy: false
-  prometheus: false
+  prometheus: true
   thanos: true
   vault: true
