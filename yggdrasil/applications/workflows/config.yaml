@@ -1,12 +1,19 @@
 name: workflows
 clusterService: false
 namespace: tooling
-description: Argo events setup
+description: Argo setup
 
 project:
   name: tooling
   sourceRepos:
     - '*'
+
+  destinations:
+  - namespace: argo
+    server: https://kubernetes.default.svc
+  - namespace: heph
+    server: https://kubernetes.default.svc
+
 
 apps:
   - name: hephaestus
