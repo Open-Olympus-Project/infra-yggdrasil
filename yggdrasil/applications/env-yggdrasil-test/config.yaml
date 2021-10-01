@@ -1,0 +1,18 @@
+name: env-yggdrasil-test
+clusterService: false
+namespace: yggdrasil
+# destinationServer: https://env-poc-test-931ac487.hcp.westeurope.azmk8s.io:443
+description: The yggdrasil instance for test env
+
+project:
+  name: env-yggdrasil-test
+  sourceRepos:
+    - '*'
+
+apps:
+  - name: env-yggdrasil-test
+    source:
+      repoURL: "https://github.com/Open-Dataplatform/yggdrasil-env.git"
+      targetRevision: test
+      path: "yggdrasil"
+      valuesFile: "yggdrasil-test.yaml"

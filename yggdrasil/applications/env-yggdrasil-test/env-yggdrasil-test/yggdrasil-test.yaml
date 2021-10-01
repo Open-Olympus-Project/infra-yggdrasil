@@ -1,0 +1,11 @@
+scName: poc
+nameSuffix: test
+
+ingress:
+  hosts:
+    main:
+      host: <host1>
+      loadBalancerIP: <ip>
+  LoadBalancerResoureGroup: <resource_group>
+  certmanagerissuer: <cert-manager-issuer>
+  # className: ingress-traefik
