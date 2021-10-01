@@ -8,11 +8,11 @@ nidhogg:
       certmanagerissuer: letsencrypt-staging
       hosts:
         main:
-          host: service-poc.westeurope.cloudapp.azure.com # This is what argocd will run on
-          loadBalancerIP: 20.82.41.255
+          host: service-ps.westeurope.cloudapp.azure.com # This is what argocd will run on
+          loadBalancerIP: 20.93.211.177
         vault:
-          host: service-vault-poc.westeurope.cloudapp.azure.com
-          loadBalancerIP: 20.82.41.148
+          host: service-vault-ps.westeurope.cloudapp.azure.com
+          loadBalancerIP: 20.93.212.33
         auth:
           host: service-auth-poc.westeurope.cloudapp.azure.com
           loadBalancerIP: 51.138.91.124
