@@ -5,7 +5,7 @@ nidhogg:
     containerRegistryUrl: serviceacrps.azurecr.io
     ingress:
       LoadBalancerResoureGroup: service-aks-ps
-      certmanagerissuer: letsencrypt-staging
+      certmanagerissuer: letsencrypt-prod
       hosts:
         main:
           host: service-ps.westeurope.cloudapp.azure.com # This is what argocd will run on
