@@ -13,6 +13,6 @@ apps:
   - name: env-yggdrasil-test
     source:
       repoURL: "https://github.com/Open-Dataplatform/yggdrasil-env.git"
-      targetRevision: test
+      targetRevision: main
       path: "yggdrasil"
       valuesFile: "yggdrasil-test.yaml"
