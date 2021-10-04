@@ -8,6 +8,9 @@ project:
   name: env-yggdrasil-test
   sourceRepos:
     - '*'
+  destinations:
+  - namespace: '*'
+    server: https://env-poc-test-931ac487.hcp.westeurope.azmk8s.io:443
 
 apps:
   - name: env-yggdrasil-test
