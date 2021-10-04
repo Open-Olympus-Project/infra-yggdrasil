@@ -1,4 +1,4 @@
-scName: poc
+scName: ps
 
 ingress:
   hosts:
