@@ -17,30 +17,30 @@ apps:
   - name: traefik
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.2.2
+      targetRevision: 0.2.x
       chart: "traefik"
       valuesFile: "traefik.yaml"
   - name: cert-manager
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.1
+      targetRevision: 0.1.x
       chart: "cert-manager"
       valuesFile: "cert-manager.yaml"
   - name: cert-manager-issuer
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.1
+      targetRevision: 0.1.x
       chart: "cert-manager-issuer"
       valuesFile: "cert-manager-issuer.yaml"
   - name: traefik-forward-auth
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.6
+      targetRevision: 0.1.x
       chart: "traefik-forward-auth"
       valuesFile: "traefik-forward-auth.yaml"
   - name: oauth2-proxy
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.3
+      targetRevision: 0.1.x
       chart: "oauth2-proxy"
       valuesFile: "oauth2-proxy.yaml"

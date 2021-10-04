@@ -15,36 +15,36 @@ apps:
   - name: argo-workflows
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.16
+      targetRevision: 0.1.x
       chart: "argo-wf"
       valuesFile: "argowf.yaml"
   - name: argo-events
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.1
+      targetRevision: 0.1.x
       chart: "argo-events"
       valuesFile: "argo-events.yaml"
   - name: vault
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.3
+      targetRevision: 0.1.x
       chart: "vault"
       valuesFile: "vault.yaml"
   - name: external-secrets
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.0
+      targetRevision: 0.1.x
       chart: "external-secrets"
       valuesFile: "external-secrets.yaml"
   - name: minio-operator
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.0
+      targetRevision: 0.1.x
       chart: "minio-operator"
       valuesFile: "minio-operator.yaml"
   - name: dex
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
-      targetRevision: ~0.1.3
+      targetRevision: 0.1.x
       chart: "dex"
       valuesFile: "dex.yaml"
