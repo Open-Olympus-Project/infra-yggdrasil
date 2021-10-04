@@ -4,3 +4,60 @@ serviceClusterName: {{ .Values.scName }}
 # This list should always correspond to the secrets list below
 servicePrincipalEnums:
 - dataplatform-dev
+
+lethe:
+  enabled: true
+  secretStores:
+    - name: k8s-service-principals-backend
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: open-dataplatform-github-ssh
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: odp-github-ssh
+      data:
+        - secretKey: id_rsa
+          remoteRef:
+            key: secrets/github-ssh
+            property: github
+
+    - name: argocd-creds
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: argocd-creds
+      data:
+        - secretKey: username
+          remoteRef:
+            key: secrets/argocd
+            property: adminUsername
+        - secretKey: password
+          remoteRef:
+            key: secrets/argocd
+            property: adminPassword
+
+    - name: dataplatform-dev-secret
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: dataplatform-dev-secret
+      dataFrom:
+        - key: service-principals/dataplatform-dev

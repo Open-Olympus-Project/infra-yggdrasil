@@ -23,3 +23,47 @@ janus:
             namespace: networking
       certificate:
         enabled: true
+
+lethe:
+  enabled: true
+  secretStores:
+    - name: sso-secret-store
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: sso-secret
+      secretStore:
+        backend: sso-secret-store
+        kind: SecretStore
+      target:
+        name: sso-secret
+      data:
+        - secretKey: issuerurl
+          remoteRef:
+            key: secrets/sso
+            property: issuerurl
+        - secretKey: clientid
+          remoteRef:
+            key: secrets/sso
+            property: clientid
+        - secretKey: clientsecret
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret
+        - secretKey: jwtsecret
+          remoteRef:
+            key: secrets/sso
+            property: jwtsecret

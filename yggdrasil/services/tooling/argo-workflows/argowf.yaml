@@ -37,3 +37,55 @@ janus:
         stripPrefix:
           prefixes:
             - /argowf
+
+lethe:
+  enabled: true
+  secretStores:
+    - name: k8s-secret-backend
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: minio-creds-secret
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: minio-creds-secret
+      data:
+        - secretKey: accesskey
+          remoteRef:
+            key: secrets/minio
+            property: accesskey
+        - secretKey: secretkey
+          remoteRef:
+            key: secrets/minio
+            property: secretkey
+
+    - name: argowf-sso
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: argowf-sso
+      data:
+        - secretKey: clientid
+          remoteRef:
+            key: secrets/sso
+            property: clientid
+        - secretKey: clientsecret
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret

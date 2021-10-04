@@ -112,3 +112,48 @@ janus:
             namespace: networking
       certificate:
         enabled: true
+
+lethe:
+  enabled: true
+  secretStores:
+    - name: vault-backend
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+  secrets:
+    - name: prometheus-bucket
+      secretStore:
+        backend: vault-backend
+        kind: SecretStore
+      target:
+        name: prometheus-bucket
+        template:
+          data:
+            object-store.yaml: |
+              type: AZURE
+              config:
+                storage_account: "{{ .saName | toString }}"
+                storage_account_key: "{{ .saKey | toString }}"
+                container: "thanos"
+                endpoint: ""
+                max_retries: 3
+      data:
+        - secretKey: saName
+          remoteRef:
+            key: secrets/sa-metrics
+            property: sa-name
+        - secretKey: saKey
+          remoteRef:
+            key: secrets/sa-metrics
+            property: sa-key

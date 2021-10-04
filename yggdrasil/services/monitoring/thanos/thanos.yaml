@@ -7,3 +7,33 @@ thanos:
 
 janus:
   enabled: false
+
+lethe:
+  enabled: true
+  secretStores: []
+  secrets:
+    - name: thanos-bucket
+      secretStore:
+        backend: vault-backend
+        kind: SecretStore
+      target:
+        name: thanos-bucket
+        template:
+          data:
+            object-store.yaml: |
+              type: AZURE
+              config:
+                storage_account: "{{ .saName | toString }}"
+                storage_account_key: "{{ .saKey | toString }}"
+                container: "thanos"
+                endpoint: ""
+                max_retries: 3
+      data:
+        - secretKey: saName
+          remoteRef:
+            key: secrets/sa-metrics
+            property: sa-name
+        - secretKey: saKey
+          remoteRef:
+            key: secrets/sa-metrics
+            property: sa-key
