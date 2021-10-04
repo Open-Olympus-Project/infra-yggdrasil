@@ -15,7 +15,7 @@ nidhogg:
           loadBalancerIP: 20.93.212.33
         auth:
           host: service-auth-ps.westeurope.cloudapp.azure.com
-          loadBalancerIP: 51.138.91.124
+          loadBalancerIP: 20.103.51.93
 
   installCNI: false
 
