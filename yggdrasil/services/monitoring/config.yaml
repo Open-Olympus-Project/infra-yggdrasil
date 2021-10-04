@@ -32,7 +32,7 @@ apps:
   - name: loki
     source:
       repoURL: 'https://open-olympus-project.github.io/repo-helm/'
-      targetRevision: ~0.2.5
+      targetRevision: 0.2.x
       chart: "loki-stack"
       valuesFile: "loki.yaml"
   - name: jaeger-operator
