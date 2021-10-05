@@ -2,7 +2,7 @@ appHost: westeurope.cloudapp.azure.com
 authHost: {{ .Values.ingress.hosts.auth.host }}
 
 janus:
-  enabled: false
+  enabled: true
   host: {{ .Values.ingress.hosts.auth.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
