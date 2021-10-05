@@ -2,14 +2,15 @@ scName: poc
 nameSuffix: test
 
 vaultServer: https://{{ .Values.ingress.hosts.vault.host }}
-authServer: https://{{ .Values.ingress.hosts.auth.host }}
-serviceServer: https://{{ .Values.ingress.hosts.main.host }}
 
 ingress:
   hosts:
     main:
       host: ps-test.westeurope.cloudapp.azure.com
       loadBalancerIP: 20.82.80.167
+    auth:
+      host: ps-auth-test.westeurope.cloudapp.azure.com
+      loadBalancerIP: 20.101.241.162
   LoadBalancerResoureGroup: env-aks-ps-test
   certmanagerissuer: letsencrypt-staging
   # className: ingress-traefik
