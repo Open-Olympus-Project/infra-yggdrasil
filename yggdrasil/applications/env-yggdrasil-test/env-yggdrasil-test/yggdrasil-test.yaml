@@ -2,6 +2,8 @@ scName: poc
 nameSuffix: test
 
 vaultServer: https://{{ .Values.ingress.hosts.vault.host }}
+authServer: https://{{ .Values.ingress.hosts.auth.host }}
+serviceServer: https://{{ .Values.ingress.hosts.main.host }}
 
 ingress:
   hosts:
