@@ -1,6 +1,8 @@
 scName: poc
 nameSuffix: test
 
+vaultServer: {{ .Values.ingress.hosts.vault.host }}
+
 ingress:
   hosts:
     main:
