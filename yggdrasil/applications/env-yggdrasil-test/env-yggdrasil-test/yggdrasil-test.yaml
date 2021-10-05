@@ -9,5 +9,5 @@ ingress:
       host: <host1>
       loadBalancerIP: <ip>
   LoadBalancerResoureGroup: <resource_group>
-  certmanagerissuer: <cert-manager-issuer>
+  certmanagerissuer: letsencrypt-staging
   # className: ingress-traefik
