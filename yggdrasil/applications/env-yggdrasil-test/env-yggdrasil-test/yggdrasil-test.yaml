@@ -6,8 +6,8 @@ vaultServer: https://{{ .Values.ingress.hosts.vault.host }}
 ingress:
   hosts:
     main:
-      host: <host1>
-      loadBalancerIP: <ip>
-  LoadBalancerResoureGroup: <resource_group>
+      host: ps-test.westeurope.cloudapp.azure.com
+      loadBalancerIP: 20.82.80.167
+  LoadBalancerResoureGroup: env-aks-ps-test
   certmanagerissuer: letsencrypt-staging
   # className: ingress-traefik
