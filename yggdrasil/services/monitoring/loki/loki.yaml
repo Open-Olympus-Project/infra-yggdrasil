@@ -11,7 +11,24 @@ promtail:
     lokiAddress: "http://loki-loki-stack.monitoring.svc:3100/loki/api/v1/push"
 
 janus:
-  enabled: false
+  enabled: true
+  host: {{ .Values.ingress.hosts.main.host | quote }}
+  certmanagerIssuer:
+    name: {{ .Values.ingress.certmanagerissuer | quote }}
+    kind: ClusterIssuer
+
+  ingressRoutes:
+    - name: loki
+      entryPoints:
+        - websecure
+      routes:
+        - kind: Rule
+          match: PathPrefix(`/loki`)
+          services:
+            - name: loki-loki-stack
+              port: 3100
+      certificate:
+        enabled: true
 
 lethe:
   enabled: true
