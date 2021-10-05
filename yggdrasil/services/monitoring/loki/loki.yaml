@@ -75,6 +75,8 @@ lethe:
                       store: inmemory
                     replication_factor: 1
                 max_transfer_retries: 0
+                flush_check_period: 5s
+                flush_op_timeout: 100m
               limits_config:
                 enforce_metric_name: false
                 reject_old_samples: true
