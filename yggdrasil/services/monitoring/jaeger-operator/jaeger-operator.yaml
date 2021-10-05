@@ -4,6 +4,8 @@ jaeger-operator:
     create: true
 
     spec:
+      ingress:
+        enabled: false
       strategy: allInOne
       allInOne:
         options:
