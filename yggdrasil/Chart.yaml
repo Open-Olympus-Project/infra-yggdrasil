@@ -9,5 +9,5 @@ maintainers:
 
 dependencies:
   - name: lightvessel
-    version: "v1.1.6"
+    version: "v1.1.7"
     repository: "https://distributed-technologies.github.io/helm-repository/"

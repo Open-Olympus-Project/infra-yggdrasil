@@ -1,6 +1,6 @@
 scName: poc
 nameSuffix: test
-# destinationServer: https://env-poc-test-931ac487.hcp.westeurope.azmk8s.io:443
+destinationServer: https://env-poc-test-931ac487.hcp.westeurope.azmk8s.io:443
 
 vaultServer: https://{{ .Values.ingress.hosts.vault.host }}
 serviceServer: https://{{ .Values.ingress.hosts.main.host }}
