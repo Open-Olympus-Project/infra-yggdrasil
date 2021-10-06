@@ -2,7 +2,8 @@
 querytls:
   enabled: true
   stores:
-
+    - ps-test.westeurope.cloudapp.azure.com:443
+    # - dp-prod.westeurope.cloudapp.azure.com:443
   # Enable DNS discovery for stores
   storeDNSDiscovery: false
   # Enable DNS discovery for sidecars (this is for the chart built-in sidecar service)
