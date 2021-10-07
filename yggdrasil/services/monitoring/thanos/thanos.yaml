@@ -18,7 +18,7 @@ thanos:
   query:
     storeDNSDiscovery: true
     stores:
-      - tooling-thanos-query-grpc-tls.monitoring.svc.cluster.local:10901
+      - thanos-query-grpc-tls.monitoring.svc.cluster.local:10901
 
 janus:
   enabled: false
