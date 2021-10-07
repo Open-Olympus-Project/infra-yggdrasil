@@ -14,5 +14,5 @@ ingress:
       host: ps-auth-test.westeurope.cloudapp.azure.com
       loadBalancerIP: 20.101.241.162
   LoadBalancerResoureGroup: env-aks-ps-test
-  certmanagerissuer: letsencrypt-staging
+  certmanagerissuer: letsencrypt-prod
   # className: ingress-traefik
