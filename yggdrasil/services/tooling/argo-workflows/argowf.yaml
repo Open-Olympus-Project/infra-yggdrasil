@@ -7,7 +7,6 @@ argo-workflows:
   controller:
     workflowNamespaces:
       - tooling
-      - argo-events
 
 janus:
   enabled: true
