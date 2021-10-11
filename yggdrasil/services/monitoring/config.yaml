@@ -41,3 +41,9 @@ apps:
       targetRevision: 0.1.x
       chart: "jaeger-operator"
       valuesFile: "jaeger-operator.yaml"
+  - name: grafana-dashboard
+    source:
+      repoURL: 'https://github.com/Open-Olympus-Project/grafana-dashboards.git'
+      targetRevision: main
+      path: "."
+      valuesFile: "grafana-dashboard.yaml"
