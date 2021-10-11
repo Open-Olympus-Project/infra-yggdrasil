@@ -4,6 +4,9 @@ config:
 
 loki:
   enabled: false
+  # enable tracing for debug, need install jaeger and specify right jaeger_agent_host
+  tracing:
+    jaegerAgentHost: https://service-ps.westeurope.cloudapp.azure.com:443
 
 promtail:
   enabled: true

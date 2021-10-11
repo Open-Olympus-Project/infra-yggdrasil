@@ -65,7 +65,7 @@ janus:
         - websecure
       routes:
         - kind: Rule
-          match: PathPrefix(`/`)
+          match: PathPrefix(`/jaeger-collector`)
           services:
             - name: jaeger-operator-jaeger-collector
               port: 14250
