@@ -60,3 +60,15 @@ janus:
               namespace: networking
       certificate:
         enabled: true
+    - name: jaeger-collector
+      entryPoints:
+        - websecure
+      routes:
+        - kind: Rule
+          match: PathPrefix(`/`)
+          services:
+            - name: jaeger-operator-jaeger-collector
+              port: 14250
+              scheme: h2c
+      certificate:
+        enabled: true
