@@ -18,12 +18,24 @@ apps:
       targetRevision: 0.1.x
       chart: "argo-wf"
       valuesFile: "argowf.yaml"
+  - name: hephaestus
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/repo-helm.git"
+      targetRevision: workflow-helm
+      path: "charts/hephaestus"
+      valuesFile: "hephaestus.yaml"
   - name: argo-events
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"
       targetRevision: 0.1.x
       chart: "argo-events"
       valuesFile: "argo-events.yaml"
+  - name: argo-events-setup
+    source:
+      repoURL: "https://github.com/Open-Olympus-Project/argo-events-setup.git"
+      targetRevision: HEAD
+      path: setup
+      valuesFile: "argo-events-setup.yaml"
   - name: vault
     source:
       repoURL: "https://open-olympus-project.github.io/repo-helm/"

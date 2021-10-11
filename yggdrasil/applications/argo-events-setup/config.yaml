@@ -9,12 +9,6 @@ project:
     - '*'
 
 apps:
-  - name: argo-events-setup
-    source:
-      repoURL: "https://github.com/Open-Olympus-Project/argo-events-setup.git"
-      targetRevision: HEAD
-      path: setup
-      valuesFile: "argo-events-setup.yaml"
   - name: argo-events-github
     source:
       repoURL: "https://github.com/Open-Olympus-Project/argo-events-setup.git"

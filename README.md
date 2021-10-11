@@ -203,6 +203,23 @@ use the output to log into the web-ui
 
 That should be all that is needed for the minio setup for argo-workflows.
 
+### Thanos setup
+
+The Thanos setup is made such that it can take query against other thanos instances on other clusters
+
+this is done by having two instances of the query component setup, the normal and a TLS enabled one.
+This allows the TLS enabled one to connect to sidecars outside the cluster using gRPC,
+the normal query is then told to also use the TLS query as a store this allows us to pull recent data from other clusters and still access the historical data from object storage.
+
+This setup does mean that the sidecar on the second cluster is also gonna push metrics to the same object-storage.
+
+If you are only running a single cluster and don't want to have the TLS query running you can disable it in the `thanos.yaml` values file.
+
+If you are running mutiple cluster and want to be able to query all metrics from a single datasource in grafana you can keep the TLS query enabled.
+In the `thanos.yaml` file you can add the sidecar url for the external cluster in the `querytls.stores`.
+
+The grafana instace already has the right thanos datasource defined in it's config.
+
 # Testing using kind
 
 Create a kubernetes cluster using kind.

@@ -23,7 +23,6 @@ applications:
   argo-events-azure: false
   cert-manager: true
   cert-manager-issuer: true
-  dex: false
   env-yggdrasil-test: true
   external-secrets: true
   grafana: true
@@ -34,7 +33,6 @@ applications:
   jaeger-operator: true
   loki: true
   minio-operator: true
-  oauth2-proxy: false
   prometheus: true
   thanos: true
   vault: true
