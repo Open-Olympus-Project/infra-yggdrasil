@@ -10,7 +10,7 @@ grafana:
       allow_sign_up: true
       client_id: APPLICATION_ID
       client_secret: CLIENT_SECRET
-      scopes: openid email profile
+      scopes: openid email profile offline_access
       auth_url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/oauth2/v2.0/authorize
       token_url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/oauth2/v2.0/token
       allowed_domains:
