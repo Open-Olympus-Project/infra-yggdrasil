@@ -4,22 +4,19 @@ grafana:
     server:
       #TODO HOST URL
       root_url: https://{{ .Values.ingress.hosts.main.host }}/grafana
-    auth.proxy:
+    auth.azuread:
+      name: Azure AD
       enabled: true
-      header_name: X-Forwarded-User
-      header_property: email
-      auto_sign_up: true
-      headers: Name:X-Forwarded-User Email:X-Forwarded-Email
-      enable_login_token: false
+      allow_sign_up: true
+      client_id: APPLICATION_ID
+      client_secret: CLIENT_SECRET
+      scopes: openid email profile
+      auth_url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/oauth2/v2.0/authorize
+      token_url: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/oauth2/v2.0/token
+      allowed_domains:
+      allowed_groups:
 
-    auth.basic:
-      enabled: false
-
-    auth:
-      disable_login_form: true
-
-    users:
-      auto_assign_org_role: Admin
+  envFromSecret: "grafana-sso"
 
   datasources:
     datasources.yaml:
@@ -81,3 +78,39 @@ janus:
         stripPrefix:
           prefixes:
             - /grafana
+
+lethe:
+  enabled: true
+  secretStores:
+    - name: k8s-secret-backend
+      providers:
+        vault:
+          server: "http://vault.tooling.svc:8200"
+          path: "k8s"
+          version: "v2"
+          auth:
+            # Authenticate against Vault using a Kubernetes ServiceAccount
+            # token stored in a Secret.
+            # https://www.vaultproject.io/docs/auth/kubernetes
+            kubernetes:
+              # Path where the Kubernetes authentication backend is mounted in Vault
+              mountPath: "kubernetes"
+              # A required field containing the Vault Role to assume.
+              role: "k8s-secrets"
+
+  secrets:
+    - name: grafana-sso
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: grafana-sso
+      data:
+        - secretKey: GF_AUTH_AZUREAD_CLIENT_ID
+          remoteRef:
+            key: secrets/sso
+            property: clientid
+        - secretKey: GF_AUTH_AZUREAD_CLIENT_SECRET
+          remoteRef:
+            key: secrets/sso
+            property: clientsecret
