@@ -69,6 +69,5 @@ janus:
           services:
             - name: jaeger-operator-jaeger-collector
               port: 14250
-              scheme: h2c
       certificate:
         enabled: true
