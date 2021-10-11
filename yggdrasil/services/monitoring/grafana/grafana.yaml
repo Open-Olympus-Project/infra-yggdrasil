@@ -22,6 +22,20 @@ grafana:
 
   envFromSecret: "grafana-sso"
 
+  persistence:
+    type: pvc
+    enabled: true
+    # storageClassName: default
+    accessModes:
+      - ReadWriteOnce
+    size: 25Gi
+    # annotations: {}
+    finalizers:
+      - kubernetes.io/pvc-protection
+    # selectorLabels: {}
+    # subPath: ""
+    # existingClaim:
+
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -47,6 +61,12 @@ grafana:
         #   isDefault: false
         #   jsonData:
         #     timeInterval: '1m'
+
+  sidecar:
+    dashboards:
+      enabled: true
+      labelValue: "true"
+      defaultFolderName: prod
 
 janus:
   enabled: true
