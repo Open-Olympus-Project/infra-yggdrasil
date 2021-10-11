@@ -16,6 +16,10 @@ grafana:
       allowed_domains:
       allowed_groups:
 
+    auth:
+      disable_login_form: true
+      oauth_auto_login: true
+
   envFromSecret: "grafana-sso"
 
   datasources:
