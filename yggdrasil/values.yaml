@@ -27,6 +27,7 @@ applications:
   env-yggdrasil-test: true
   external-secrets: true
   grafana: true
+  grafana-dashboard: true
   hephaestus: true
   traefik: true
   traefik-forward-auth: true
