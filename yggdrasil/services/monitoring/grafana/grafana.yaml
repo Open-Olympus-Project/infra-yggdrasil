@@ -103,8 +103,8 @@ janus:
           accessControlAllowOriginList:
             - "*"
           accessControlAllowHeaders:
-            - "x-grafana-nocache"
-            - "x-grafana-org-id"
+            - 'x-grafana-nocache'
+            - 'x-grafana-org-id'
 lethe:
   enabled: true
   secretStores:
