@@ -22,19 +22,19 @@ grafana:
 
   envFromSecret: "grafana-sso"
 
-  persistence:
-    type: pvc
-    enabled: true
-    # storageClassName: default
-    accessModes:
-      - ReadWriteOnce
-    size: 25Gi
-    # annotations: {}
-    finalizers:
-      - kubernetes.io/pvc-protection
-    # selectorLabels: {}
-    # subPath: ""
-    # existingClaim:
+  # persistence:
+  #   type: pvc
+  #   enabled: true
+  #   # storageClassName: default
+  #   accessModes:
+  #     - ReadWriteOnce
+  #   size: 25Gi
+  #   # annotations: {}
+  #   finalizers:
+  #     - kubernetes.io/pvc-protection
+  #   # selectorLabels: {}
+  #   # subPath: ""
+  #   # existingClaim:
 
   datasources:
     datasources.yaml:
