@@ -87,6 +87,7 @@ janus:
             port: 80
         middlewares:
           - name: grafana-stripprefix
+          - name: grafana-headers
       certificate:
         enabled: true
 
@@ -96,7 +97,11 @@ janus:
         stripPrefix:
           prefixes:
             - /grafana
-
+    - name: grafana-headers
+      spec:
+        headers:
+          accessControlAllowOriginList:
+            - "*"
 lethe:
   enabled: true
   secretStores:
