@@ -118,6 +118,10 @@ lethe:
         kind: SecretStore
       target:
         name: argocd-auth-secret
+        template:
+          metadata:
+            labels:
+              app.kubernetes.io/part-of: argocd
       data:
         - secretKey: oidc.azure.clientSecret
           remoteRef:
