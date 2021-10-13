@@ -37,7 +37,7 @@ nidhogg:
         - --rootpath
         - /argocd
       config:
-        url: https://service-poc.westeurope.cloudapp.azure.com/argocd
+        url: https://service-ps.westeurope.cloudapp.azure.com/argocd
         repositories: |
           # - type: git
           #   url: https://github.com/Open-Olympus-Project/*
