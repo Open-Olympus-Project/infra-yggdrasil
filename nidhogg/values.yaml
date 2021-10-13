@@ -36,6 +36,10 @@ nidhogg:
         - --insecure
         - --rootpath
         - /argocd
+
+      rbacConfig:
+        policy.default: role:admin
+
       config:
         url: https://service-ps.westeurope.cloudapp.azure.com/argocd
         repositories: |
@@ -54,9 +58,6 @@ nidhogg:
             - openid
             - profile
             - email
-
-        rbacConfig:
-          policy.default: role:admin
 
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
