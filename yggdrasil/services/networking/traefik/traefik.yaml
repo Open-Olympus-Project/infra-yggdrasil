@@ -85,8 +85,5 @@ traefik:
     access:
       enabled: true
 
-  # Needs to disable the http redirect to use the staging certs?
-  globalArguments: []
-
   additionalArguments:
   - --metrics.prometheus=true
