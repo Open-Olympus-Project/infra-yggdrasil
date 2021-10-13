@@ -46,18 +46,18 @@ nidhogg:
           # - type: git
           #   url: https://github.com/Open-Olympus-Project/*
 
-        oidc.config: |
-          name: Azure
-          issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
-          clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
-          clientSecret: $argocd-auth-secret:oidc.azure.clientSecret
-          requestedIDTokenClaims:
-            groups:
-              essential: true
-          requestedScopes:
-            - openid
-            - profile
-            - email
+        # oidc.config: |
+        #   name: Azure
+        #   issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
+        #   clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
+        #   clientSecret: $argocd-auth-secret:oidc.azure.clientSecret
+        #   requestedIDTokenClaims:
+        #     groups:
+        #       essential: true
+        #   requestedScopes:
+        #     - openid
+        #     - profile
+        #     - email
 
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
@@ -97,7 +97,7 @@ argocd-applicationset:
     argocdRepoServer: nidhogg-argocd-repo-server:8081
 
 lethe:
-  enabled: true
+  enabled: false
   secretStores:
     - name: k8s-secret-backend
       providers:
