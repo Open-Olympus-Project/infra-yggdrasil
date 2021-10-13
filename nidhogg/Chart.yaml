@@ -11,10 +11,6 @@ dependencies:
   - name: nidhogg
     version: "v1.0.2"
     repository: https://distributed-technologies.github.io/helm-repository/
-  - name: lethe
-    version: "0.1.1"
-    repository: https://open-olympus-project.github.io/repo-helm/
-    condition: lethe.enabled
   - name: argocd-applicationset
     version: "1.5.1"
     repository: https://argoproj.github.io/argo-helm

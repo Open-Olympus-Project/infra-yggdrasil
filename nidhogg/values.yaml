@@ -46,18 +46,18 @@ nidhogg:
           # - type: git
           #   url: https://github.com/Open-Olympus-Project/*
 
-        # oidc.config: |
-        #   name: Azure
-        #   issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
-        #   clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
-        #   clientSecret: $argocd-auth-secret:oidc.azure.clientSecret
-        #   requestedIDTokenClaims:
-        #     groups:
-        #       essential: true
-        #   requestedScopes:
-        #     - openid
-        #     - profile
-        #     - email
+        oidc.config: |
+          name: Azure
+          issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
+          clientID: 1b976479-a11f-4f1b-a5d8-64259d3b05da
+          clientSecret: $argocd-auth-secret:oidc.azure.clientSecret
+          requestedIDTokenClaims:
+            groups:
+              essential: true
+          requestedScopes:
+            - openid
+            - profile
+            - email
 
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
@@ -95,39 +95,3 @@ argocd-applicationset:
   args:
     namespace: nidhogg
     argocdRepoServer: nidhogg-argocd-repo-server:8081
-
-lethe:
-  enabled: false
-  secretStores:
-    - name: k8s-secret-backend
-      providers:
-        vault:
-          server: "http://vault.tooling.svc:8200"
-          path: "k8s"
-          version: "v2"
-          auth:
-            # Authenticate against Vault using a Kubernetes ServiceAccount
-            # token stored in a Secret.
-            # https://www.vaultproject.io/docs/auth/kubernetes
-            kubernetes:
-              # Path where the Kubernetes authentication backend is mounted in Vault
-              mountPath: "kubernetes"
-              # A required field containing the Vault Role to assume.
-              role: "k8s-secrets"
-
-  secrets:
-    - name: argocd-secret
-      secretStore:
-        backend: k8s-secret-backend
-        kind: SecretStore
-      target:
-        name: argocd-auth-secret
-        template:
-          metadata:
-            labels:
-              app.kubernetes.io/part-of: argocd
-      data:
-        - secretKey: oidc.azure.clientSecret
-          remoteRef:
-            key: secrets/sso
-            property: clientsecret
