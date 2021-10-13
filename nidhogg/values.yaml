@@ -55,6 +55,9 @@ nidhogg:
             - profile
             - email
 
+        rbacConfig:
+          policy.default: role:admin
+
         resource.customizations: |
           admissionregistration.k8s.io/MutatingWebhookConfiguration:
             ignoreDifferences: |
