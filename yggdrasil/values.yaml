@@ -38,7 +38,7 @@ applications:
   vault: true
 
 lethe:
-  enabled: false
+  enabled: true
   secretStores:
     - name: k8s-secret-backend
       providers:
