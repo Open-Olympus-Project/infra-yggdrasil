@@ -15,16 +15,3 @@ apps:
       targetRevision: HEAD
       path: events-github
       valuesFile: "argo-events-github.yaml"
-    # ingressRoute:
-    #   entryPoints:
-    #     - websecure
-    #   host: service-poc.westeurope.cloudapp.azure.com
-    #   routes:
-    #   - kind: Rule
-    #     # Without host
-    #     match: PathPrefix(`/argo-events/github`)
-    #     services:
-    #       - name: github-pr-eventsource-svc
-    #         port: 12000
-    #   certificate:
-    #     enabled: true
