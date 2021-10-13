@@ -21,7 +21,7 @@ apps:
   - name: hephaestus
     source:
       repoURL: "https://github.com/Open-Olympus-Project/repo-helm.git"
-      targetRevision: workflow-helm
+      targetRevision: main
       path: "charts/hephaestus"
       valuesFile: "hephaestus.yaml"
   - name: argo-events
