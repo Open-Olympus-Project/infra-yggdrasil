@@ -1,6 +1,6 @@
 issuers:
   - name: letsencrypt-staging
-    enabled: false
+    enabled: true
     kind: ClusterIssuer
 
     email: dataplatform@energinet.dk
@@ -14,7 +14,7 @@ issuers:
           class: traefik
 
   - name: letsencrypt-prod
-    enabled: true
+    enabled: false
     kind: ClusterIssuer
 
     email: dataplatform@energinet.dk
