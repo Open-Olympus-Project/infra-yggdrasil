@@ -90,7 +90,7 @@ prometheus:
     #   agentpool: monitoring
 
 janus:
-  enabled: true
+  enabled: false
   host: {{ .Values.ingress.hosts.main.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
