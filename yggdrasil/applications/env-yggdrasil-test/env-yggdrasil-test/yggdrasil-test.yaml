@@ -1,4 +1,4 @@
-scName: poc
+scName: ps
 nameSuffix: test
 destinationServer: https://env-ps-test-1ce8eacc.hcp.westeurope.azmk8s.io:443
 
