@@ -68,7 +68,7 @@ lethe:
             labels:
               app.kubernetes.io/part-of: argocd
           data:
-            oidc.azure.clientSecret: "{{`{{ .clientSecret | toString }}`}}"
+            oidc.azure.clientSecret: "{{ .clientSecret | toString }}"
       data:
         - secretKey: clientSecret
           remoteRef:
