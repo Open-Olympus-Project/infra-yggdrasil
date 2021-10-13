@@ -85,5 +85,7 @@ traefik:
     access:
       enabled: true
 
+  globalArguments: []
+
   additionalArguments:
   - --metrics.prometheus=true
