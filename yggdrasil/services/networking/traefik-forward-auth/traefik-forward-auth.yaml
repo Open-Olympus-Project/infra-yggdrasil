@@ -1,4 +1,4 @@
-appHost: {{ .values.ingress.host }}
+appHost: {{ .Values.ingress.host }}
 authHost: auth.{{ .Values.ingress.host }}
 
 janus:
