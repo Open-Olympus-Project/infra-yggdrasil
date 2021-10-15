@@ -11,7 +11,7 @@ spec:
   routes:
     - kind: Rule
       # match: Host(`{{ .Values.ingress.hosts.main.host }}`) && PathPrefix(`/argocd`)
-      match: Host(`argocd.svc.dataplatform.madsht.com`)
+      match: Host(`svc.dataplatform.madsht.com`) && PathPrefix(`/argocd`)
       priority: 10
       services:
         - name: nidhogg-argocd-server
@@ -37,7 +37,7 @@ metadata:
 spec:
   dnsNames:
     # - {{ .Values.ingress.hosts.main.host }}
-    - argocd.svc.dataplatform.madsht.com
+    - svc.dataplatform.madsht.com
   issuerRef:
     kind: ClusterIssuer
     name: {{ .Values.ingress.certmanagerissuer }}
