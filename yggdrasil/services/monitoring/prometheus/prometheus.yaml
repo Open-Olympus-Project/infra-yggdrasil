@@ -79,11 +79,11 @@ prometheus:
     ingress:
       enabled: false
 
-    baseURL: "https://{{ .Values.ingress.host }}/alertmanager"
-    prefixURL: "/alertmanager"
+    # baseURL: "https://svc.{{ .Values.ingress.host }}/alertmanager"
+    # prefixURL: "/alertmanager"
 
-    extraFlags:
-    - web.route-prefix=/alertmanager
+    # extraFlags:
+    # - web.route-prefix=/alertmanager
 
   # nodeExporter:
     # nodeSelector:
@@ -91,27 +91,27 @@ prometheus:
 
 janus:
   enabled: false
-  host: svc.{{ .Values.ingress.host | quote }}
-  certmanagerIssuer:
-    name: {{ .Values.ingress.certmanagerissuer | quote }}
-    kind: ClusterIssuer
+  # host: svc.{{ .Values.ingress.host }}
+  # certmanagerIssuer:
+  #   name: {{ .Values.ingress.certmanagerissuer | quote }}
+  #   kind: ClusterIssuer
 
-  ingressRoutes:
-    - name: prometheus
-      entryPoints:
-        - websecure
-      routes:
-      - kind: Rule
-        # Without host
-        match: PathPrefix(`/alertmanager`)
-        services:
-          - name: prometheus-alertmanager
-            port: 80
-        middlewares:
-          - name: auth
-            namespace: networking
-      certificate:
-        enabled: true
+  # ingressRoutes:
+  #   - name: prometheus
+  #     entryPoints:
+  #       - websecure
+  #     routes:
+  #     - kind: Rule
+  #       # Without host
+  #       match: PathPrefix(`/alertmanager`)
+  #       services:
+  #         - name: prometheus-alertmanager
+  #           port: 80
+  #       middlewares:
+  #         - name: auth
+  #           namespace: networking
+  #     certificate:
+  #       enabled: true
 
 lethe:
   enabled: true

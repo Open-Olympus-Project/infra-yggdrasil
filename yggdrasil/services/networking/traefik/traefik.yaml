@@ -1,12 +1,11 @@
 services:
-{{- with $.Values.ingress.hosts }}
-{{- with .main }}
+{{- with $.Values.ingress }}
   - enabled: true
     namePrefix: {{ printf "%s" "" | quote }}
     type: LoadBalancer
     # Additional annotations applied to both TCP and UDP services (e.g. for cloud provider specific config)
     annotations:
-      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ $.Values.ingress.LoadBalancerResoureGroup | quote }}
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .LoadBalancerResoureGroup | quote }}
 
     # Additional annotations for TCP service only
     annotationsTCP: {}
@@ -21,7 +20,6 @@ services:
       loadBalancerIP: {{ .loadBalancerIP }}
     loadBalancerSourceRanges: []
     externalIPs: []
-{{- end }}
 {{- end }}
 
 traefik:

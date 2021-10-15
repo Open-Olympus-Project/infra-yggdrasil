@@ -3,7 +3,7 @@ authHost: auth.{{ .Values.ingress.host }}
 
 janus:
   enabled: true
-  host: auth.{{ .Values.ingress.host | quote }}
+  host: auth.{{ .Values.ingress.host }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
