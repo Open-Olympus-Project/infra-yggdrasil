@@ -1,4 +1,4 @@
-appHost: westeurope.cloudapp.azure.com
+appHost: {{ .values.ingress.host }}
 authHost: auth.{{ .Values.ingress.host }}
 
 janus:

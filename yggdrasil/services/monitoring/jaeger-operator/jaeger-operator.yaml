@@ -7,10 +7,6 @@ jaeger-operator:
       ingress:
         enabled: false
       strategy: allInOne
-      allInOne:
-        options:
-          query:
-            base-path: /jaeger
 
       storage:
         options:
@@ -36,7 +32,7 @@ jaeger-operator:
 
 janus:
   enabled: true
-  host: svc.{{ .Values.ingress.host }}
+  host: jaeger.{{ .Values.ingress.host }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
@@ -47,15 +43,11 @@ janus:
         - websecure
       routes:
         - kind: Rule
-          match: PathPrefix(`/jaeger`)
+          match:
           services:
             - name: jaeger-operator-jaeger-query
               port: 16686
           middlewares:
-            # - name: oauth-errors
-            #   namespace: networking
-            # - name: oauth-auth
-            #   namespace: networking
             - name: auth
               namespace: networking
       certificate:

@@ -1,9 +1,8 @@
 argo-workflows:
   server:
-    baseHref: /argowf/
     sso:
       issuer: https://login.microsoftonline.com/f7619355-6c67-4100-9a78-1847f30742e2/v2.0
-      redirectUrl: https://svc.{{ .Values.ingress.host }}/argowf/oauth2/callback
+      redirectUrl: https://argowf.{{ .Values.ingress.host }}/oauth2/callback
   controller:
     workflowNamespaces:
       - tooling
@@ -21,21 +20,12 @@ janus:
         - websecure
       routes:
         - kind: Rule
-          match: PathPrefix(`/argowf`)
+          match:
           services:
             - name: argo-workflows-server
               port: 2746
-          middlewares:
-            - name: argo-stripprefix
       certificate:
         enabled: true
-
-  middlewares:
-    - name: argo-stripprefix
-      spec:
-        stripPrefix:
-          prefixes:
-            - /argowf
 
 lethe:
   enabled: true

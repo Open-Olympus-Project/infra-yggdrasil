@@ -28,7 +28,7 @@ janus:
         - websecure
       routes:
       - kind: Rule
-        match: PathPrefix(`/`)
+        match:
         services:
           - name: vault-ui
             port: 8200
