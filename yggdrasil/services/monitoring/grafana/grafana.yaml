@@ -3,7 +3,7 @@ grafana:
   grafana.ini:
     server:
       #TODO HOST URL
-      root_url: https://svc.{{ .Values.ingress.host }}/grafana
+      root_url: https://grafana.{{ .Values.ingress.host }}
     auth.azuread:
       name: Azure AD
       enabled: true
@@ -70,7 +70,7 @@ grafana:
 
 janus:
   enabled: true
-  host: svc.{{ .Values.ingress.host }}
+  host: grafana.{{ .Values.ingress.host }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
@@ -81,29 +81,13 @@ janus:
         - websecure
       routes:
       - kind: Rule
-        match: PathPrefix(`/grafana`)
+        match:
         services:
           - name: grafana
             port: 80
-        middlewares:
-          - name: grafana-stripprefix
-          - name: grafana-headers
       certificate:
         enabled: true
 
-  middlewares:
-    - name: grafana-stripprefix
-      spec:
-        stripPrefix:
-          prefixes:
-            - /grafana
-    - name: grafana-headers
-      spec:
-        headers:
-          accessControlAllowOriginList:
-            - "*"
-          accessControlAllowHeaders:
-            - "*"
 lethe:
   enabled: true
   secretStores:
