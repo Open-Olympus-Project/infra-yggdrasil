@@ -3,7 +3,7 @@ grafana:
   grafana.ini:
     server:
       #TODO HOST URL
-      root_url: https://{{ .Values.ingress.hosts.main.host }}/grafana
+      root_url: https://svc.{{ .Values.ingress.host }}/grafana
     auth.azuread:
       name: Azure AD
       enabled: true
@@ -70,7 +70,7 @@ grafana:
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.main.host | quote }}
+  host: {{ .Values.ingress.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer

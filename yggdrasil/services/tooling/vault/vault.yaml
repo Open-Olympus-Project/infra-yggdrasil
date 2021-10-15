@@ -17,7 +17,7 @@ vault:
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.vault.host | quote }}
+  host: vault.{{ .Values.ingress.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer

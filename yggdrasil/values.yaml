@@ -1,10 +1,8 @@
 scName: ps
 
 ingress:
-  hosts:
-    main:
-      host: <host1>
-      loadBalancerIP: <ip>
+  loadBalancerIP: <Lbip>
+  host: <host> # This is what argocd will run on
   LoadBalancerResoureGroup: <resource_group>
   certmanagerissuer: <cert-manager-issuer>
   # className: ingress-traefik

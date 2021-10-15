@@ -10,15 +10,13 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      # match: Host(`{{ .Values.ingress.hosts.main.host }}`) && PathPrefix(`/argocd`)
-      match: Host(`svc.dataplatform.madsht.com`) && PathPrefix(`/argocd`)
+      match: Host(`svc.{{ .Values.ingress.host }}`) && PathPrefix(`/argocd`)
       priority: 10
       services:
         - name: nidhogg-argocd-server
           port: 80
     - kind: Rule
-      # match: Host(`{{ .Values.ingress.hosts.main.host }}`) && Headers(`Content-Type`, `application/grpc`)
-      match: Host(`svc.dataplatform.madsht.com`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`svc.{{ .Values.ingress.host }}`) && Headers(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - name: nidhogg-argocd-server
@@ -36,8 +34,7 @@ metadata:
     argocd.argoproj.io/sync-options: SkipDryRunOnMissingResource=true
 spec:
   dnsNames:
-    # - {{ .Values.ingress.hosts.main.host }}
-    - svc.dataplatform.madsht.com
+    - svc.{{ .Values.ingress.host }}
   issuerRef:
     kind: ClusterIssuer
     name: {{ .Values.ingress.certmanagerissuer }}

@@ -15,7 +15,7 @@ promtail:
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.main.host | quote }}
+  host: svc.{{ .Values.ingress.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer

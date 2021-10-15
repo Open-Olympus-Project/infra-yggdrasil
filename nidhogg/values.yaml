@@ -6,16 +6,8 @@ nidhogg:
     ingress:
       LoadBalancerResoureGroup: service-aks-ps
       certmanagerissuer: letsencrypt-staging
-      hosts:
-        main:
-          host: service-ps.westeurope.cloudapp.azure.com # This is what argocd will run on
-          loadBalancerIP: 20.93.211.177
-        vault:
-          host: service-vault-ps.westeurope.cloudapp.azure.com
-          loadBalancerIP: 20.93.212.33
-        auth:
-          host: service-auth-ps.westeurope.cloudapp.azure.com
-          loadBalancerIP: 20.103.51.93
+      loadBalancerIP: 20.93.211.177
+      host: dataplatform.madsht.com # This is what argocd will run on
 
   installCNI: false
 
@@ -41,7 +33,7 @@ nidhogg:
         policy.default: role:admin
 
       config:
-        url: https://service-ps.westeurope.cloudapp.azure.com/argocd
+        url: https://svc.dataplatform.madsht.com/argocd
         repositories: |
           # - type: git
           #   url: https://github.com/Open-Olympus-Project/*

@@ -1,9 +1,9 @@
 appHost: westeurope.cloudapp.azure.com
-authHost: {{ .Values.ingress.hosts.auth.host }}
+authHost: auth.{{ .Values.ingress.host }}
 
 janus:
   enabled: true
-  host: {{ .Values.ingress.hosts.auth.host | quote }}
+  host: auth.{{ .Values.ingress.host | quote }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
