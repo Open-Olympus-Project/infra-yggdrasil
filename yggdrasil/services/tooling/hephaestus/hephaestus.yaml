@@ -1,4 +1,4 @@
-serverURL: svc.{{ .Values.ingress.host }}
+serverURL: {{ .Values.ingress.host }}
 serviceClusterName: {{ .Values.scName }}
 
 # This list should always correspond to the secrets list below

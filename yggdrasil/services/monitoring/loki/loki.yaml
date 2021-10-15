@@ -15,7 +15,7 @@ promtail:
 
 janus:
   enabled: true
-  host: svc.{{ .Values.ingress.host }}
+  host: loki.{{ .Values.ingress.host }}
   certmanagerIssuer:
     name: {{ .Values.ingress.certmanagerissuer | quote }}
     kind: ClusterIssuer
@@ -26,7 +26,7 @@ janus:
         - websecure
       routes:
         - kind: Rule
-          match: PathPrefix(`/loki`)
+          match:
           services:
             - name: loki-loki-stack
               port: 3100
