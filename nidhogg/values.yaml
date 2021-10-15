@@ -26,14 +26,14 @@ nidhogg:
       replicas: 3
       extraArgs:
         - --insecure
-        - --rootpath
-        - /argocd
+        # - --rootpath
+        # - /argocd
 
       rbacConfig:
         policy.default: role:admin
 
       config:
-        url: https://svc.dataplatform.madsht.com/argocd
+        url: https://argocd.dataplatform.madsht.com
         repositories: |
           # - type: git
           #   url: https://github.com/Open-Olympus-Project/*
