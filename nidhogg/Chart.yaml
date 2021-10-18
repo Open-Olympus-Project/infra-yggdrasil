@@ -9,7 +9,7 @@ maintainers:
 
 dependencies:
   - name: nidhogg
-    version: "v1.0.2"
+    version: "v1.0.4"
     repository: https://distributed-technologies.github.io/helm-repository/
   - name: argocd-applicationset
     version: "1.5.1"
