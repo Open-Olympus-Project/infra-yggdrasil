@@ -15,10 +15,10 @@ traefik:
 
   service:
     annotations:
-      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .LoadBalancerResoureGroup | quote }}
+      service.beta.kubernetes.io/azure-load-balancer-resource-group: {{ .Values.ingress.LoadBalancerResoureGroup | quote }}
 
     spec:
-      loadBalancerIP: {{ .loadBalancerIP }}
+      loadBalancerIP: {{ .Values.ingress.loadBalancerIP }}
 
   additionalArguments:
   - --metrics.prometheus=true
