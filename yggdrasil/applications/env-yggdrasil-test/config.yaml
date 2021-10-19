@@ -8,7 +8,7 @@ project:
     - '*'
   destinations:
   - namespace: '*'
-    server: https://env-ps-test-129dfade.hcp.westeurope.azmk8s.io
+    server: https://env-ps-test-129dfade.hcp.westeurope.azmk8s.io:443
 
 apps:
   - name: env-yggdrasil-test

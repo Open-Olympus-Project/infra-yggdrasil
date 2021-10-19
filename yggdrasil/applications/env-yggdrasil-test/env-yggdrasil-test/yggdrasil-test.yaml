@@ -1,6 +1,6 @@
 scName: ps
 nameSuffix: test
-destinationServer: https://env-ps-test-129dfade.hcp.westeurope.azmk8s.io
+destinationServer: https://env-ps-test-129dfade.hcp.westeurope.azmk8s.io:443
 
 vaultServer: https://vault.{{ .Values.ingress.host }}
 serviceServer: https://svc.{{ .Values.ingress.host }}
