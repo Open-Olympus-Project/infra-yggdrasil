@@ -20,6 +20,8 @@
     + [ArgoCD admin password](#ArgoCD-admin-password)
     + [Vault values](#vautl-values)
     + [Minio setup for argocd](#minio-setup-for-argocd)
+    + [Thanos multi cluster setup](#thanos-setup)
+* [Setting up env clusters](#Setting-up-env-clusters)
 * [Testing using kind](#testing-using-kind)
 * [Known issues](#known-issues)
 
@@ -220,19 +222,20 @@ In the `thanos.yaml` file you can add the sidecar url for the external cluster i
 
 The grafana instace already has the right thanos datasource defined in it's config.
 
-### Setting up env clusters
+# Setting up env clusters
 
 This version of yggdrasil comes with a workflow that is build to spin up a new env-cluster using terraform
 
 When the new cluster is done you have to change some values:
 
-1. In the [application values](yggdrasil/applications/env-yggdrasil-test/env-yggdrasil-test/yggdrasil-test.yaml) for the yggdrasil env you have to change the destination server to the new URL.
+1. In the [application values](yggdrasil/applications/env-yggdrasil-test/env-yggdrasil-test/yggdrasil-test.yaml) for the yggdrasil env you have to change the destination server to the new URL.<br>
+In here you also want to change to loadbalancerIp to the Ip from the Public IP resource in azure, You also want to change the loadbalancerResourceGroup to the name of resource group the Public IP resource is in.
 
-2. Currently you have to go to your yggdrasil-env repo and change the destination servers inside the configfiles to fit the new host URL.
+2. Currently you have to go to your yggdrasil-env repo and change the destination servers inside the config.yaml files to fit the new host URL.
 
 3. You have to add the new cluster to the vault with a new kubernetes auth method in the format of `kubernetes-$env`.
 One way of doing it is to use [this script](utilities/add-env-cluster.sh)
-Though it will require you to have the kubectl for both the service cluster and the env cluster.
+Though it will require you to have the kubeconfig for both the service cluster and the env cluster.
 
 
 # Testing using kind
