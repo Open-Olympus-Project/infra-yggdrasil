@@ -16,7 +16,7 @@ prometheus:
       create: false
 
   pushgateway:
-    enabled: false
+    enabled: true
 
   server:
     ingress:
