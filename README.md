@@ -22,6 +22,7 @@
     + [Minio setup for argocd](#minio-setup-for-argocd)
     + [Thanos multi cluster setup](#thanos-setup)
 * [Setting up env clusters](#Setting-up-env-clusters)
+* [Removing env clusters](#Removing-env-clusters)
 * [Testing using kind](#testing-using-kind)
 * [Known issues](#known-issues)
 
@@ -224,7 +225,11 @@ The grafana instace already has the right thanos datasource defined in it's conf
 
 # Setting up env clusters
 
-This version of yggdrasil comes with a workflow that is build to spin up a new env-cluster using terraform
+to spin up a env cluster ther is a few steps that you need to do:
+
+This version of yggdrasil comes with a workflow called env-cluster-deploy, that spins up a new env-cluster using terraform
+
+1. Go to argo-workflows in the service cluster and run the workflow-template called `env-cluster-deploy`
 
 When the new cluster is done you have to change some values:
 
@@ -236,6 +241,15 @@ In here you also want to change to loadbalancerIp to the Ip from the Public IP r
 3. You have to add the new cluster to the vault with a new kubernetes auth method in the format of `kubernetes-$env`.
 One way of doing it is to use [this script](utilities/add-env-cluster.sh)
 Though it will require you to have the kubeconfig for both the service cluster and the env cluster.
+
+
+# Removing env clusters
+
+To remove a env cluster there is only two steps that can be done in any order:
+
+1. Go into argocd under the settings (the cog icon on the left) into the cluster list and delete the cluster you want to remove, with the three dots menu.
+
+2. Go to argo-workflows in the service cluster there is a workflow-template called `env-cluster-destroy` that you run with the name of the env you want to detroy.
 
 
 # Testing using kind

@@ -1,8 +1,5 @@
-standalonePushgateway:
-  enabled: true
-
 prometheus-pushgateway:
-
+  enabled: true
   image:
     repository: weaveworks/prom-aggregation-gateway
     tag: master-c4415bbe
