@@ -1,5 +1,8 @@
 prometheus-pushgateway:
   enabled: true
+
+  fullnameOverride: "prometheus-aggregated-gateway"
+
   image:
     repository: weaveworks/prom-aggregation-gateway
     tag: master-c4415bbe
