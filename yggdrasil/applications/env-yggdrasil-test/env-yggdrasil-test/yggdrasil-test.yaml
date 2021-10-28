@@ -7,7 +7,7 @@ serviceServer: https://svc.{{ .Values.ingress.host }}
 
 ingress:
   host: test.{{ .Values.ingress.host }}
-  loadBalancerIP: 20.82.51.195
+  loadBalancerIP: 20.101.177.168
   LoadBalancerResoureGroup: env-aks-ps-test
   certmanagerissuer: letsencrypt-prod
   # className: ingress-traefik
