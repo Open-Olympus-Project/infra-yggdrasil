@@ -14,7 +14,7 @@ issuers:
           class: traefik
 
   - name: letsencrypt-prod
-    enabled: false
+    enabled: true
     kind: ClusterIssuer
 
     email: dataplatform@energinet.dk
