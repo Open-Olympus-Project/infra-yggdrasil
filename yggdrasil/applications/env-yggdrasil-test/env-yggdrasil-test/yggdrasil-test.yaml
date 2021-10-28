@@ -9,5 +9,5 @@ ingress:
   host: test.{{ .Values.ingress.host }}
   loadBalancerIP: 20.82.51.195
   LoadBalancerResoureGroup: env-aks-ps-test
-  certmanagerissuer: letsencrypt-staging
+  certmanagerissuer: letsencrypt-prod
   # className: ingress-traefik
