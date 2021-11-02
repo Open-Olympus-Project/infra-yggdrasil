@@ -5,7 +5,7 @@ nidhogg:
     containerRegistryUrl: serviceacrps.azurecr.io
     ingress:
       LoadBalancerResoureGroup: service-aks-ps
-      loadBalancerIP: 20.93.211.177
+      loadBalancerIP: 104.45.76.173
       certmanagerissuer: letsencrypt-prod
       host: dataplatform.madsht.com # This is what argocd will run on
 
