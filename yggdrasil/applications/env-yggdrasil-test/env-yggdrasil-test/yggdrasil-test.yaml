@@ -1,13 +1,13 @@
 scName: ps
 nameSuffix: test
-destinationServer: https://env-ps-test-129dfade.hcp.westeurope.azmk8s.io:443
+destinationServer: https://env-ps-test-d3cc7d1a.hcp.westeurope.azmk8s.io:443
 
 vaultServer: https://vault.{{ .Values.ingress.host }}
 serviceServer: https://svc.{{ .Values.ingress.host }}
 
 ingress:
   host: test.{{ .Values.ingress.host }}
-  loadBalancerIP: 20.101.177.168
+  loadBalancerIP: 20.103.218.138
   LoadBalancerResoureGroup: env-aks-ps-test
   certmanagerissuer: letsencrypt-prod
   # className: ingress-traefik
