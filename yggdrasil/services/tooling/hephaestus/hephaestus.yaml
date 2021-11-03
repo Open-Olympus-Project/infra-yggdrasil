@@ -63,3 +63,19 @@ lethe:
         name: dataplatform-dev-secret
       dataFrom:
         - key: service-principals/dataplatform-dev
+    - name: dataplatform-test-secret
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: dataplatform-test-secret
+      dataFrom:
+        - key: service-principals/dataplatform-test
+    - name: dataplatform-prod-secret
+      secretStore:
+        backend: k8s-secret-backend
+        kind: SecretStore
+      target:
+        name: dataplatform-prod-secret
+      dataFrom:
+        - key: service-principals/dataplatform-prod
