@@ -4,6 +4,8 @@ serviceClusterName: {{ .Values.scName }}
 # This list should always correspond to the secrets list below
 servicePrincipalEnums:
 - dataplatform-dev
+- dataplatform-test
+- dataplatform-prod
 
 lethe:
   enabled: true
