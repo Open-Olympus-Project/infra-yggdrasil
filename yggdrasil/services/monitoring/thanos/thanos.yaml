@@ -2,7 +2,7 @@
 querytls:
   enabled: true
   stores:
-    - ps-test.westeurope.cloudapp.azure.com:443
+    - thanos.test.dataplatform.madsht.com
     # - dp-prod.westeurope.cloudapp.azure.com:443
   # Enable DNS discovery for stores
   storeDNSDiscovery: false
