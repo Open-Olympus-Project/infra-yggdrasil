@@ -33,7 +33,7 @@ nidhogg:
         policy.default: role:admin
 
       config:
-        url: https://argocd.dataplatform.madsht.com
+        url: https://argocd.service.dataplatform.madsht.com
         repositories: |
           # - type: git
           #   url: https://github.com/Open-Olympus-Project/*
