@@ -6,7 +6,7 @@ vaultServer: https://vault.{{ .Values.ingress.host }}
 serviceServer: https://svc.{{ .Values.ingress.host }}
 
 ingress:
-  host: test.{{ .Values.ingress.host }}
+  host: test.{{ .Values.ingress.host | replace "service." "" }}
   loadBalancerIP: 20.103.218.138
   LoadBalancerResoureGroup: env-aks-ps-test
   certmanagerissuer: letsencrypt-prod

@@ -7,7 +7,7 @@ nidhogg:
       LoadBalancerResoureGroup: service-aks-ps
       loadBalancerIP: 104.45.76.173
       certmanagerissuer: letsencrypt-prod
-      host: dataplatform.madsht.com # This is what argocd will run on
+      host: service.dataplatform.madsht.com # This is what argocd will run on
 
   installCNI: false
 

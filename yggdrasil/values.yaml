@@ -2,7 +2,7 @@ scName: ps
 
 ingress:
   loadBalancerIP: <Lbip>
-  host: <host> # This is what argocd will run on
+  host: service.dataplatform.madsht.com # This is what argocd will run on
   LoadBalancerResoureGroup: <resource_group>
   certmanagerissuer: <cert-manager-issuer>
   # className: ingress-traefik
