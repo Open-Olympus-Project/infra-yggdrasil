@@ -3,7 +3,7 @@ nameSuffix: test
 destinationServer: https://env-ps-test-d3cc7d1a.hcp.westeurope.azmk8s.io:443
 
 vaultServer: https://vault.{{ .Values.ingress.host }}
-serviceServer: https://svc.{{ .Values.ingress.host }}
+lokiServer: https://loki.{{ .Values.ingress.host }}
 
 ingress:
   host: test.{{ .Values.ingress.host | replace "service." "" }}
